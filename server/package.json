@@ -1,0 +1,20 @@
+{
+  "name": "b-free",
+  "version": "0.0.1",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.14.1",
+    "express": "^4.13.3",
+    "nodemon": "^1.8.1",
+    "path": "^0.12.7"
+  },
+  "engines": {
+    "node": "5.2.x"
+  },
+  "author": "Team-Woof",
+  "license": "MIT"
+}
