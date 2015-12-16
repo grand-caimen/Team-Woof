@@ -1,7 +1,7 @@
 {
-  "name": "b-free",
+  "name": "city-quest",
   "version": "0.0.1",
-  "description": "",
+  "description": "quest maker for adventure fun",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
