@@ -14,24 +14,20 @@ cityQuestApp.run(function($rootScope){});
 function routeDefinition($routeProvider){
   $routeProvider
   .when('/', {
-    templateUrl: 'city/city.html',
-    controller: 'cityCtrl'
-  })
-  .when('/city', {
-    templateUrl: 'city/city.html',
+    templateUrl: 'client/city/city.html',
     controller: 'cityCtrl'
   })
   .when('/questList', {
-    templateUrl: 'questList/questList.html',
+    templateUrl: 'client/questList/questList.html',
     controller: 'questListCtrl'
   })
   .when('/questView', {
-    templateUrl: 'questView/questView.html',
+    templateUrl: 'client/questView/questView.html',
     controller: 'questViewCtrl'
   })
-  .when('/createView', {
-    templateUrl: 'createView/createView.html',
-    controller: 'createViewCtrl'
+  .when('/createQuest', {
+    templateUrl: 'client/createQuest/createQuest.html',
+    controller: 'createQuestCtrl'
   })
   .otherwise({
     redirectTo: '/'
