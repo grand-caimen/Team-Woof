@@ -17,13 +17,14 @@ angular.module('cityQuest.services', [])
         });
   };
 
-  // function getQuestsSuccess(data, status){
-  //   return data.data;
-  // };
+  function getQuestsSuccess(data, status){
+        // $http will return the entire response object. To get the data returned from the database use data.data
+    return data.data;
+  };
 
-  // function getQuestsError(data, status){
-  //   console.log(status);
-  // };
+  function getQuestsError(data, status){
+    console.log(status);
+  };
 
   var saveNewQuest = function(quest){
     var questObjStr = JSON.stringify(quest);
