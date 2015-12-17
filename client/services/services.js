@@ -18,14 +18,11 @@ angular.module('cityQuest.services', [])
   };
 
   var saveNewQuest = function(quest){
-    var questObj = {};
-    var data = $.param({
-      json: JSON.stringify(questObj)
-    });
+    var questObjStr = JSON.stringify(quest);
     $http.post(
       '/quests',
-      data
-    })
+      questObjStr
+    )
     .then(saveNewQuestSuccess,
           saveNewQuestError);
   };
