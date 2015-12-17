@@ -34,3 +34,34 @@ body {
   color: #edebe3;
   padding-top: 2em;
 }
+
+.questList {
+}
+
+.questItem {
+  padding:1px 0 15px 20px;
+  background-color: #fff;
+  border-radius: 2px;
+}
+
+.questContainer {
+  padding-top:2em;
+}
+
+.quest-descript {
+}
+
+.quest-image {
+  height:115px;
+  padding-top:12px;
+  margin-left:-17px;
+}
+
+.quest-image-container {
+  border-radius: 4px;
+}
+
+
+.quest-title {
+  margin: 10px 0 3px 0;
+}

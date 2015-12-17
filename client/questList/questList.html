@@ -11,6 +11,8 @@
     <div ng-repeat='link in data.links | filter:search | orderBy: "-visits"' class='repeater'>
       <img src="/assets/redirect_icon.png">
       <div class='info'>
+        <h3>{{ quest.name }}</h3>
+        
         <div class='visits'><span class='count'>{{link.visits}}</span></div>
         <div class='title'>{{link.title}}</div>
         <div class='original'>{{link.url}}</div>
