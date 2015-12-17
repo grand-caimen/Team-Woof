@@ -1,23 +1,65 @@
 <div id='container'>
     <div class="col-md-12 logo-blank"></div>
-    <div class="col-md-6 col-md-offset-3"><img class="logo" src="client/img/logo.png"></div>
     <div class="col-md-10 col-md-offset-1 questContainer">
-    <div class="row">
-      <div class='col-md-6 questList' ng-repeat='quest in quests' >
-        <div class="col-md-12 questItem">
-          <div class="col-md-4 quest-image-container">
-            <img class="quest-image" src="{{quest.image}}">
+    <form ng-submit='signin()'>
+      <div class="form-group">
+        <div class="col-md-8 col-md-offset-2">
+          <div class="input-group">
+            <span class="input-group-addon">Quest Title</span>
+            <input type="text" class="form-control">
           </div>
-          <div class="col-md-8">
-            <a href="/quests/{{quest.id}}"><h2 class="quest-title">{{ quest.name }}</h2></a>
-            <p class="quest-descript">{{ quest.description }}</p>
-            <div>Time: {{ quest.time }}</div><div>Cost: {{ quest.cost }}</div>
+
+          <div class="input-group">
+            <span class="input-group-addon">Description</span>
+            <input type="text" class="form-control">
+          </div>
+
+          <div class="input-group">
+            <span class="input-group-addon">Tags</span>
+            <tags-input min-length="1" ng-model="tags">
+            </tags-input>
+          </div>
+        </div>
+
+        <div class="col-md-12 clean"></div>
+
+          <div id="addStepDiv" class="col-md-12"></div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="input-group">
+                <span class="input-group-addon">Task</span>
+                <input type="text" class="form-control">
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="input-group no-margin">
+                    <span class="input-group-addon">Cost</span>
+                    <input type="text" class="form-control">
+                  </div>
+                </div> 
+                <div class="col-md-6">
+                  <div class="input-group no-margin">
+                    <span class="input-group-addon">Minutes</span>
+                    <input type="text" class="form-control">
+                  </div>
+                </div> 
             </div>
-            <div class="clean"></div>
+          </div>
+
+            <div class="col-md-6">
+            </div>
+          <div ng-show="addAgenda" class="col-md-2 col-md-offset-5">
+            <button ng-click="addStepDiv()" type="button" class="btn btn-default add-agenda-btn">Add To Agenda</button>
+          </div>
+       
+          <div ng-show="showErr" class='message error'>{{err}}</div>
           </div>
         </div>
       </div>
+    </form>
     </div>
     </div>
   </div>
 </div>
+
