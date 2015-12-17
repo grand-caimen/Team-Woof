@@ -7,7 +7,7 @@ var mongo = require('./db.js');
 var db = mongo.db;
 var models = require('./models.js');
 var Quest = models.Quest;
-var Step = models.Step;
+// var Step = models.Step;
 
 app.use(bodyParser.json());
 
@@ -35,7 +35,8 @@ app.post('/api/quests*', function(req, res){
 	});
 });
 
-app.get('api/quests*', function(req, res){
+app.get('/api/quests*', function(req, res){
+	console.log(req.query);
 	Quest.find(req.query).then(function(quests){
 		res.send(quests);
 	});
