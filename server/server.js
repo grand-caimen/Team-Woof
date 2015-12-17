@@ -34,7 +34,7 @@ app.post('/testing', function(req, res){
 
 // Wildcare Files
 app.get('/*', function(req, res){
-    res.sendFile(path.join(__dirname + '/../client' + req.url));
+    res.sendFile(path.join(__dirname + '/../' + req.url));
 });
 
 app.listen(app.get('port'), function(){

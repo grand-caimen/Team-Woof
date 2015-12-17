@@ -1,15 +1,23 @@
 <!DOCTYPE HTML>
-<html ng-app="myApp">
+<html ng-app="cityQuestApp">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     
-    <link rel="stylesheet" href="css/style.css">
-    <script src="lib/angular.js"></script>
-    <script src="myApp.js"></script>
+    <link rel="stylesheet" href="client/bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="client/css/style.css">
+    <script src="node_modules/angular/angular.js"></script>
+    <script src="node_modules/angular-animate/angular-animate.js"></script>
+    <script src="node_modules/ng-fx/dist/ng-fx.js"></script>
+
+    <script src="client/services/services.js"></script>
+    <script src="client/city/city.js"></script>
+    <script src="client/questList/questList.js"></script>
+    <script src="client/questView/questView.js"></script>
+    <script src="client/createQuest/createQuest.js"></script>
+    <script src="client/app.js"></script>
 </head>
 <body ng-controller="cityCtrl"> 
-    
-
+    <div ng-view id='container'></div>
 </body>
 </html>
