@@ -30,4 +30,4 @@ var Quest = mongoose.model('Quest', questSchema);
 // var Step = mongoose.model('Step', stepSchema);
 
 module.exports.Quest = Quest;
-module.exports.Step = Step;
+// module.exports.Step = Step;
