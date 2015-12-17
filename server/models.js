@@ -8,19 +8,26 @@ var questSchema = new Schema({
 	id: Number,
 	city: String,
 	address: String,
-	cost: Number
+	cost: Number,
+	steps: [{
+		location: String,
+		description: String,
+		time: Number,
+    cost: Number,
+    number: Number
+	  }]
 });
 
-var stepSchema = new Schema({
-	quest_id: Number,
-	location: String,
-	description: String,
-	time: Number,
-	cost: Number,
-	number: Number
-});
+// var stepSchema = new Schema({
+// 	quest_id: Number,
+// 	location: String,
+// 	description: String,
+// 	time: Number,
+// 	cost: Number,
+// 	number: Number
+// });
 var Quest = mongoose.model('Quest', questSchema);
-var Step = mongoose.model('Step', stepSchema);
+// var Step = mongoose.model('Step', stepSchema);
 
 module.exports.Quest = Quest;
 module.exports.Step = Step;
