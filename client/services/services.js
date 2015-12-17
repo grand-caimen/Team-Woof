@@ -51,6 +51,7 @@ angular.module('cityQuest.services', [])
     saveCity: saveCity
   }
 })
+
 .factory('Auth', function ($http, $location, $window) {
   var signin = function (user) {
     return $http({

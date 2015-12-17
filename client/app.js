@@ -4,12 +4,14 @@ var cityQuestApp = angular.module('cityQuestApp',[
                          'cityQuest.city',
                          'cityQuest.questList',
                          'cityQuest.questView',
-                         'cityQuest.createQuest']);
+                         'cityQuest.createQuest',
+                         'cityQuest.auth']);
 
 cityQuestApp.config(['$routeProvider',
                     routeDefinition]);
 
 cityQuestApp.run(function($rootScope){});
+
 
 function routeDefinition($routeProvider){
   $routeProvider
@@ -29,6 +31,14 @@ function routeDefinition($routeProvider){
     templateUrl: 'client/createQuest/createQuest.html',
     controller: 'createQuestCtrl'
   })
+  .when('/signin', {
+      templateUrl: 'client/auth/signin.html',
+      controller: 'authController'
+    })
+  .when('/signup', {
+      templateUrl: 'client/auth/signup.html',
+      controller: 'authController'
+    })
   .otherwise({
     redirectTo: '/'
   });
