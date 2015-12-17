@@ -50,9 +50,7 @@ angular.module('cityQuest.services', [])
     saveNewQuest: saveNewQuest,
     saveCity: saveCity
   }
-});
-
-
+})
 .factory('Auth', function ($http, $location, $window) {
   var signin = function (user) {
     return $http({
@@ -84,3 +82,4 @@ angular.module('cityQuest.services', [])
     $window.localStorage.removeItem('com.cityQuest');
     $location.path('/signin');
   };
+});
