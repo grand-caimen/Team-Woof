@@ -37,6 +37,7 @@ app.post('/api/quests*', function(req, res){
 
 app.get('/api/quests*', function(req, res){
 	console.log(req.query);
+	//req.query == { city: 'austin' }
 	Quest.find(req.query).then(function(quests){
 		res.send(quests);
 	});

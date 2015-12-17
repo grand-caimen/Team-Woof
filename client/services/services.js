@@ -1,9 +1,16 @@
 angular.module('cityQuest.services', [])
 
 .factory('QuestStorage', function($http){
-  var getAllQuests = function(selectedCity){
+
+  var selectedCity = ''; 
+
+  var saveCity = function(city){
+    selectedCity = city.toLowerCase();
+  };
+
+  var getAllQuests = function(){
     return $http.get(
-             '/quests/?city=' + selectedCity
+             '/api/quests/?city=' + selectedCity
            )
            .then(getQuestsSuccess,
                  getQuestsError);
@@ -19,24 +26,28 @@ angular.module('cityQuest.services', [])
 
   var saveNewQuest = function(quest){
     var questObjStr = JSON.stringify(quest);
-    $http.post(
-      '/quests',
-      questObjStr
-    )
+    $http({
+        method: 'POST',
+        url: '/api/quests',
+        data: questObjStr
+      })
     .then(saveNewQuestSuccess,
           saveNewQuestError);
   };
 
  function saveNewQuestSuccess(data, status){
-
+    //
  };
 
  function saveNewQuestError(data, status){
-
+    //
  };
+
+ 
 
   return {
     getAllQuests: getAllQuests,
-    saveNewQuest: saveNewQuest
+    saveNewQuest: saveNewQuest,
+    saveCity: saveCity
   }
 });
