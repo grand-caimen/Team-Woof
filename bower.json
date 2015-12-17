@@ -1,0 +1,21 @@
+{
+  "name": "city-quest",
+  "description": "quest maker for adventure fun",
+  "main": "index.html",
+  "authors": [
+    "Team-Woof"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/teamwoof/Team-Woof",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.6"
+  }
+}
