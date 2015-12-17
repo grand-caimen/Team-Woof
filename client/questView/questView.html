@@ -1,5 +1,4 @@
 <div id='container'>
-    <div class="col-md-1 nav-bar"><h5>Sign In</h5></div>
     <div class="col-md-12 logo-blank"></div>
     <div class="col-md-6 col-md-offset-3"><img class="logo" src="client/img/logo.png"></div>
     <div class="col-md-10 col-md-offset-1 questContainer">
@@ -13,13 +12,6 @@
             <a href="/quests/{{quest.id}}"><h2 class="quest-title">{{ quest.name }}</h2></a>
             <p class="quest-descript">{{ quest.description }}</p>
             <div>Time: {{ quest.time }}</div><div>Cost: {{ quest.cost }}</div>
-            
-            <div class='info'>
-              <div class='visits'><span class='count'>{{link.visits}}</span></div>
-              <div class='title'>{{link.title}}</div>
-              <div class='original'>{{link.url}}</div>
-              <a href="{{link.base_url}}/api/links/{{link.code}}">{{link.base_url}}{{link.code}}</a>
-          <!-- <button ng-click-"navToLink(this)">{{link.base_url}}/{{link.code}}</button> -->
             </div>
             <div class="clean"></div>
           </div>

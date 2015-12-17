@@ -33,6 +33,21 @@ body {
   float: right;
   color: #edebe3;
   padding-top: 2em;
+  padding-right: 2em;
+}
+
+.nav-links {
+  text-decoration: none;
+  color: #fff;
+  font-size: 18px;
+  font-family: inherit;
+  font-weight: 500;
+  margin: 10px;
+}
+
+.nav-links:hover {
+  color: #ccc;
+  text-decoration: none;
 }
 
 .questList {
