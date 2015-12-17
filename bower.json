@@ -18,7 +18,7 @@
   "dependencies": {
     "bootstrap": "~3.3.6",
 
-    "ng-tags-input": "~3.0.0"
+    "ng-tags-input": "~3.0.0",
 
     "angular": "~1.4.8",
     "angular-route": "~1.4.8"
