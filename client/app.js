@@ -1,88 +1,35 @@
-var app = angular.module('cityQuestApp',[
+var cityQuestApp = angular.module('cityQuestApp',[
+                         'ngRoute',
                          'cityQuest.services',
                          'cityQuest.city',
                          'cityQuest.questList',
                          'cityQuest.questView',
                          'cityQuest.createQuest']);
 
-app.config(function(){});
+cityQuestApp.config(['$routeProvider',
+                    routeDefinition]);
 
-app.run(function($rootScope){});
+cityQuestApp.run(function($rootScope){});
 
-angular.module('cityQuestApp', []).controller('MyController', function ($scope, $window, $location) {
-  $scope.test = "Hello";
-  $scope.city = "";
-  $scope.quests = [
-  {
-    "id": 0,
-    "name": "Down in the park",
-    "description": "The most perfect summer day",
-    "tags" : "Cheap, Nature, Dogs, Park",
-    "city": "Austin, TX",
-    "time": 120,
-    "cost": 7,
-    "location": "30.267219, -97.764799",
-    "image":"http://www.edwardsaquifer.net/images/barton_main_spring.jpg",
-    "steps" : [  
-      {
-        "number":0,
-        "description":"Go take a dip at Barton Springs",
-        "location": "30.264439, -97.771279",
-        "time": 30,
-        "cost": 4,
-      },
-      {
-        "number":1,
-        "description":"Drink Watermelon Juice",
-        "location": "30.264439, -97.771279",
-        "time": 30,
-        "cost": 3,
-      },
-      {
-        "number":2,
-        "description":"Play Frisbee",
-        "location": "30.267812, -97.774069",
-        "time": 60,
-        "cost": 0,
-      }
-
-    ]
-
-  },
-  {
-    "id": 1,
-    "name": "Down the River",
-    "description": "lady bird lake y'all",
-    "tags" : "Cheap, Nature, Dogs, Park",
-    "city": "Austin, TX",
-    "time": 120,
-    "cost": 3,
-    "location": "30.267219, -97.764799",
-    "image":"http://thingstodo.viator.com/austin/files/2013/07/4791083511_49703bb679_z.jpg",
-    "steps" : [  
-      {
-        "number":0,
-        "description":"Go take a dip at Barton Springs",
-        "location": "30.264439, -97.771279",
-        "time": 30,
-        "cost": 4,
-      },
-      {
-        "number":1,
-        "description":"Drink Watermelon Juice",
-        "location": "30.264439, -97.771279",
-        "time": 30,
-        "cost": 3,
-      },
-      {
-        "number":2,
-        "description":"Play Frisbee",
-        "location": "30.267812, -97.774069",
-        "time": 60,
-        "cost": 0,
-      }
-
-    ]
-
-  }];
-});
+function routeDefinition($routeProvider){
+  $routeProvider
+  .when('/', {
+    templateUrl: 'client/city/city.html',
+    controller: 'cityCtrl'
+  })
+  .when('/questList', {
+    templateUrl: 'client/questList/questList.html',
+    controller: 'questListCtrl'
+  })
+  .when('/questView', {
+    templateUrl: 'client/questView/questView.html',
+    controller: 'questViewCtrl'
+  })
+  .when('/createQuest', {
+    templateUrl: 'client/createQuest/createQuest.html',
+    controller: 'createQuestCtrl'
+  })
+  .otherwise({
+    redirectTo: '/'
+  });
+}
