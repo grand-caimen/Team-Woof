@@ -32,6 +32,10 @@ app.post('/testing', function(req, res){
 	});
 })
 
+app.get('/api/quests*', function(req, res){
+
+});
+
 // Wildcare Files
 app.get('/*', function(req, res){
     res.sendFile(path.join(__dirname + '/../' + req.url));
