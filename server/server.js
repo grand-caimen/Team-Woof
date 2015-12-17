@@ -17,26 +17,41 @@ app.get('/', function(req, res){
     res.sendFile(path.join(__dirname + '/../client/index.html'));
 });
 
-app.post('/testing', function(req, res){
+app.post('/api/quests*', function(req, res){
 	Quest.find(req.body).then(function(quests){
-		// res.send(req.body);
-		var newQuest = new Quest(req.body);
-		newQuest.save(function(err, result){
-			if(err){
-				console.log('help');
-				throw err;
-			}
-			res.send(result);
-		});
-		
+		if(quests.length > 0){
+			res.send('An identical quest already exists');
+		}
+		else{
+			var newQuest = new Quest(req.body);
+			newQuest.save(function(err, result){
+				if(err){
+					console.log('help');
+					throw err;
+				}
+				res.send(result);
+			});
+		}
+	});
+});
+
+app.get('api/quests*', function(req, res){
+	Quest.find(req.query).then(function(quests){
+		res.send(quests);
 	});
 })
 
+<<<<<<< HEAD
+
+
+// Wildcard Files
+=======
 app.get('/api/quests*', function(req, res){
 
 });
 
 // Wildcare Files
+>>>>>>> master
 app.get('/*', function(req, res){
     res.sendFile(path.join(__dirname + '/../' + req.url));
 });
