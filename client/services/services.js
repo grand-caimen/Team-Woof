@@ -5,19 +5,21 @@ angular.module('cityQuest.services', [])
   var selectedCity = ''; 
 
   var saveCity = function(city){
-    selectedCity = city.toLowerCase();
+    selectedCity = city;
   };
 
   var getAllQuests = function(){
     return $http.get(
-             '/api/quests/?city=' + selectedCity
-           )
-           .then(getQuestsSuccess,
-                 getQuestsError);
+       '/api/quests/?city=' + selectedCity
+        )
+        .then(function(res){
+          return res.data;
+        });
   };
 
   function getQuestsSuccess(data, status){
-    return data;
+        // $http will return the entire response object. To get the data returned from the database use data.data
+    return data.data;
   };
 
   function getQuestsError(data, status){

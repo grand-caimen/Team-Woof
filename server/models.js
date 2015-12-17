@@ -9,6 +9,7 @@ var questSchema = new Schema({
 	city: String,
 	address: String,
 	cost: Number,
+	image: String,
 	steps: [{
 		location: String,
 		description: String,
