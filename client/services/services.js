@@ -5,24 +5,25 @@ angular.module('cityQuest.services', [])
   var selectedCity = ''; 
 
   var saveCity = function(city){
-    selectedCity = city.toLowerCase();
+    selectedCity = city;
   };
 
   var getAllQuests = function(){
     return $http.get(
-             '/api/quests/?city=' + selectedCity
-           )
-           .then(getQuestsSuccess,
-                 getQuestsError);
+       '/api/quests/?city=' + selectedCity
+        )
+        .then(function(res){
+          return res.data;
+        });
   };
 
-  function getQuestsSuccess(data, status){
-    return data;
-  };
+  // function getQuestsSuccess(data, status){
+  //   return data.data;
+  // };
 
-  function getQuestsError(data, status){
-    console.log(status);
-  };
+  // function getQuestsError(data, status){
+  //   console.log(status);
+  // };
 
   var saveNewQuest = function(quest){
     var questObjStr = JSON.stringify(quest);
