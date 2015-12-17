@@ -1,0 +1,36 @@
+body {
+  background-image: url(../img/bg.jpg);
+  background-color: #000001;
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+.logo-blank {
+  padding: 3em 0;
+}
+
+.logo {
+  width: 100%;
+  padding-left: 3em;
+}
+
+.input-blank {
+  padding: 7em 0;
+}
+
+.input-front {
+  background-color: rgba(255, 255, 255, 0.8) !important;
+}
+
+.input-submit {
+  background-color: rgba(163, 189, 41, 0.6) !important;
+  border-color: transparent;
+}
+
+.nav-bar {
+  float: right;
+  color: #edebe3;
+  padding-top: 2em;
+}
