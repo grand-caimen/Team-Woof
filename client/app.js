@@ -24,7 +24,7 @@ function routeDefinition($routeProvider){
     templateUrl: 'client/questList/questList.html',
     controller: 'questListCtrl'
   })
-  .when('/questView', {
+  .when('/questView/:questId', {
     templateUrl: 'client/questView/questView.html',
     controller: 'questViewCtrl'
   })
