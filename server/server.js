@@ -8,7 +8,7 @@ var db = mongo.db;
 var models = require('./models.js');
 var Quest = models.Quest;
 var User = models.User;
-// var Step = models.Step;
+
 
 app.use(bodyParser.json());
 
