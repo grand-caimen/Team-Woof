@@ -6,9 +6,7 @@ var cityQuestApp = angular.module('cityQuestApp',[
                                  'cityQuest.questView',
                                  'cityQuest.createQuest',
                                  'cityQuest.auth',
-                                 'ngTagsInput',
-                                 'angular-storage',
-                                 'angular-jwt'
+                                 'ngTagsInput'
                                  ]);
 
 cityQuestApp.config(function($routeProvider, $locationProvider){
@@ -16,18 +14,17 @@ cityQuestApp.config(function($routeProvider, $locationProvider){
 
 });
 
-                                 'uiGmapgoogle-maps']);
 
-cityQuestApp.config(['$routeProvider',
-                    routeDefinition]);
-cityQuestApp.config(function(uiGmapGoogleMapApiProvider) {
-    uiGmapGoogleMapApiProvider.configure({
-        key: 'AIzaSyB_EZ_1pgc_Ig9iVlXNTRkIN_4y7VFax3s',
-        v: '3.20', 
-        libraries: 'places,weather,geometry,visualization'
-    });
-});
-cityQuestApp.run(function($rootScope){});
+// cityQuestApp.config(['$routeProvider',
+//                     routeDefinition]);
+// cityQuestApp.config(function(uiGmapGoogleMapApiProvider) {
+//     uiGmapGoogleMapApiProvider.configure({
+//         key: 'AIzaSyB_EZ_1pgc_Ig9iVlXNTRkIN_4y7VFax3s',
+//         v: '3.20', 
+//         libraries: 'places,weather,geometry,visualization'
+//     });
+// });
+// cityQuestApp.run(function($rootScope){});
 
 
 cityQuestApp.run(function($rootScope, $location){
