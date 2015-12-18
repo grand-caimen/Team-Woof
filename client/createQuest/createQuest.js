@@ -1,6 +1,7 @@
 angular.module('cityQuest.createQuest', [])
 
 .controller('createQuestCtrl', function($scope, $location, QuestStorage){
+	
    $scope.addAgenda = true; 
 	 $scope.quest = {};
 
@@ -12,7 +13,7 @@ angular.module('cityQuest.createQuest', [])
    $scope.addStepDiv = function result() {
        var div = angular.element( document.querySelector( '#addStepDiv' ) );
        div.append('<h3>Hi</h3>'); 
-    }
+   };
 
 
 });
