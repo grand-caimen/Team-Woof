@@ -1,11 +1,12 @@
 var cityQuestApp = angular.module('cityQuestApp',[
-                         'ngRoute',
-                         'cityQuest.services',
-                         'cityQuest.city',
-                         'cityQuest.questList',
-                         'cityQuest.questView',
-                         'cityQuest.createQuest',
-                         'cityQuest.auth']);
+                                 'ngRoute',
+                                 'cityQuest.services',
+                                 'cityQuest.city',
+                                 'cityQuest.questList',
+                                 'cityQuest.questView',
+                                 'cityQuest.createQuest',
+                                 'cityQuest.auth',
+                                 'ngTagsInput']);
 
 cityQuestApp.config(['$routeProvider',
                     routeDefinition]);
