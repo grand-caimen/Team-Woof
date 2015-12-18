@@ -18,7 +18,7 @@ angular.module('cityQuest.services', [])
     var numQuests = lastFetchedQuests.length;
     for(var questIndex = 0; questIndex < numQuests; questIndex++){
       var currentQuest = lastFetchedQuests[questIndex];
-      if(currentQuest.id === questId){
+      if(currentQuest._id === questId){
         foundQuest = currentQuest;
         break;
       }
