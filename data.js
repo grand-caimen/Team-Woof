@@ -1,8 +1,9 @@
+dataArr = [
 {
    "id": 0,
    "name": "The Best of Zilker Park",
    "description": "A couple of perfect hours in Austin, TX",
-   "tags" : "Cheap, Nature, Park, Sunshine",
+   "tags" : ["Cheap", "Nature", "Park", "Sunshine"],
    "city": "Austin",
    "time": 180,
    "cost": 7,
@@ -39,7 +40,7 @@
    "id": 1,
    "name": "Scavenging the Barren Wasteland",
    "description": "Ian's Grand Oklahoma City Adventure",
-   "tags" : "Cheap, Food, Tacos, Art, Exercise",
+   "tags" : ["Cheap", "Food", "Tacos", "Art", "Exercise"],
    "city": "Oklahoma City",
    "time": 240,
    "cost": 33,
@@ -82,7 +83,7 @@
     "id": 2,
     "name": "Upper Manhattan Morning",
     "description": "A morning stroll for history lovers",
-    "tags": "Nature, Park, Museum, Food",
+    "tags": ["Nature", "Park", "Museum", "Food",]
     "city": "New York",
     "time": 210,
     "cost": 30,
@@ -117,7 +118,7 @@
    "id": 3,
    "name": "A Sunny Day in West Los Angeles",
    "description": "Beach, shopping, and amusement in eternally sunny LA",
-   "tags" : "Nature, Shopping, Beach, Fun, Food",
+   "tags" : ["Nature", "Shopping", "Beach", "Fun", "Food"],
    "city": "Los Angeles",
    "time": 660,
    "cost": 70,
@@ -169,7 +170,7 @@
    "id": 3,
    "name": "An Afternoon in Salt Lake City",
    "description": "Pizza, Religion, and The Great Salt Lake.",
-   "tags" : "Architechture, Lake, Nature, Religion, Food",
+   "tags" : ["Architechture", "Lake", "Nature", "Religion", "Food"],
    "city": "Salt Lake City",
    "time": 300,
    "cost": 16,
@@ -205,7 +206,7 @@
    "id": 4,
    "name": "Best Day Ever",
    "description": "A whole day of adventure in the Florida Keys.",
-   "tags" : "Nature, Food, Animals, Sunshine, Beach",
+   "tags" : ["Nature", "Food", "Animals", "Sunshine", "Beach"],
    "city": "Marathon Key",
    "time": 360,
    "cost": 58,
@@ -244,5 +245,16 @@
    ],
 
 },
+]
 
- }
+var mongoose = require('mongoose');
+var models = require('/server/models.js');
+var Quest = models.Quest;
+
+var fetcher = function(cb){
+    Quest.collection.insert(dataArr, function(result){
+      console.log('done');
+    });
+  }
+fetcher();
+
