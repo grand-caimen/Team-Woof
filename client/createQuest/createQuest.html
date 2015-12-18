@@ -52,12 +52,17 @@
 
               <!-- Map Goes Here :) -->
             <ui-gmap-google-map center='map.center' zoom='map.zoom' events="map.events">
-              <ui-gmap-markers idkey="marker.id" models="map.markers" coords="'coords'"></markers>
+              <ui-gmap-marker 
+                  ng-repeat="marker in markers" 
+                  coords="marker.coords" 
+                  idkey="marker.id" >
+              </ui-gmap-marker>
             </ui-gmap-google-map>
               
             </div>
 
-            <div class="col-md-12 clean"></div>
+            <div class="col-md-12 clean">
+            </div>
             <div class="col-md-12 clean"></div>
 
             <div class="col-md-12 ">
@@ -70,7 +75,6 @@
                 </div>
               </div>
             </div>
-       
           <div ng-show="showErr" class='message error'>{{err}}</div>
           </div>
         </div>
