@@ -1,33 +1,32 @@
 {
    "id": 0,
-   "name": "Down in the park",
-   "description": "The most perfect summer day",
-   "tags" : "Cheap, Nature, Dogs, Park",
+   "name": "The Best of Zilker Park",
+   "description": "A couple of perfect hours in Austin, TX",
+   "tags" : "Cheap, Nature, Park, Sunshine",
    "city": "Austin",
-   "time": 120,
+   "time": 180,
    "cost": 7,
    "location": "30.267219, -97.764799",
-   "image":"http://www.edwardsaquifer.net/images/barton_main_spring.jpg (166KB)
+   "image":"http://www.edwardsaquifer.net/images/barton_main_spring.jpg (166KB)",
 
-",
    "steps" : [  
      {
        "number":0,
-       "description":"Go take a dip at Barton Springs",
+       "description":"Go take a dip at Barton Springs.",
        "location": "30.264439, -97.771279",
-       "time": 30,
+       "time": 90,
        "cost": 4,
      },
      {
        "number":1,
-       "description":"Drink Watermelon Juice",
+       "description":"Drink some watermelon juice from the snack bar.",
        "location": "30.264439, -97.771279",
        "time": 30,
        "cost": 3,
      },
      {
        "number":2,
-       "description":"Play Frisbee",
+       "description":"Play Frisbee in the park.",
        "location": "30.267812, -97.774069",
        "time": 60,
        "cost": 0,
@@ -38,39 +37,44 @@
  },
  {
    "id": 1,
-   "name": "Down the River",
-   "description": "lady bird lake y'all",
-   "tags" : "Cheap, Nature, Dogs, Park",
-   "city": "Austin",
-   "time": 120,
-   "cost": 3,
-   "location": "30.267219, -97.764799",
-   "image":"http://thingstodo.viator.com/austin/files/2013/07/4791083511_49703bb679_z.jpg (190KB)
+   "name": "Scavenging the Barren Wasteland",
+   "description": "Ian's Grand Oklahoma City Adventure",
+   "tags" : "Cheap, Food, Tacos, Art, Exercise",
+   "city": "Oklahoma City",
+   "time": 240,
+   "cost": 33,
+   "location": "35.456187, -97.520540",
+   "image": "http://s3-media1.fl.yelpcdn.com/bphoto/_O7_UgvvXTZtDLt6ujPeyA/348s.jpg",
 
-",
    "steps" : [  
      {
        "number":0,
-       "description":"Go take a dip at Barton Springs",
-       "location": "30.264439, -97.771279",
-       "time": 30,
-       "cost": 4,
-     },
-     {
-       "number":1,
-       "description":"Drink Watermelon Juice",
-       "location": "30.264439, -97.771279",
+       "description":"Go to the worst Taco Bell in Oklahoma and have 2 bean burritos.",
+       "location": "35.321406, -97.486980",
        "time": 30,
        "cost": 3,
      },
      {
+       "number":1,
+       "description":"Head to Supermercados Morelos and order the best pork tacos in Oklahoma.",
+       "location": "35.344155, -97.495668",
+       "time": 30,
+       "cost": 5,
+     },
+     {
        "number":2,
-       "description":"Play Frisbee",
-       "location": "30.267812, -97.774069",
-       "time": 60,
+       "description":"Go to Bricktown and find a graffiti octopus.",
+       "location": "35.465860, -97.508297",
+       "time": 90,
        "cost": 0,
+     },
+     {
+      "number":3,
+       "description":"Find Rocktown gym and spend some time rock climbing.",
+       "location": "35.459969, -97.507087",
+       "time": 90,
+       "cost": 25,
      }
-
    ],
 
 },
@@ -194,6 +198,49 @@
        "time": 380,
        "cost": 6,
      },
+   ],
+
+},
+ {
+   "id": 4,
+   "name": "Best Day Ever",
+   "description": "A whole day of adventure in the Florida Keys.",
+   "tags" : "Nature, Food, Animals, Sunshine, Beach",
+   "city": "Marathon Key",
+   "time": 360,
+   "cost": 58,
+   "location": "24.711602, -81.089818",
+   "image": "http://www.floridakeys.com/florida-keys-photos/snorkelinggirl.jpg",
+
+   "steps" : [  
+     {
+       "number":0,
+       "description":"Start with a Spirit Snorkeling tour, where you'll see tons of wildlife in the reef.",
+       "location": "24.709702, -81.110769",
+       "time": 120,
+       "cost": 20,
+     },
+     {
+       "number":1,
+       "description":"Grab a cubano and a fresh papaya juice at Juice Paradise",
+       "location": "24.709843, -81.099712",
+       "time": 60,
+       "cost": 10,
+     },
+     {
+       "number":2,
+       "description":"Hang out with dolphins at the Dolphin Research Center",
+       "location": "24.768238, -80.945364",
+       "time": 120,
+       "cost": 28,
+     },
+     {
+      "number":3,
+       "description":"Catch the sunset on Sombrero Beach.",
+       "location": "24.692833, -81.086200",
+       "time": 60,
+       "cost": 0,
+     }
    ],
 
 },
