@@ -96,9 +96,9 @@ angular.module('cityQuest.questList', [])
   //TODO - uncomment to stop using fake data - John
   //$scope.getAllQuests();
   //Remove the following function plus corresponding in services.js
-  function initializeQuestStorageWithFakeData(quests){
-    QuestStorage.initializeWithFakeData(quests);
-  }
-  initializeQuestStorageWithFakeData($scope.quests);
+  // function initializeQuestStorageWithFakeData(quests){
+  //   QuestStorage.initializeWithFakeData(quests);
+  // }
+  // initializeQuestStorageWithFakeData($scope.quests);
 
 });
