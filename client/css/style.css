@@ -105,7 +105,6 @@ a:hover {
   padding:10px 15px;
   border: 0px solid transparent;
   color: #fff;
-  margin-top: 30px;
 }
 
 .add-agenda-btn:hover {
@@ -131,16 +130,6 @@ tags-input .tags .tag-item {
   margin:0 !important;
 }
 
-#map {
-    height:420px;
-    width:600px;
-}
-.infoWindowContent {
-    font-size:  14px !important;
-    border-top: 1px solid #ccc;
-    padding-top: 10px;
-}
-h2 {
-    margin-bottom:0;
-    margin-top: 0;
+.submit-quest-btn{
+  padding:10px 15px;
 }
