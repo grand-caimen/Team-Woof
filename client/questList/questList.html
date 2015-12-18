@@ -3,7 +3,7 @@
     <div class="col-md-6 col-md-offset-3"><img class="logo" src="client/img/logo.png"></div>
     <div class="col-md-10 col-md-offset-1 questContainer">
     <div class="row">
-      <div class='col-md-6 questList' ng-repeat='quest in quests' >
+      <div class='col-md-6 questList' ng-repeat='quest in quests'>
         <div class="col-md-12 questItem">
           <div class="col-md-4 quest-image-container">
             <img class="quest-image" src="{{quest.image}}">
@@ -11,7 +11,7 @@
           <div class="col-md-8">
             <a href="/quests/{{quest.id}}"><h2 class="quest-title">{{ quest.name }}</h2></a>
             <p class="quest-descript">{{ quest.description }}</p>
-            <div>Time: {{ quest.time }}</div><div>Cost: {{ quest.cost }}</div>
+            <div>Time: {{ quest.time }} </div><div>Cost: {{ quest.cost }}</div>
             </div>
             <div class="clean"></div>
           </div>
@@ -21,3 +21,5 @@
     </div>
   </div>
 </div>
+
+

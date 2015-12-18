@@ -1,16 +1,25 @@
 angular.module('cityQuest.services', [])
 
 .factory('QuestStorage', function($http){
-  var getAllQuests = function(selectedCity){
+
+  var selectedCity = ''; 
+
+  var saveCity = function(city){
+    selectedCity = city;
+  };
+
+  var getAllQuests = function(){
     return $http.get(
-             '/quests/?city=' + selectedCity
-           )
-           .then(getQuestsSuccess,
-                 getQuestsError);
+       '/api/quests/?city=' + selectedCity
+        )
+        .then(function(res){
+          return res.data;
+        });
   };
 
   function getQuestsSuccess(data, status){
-    return data;
+        // $http will return the entire response object. To get the data returned from the database use data.data
+    return data.data;
   };
 
   function getQuestsError(data, status){
@@ -18,25 +27,69 @@ angular.module('cityQuest.services', [])
   };
 
   var saveNewQuest = function(quest){
-    var questObjStr = JSON.stringify(quest);
-    $http.post(
-      '/quests',
-      questObjStr
-    )
-    .then(saveNewQuestSuccess,
-          saveNewQuestError);
+    $http({
+        method: 'POST',
+        url: '/api/quests',
+        data: quest
+      })
+    .then(function(res){
+      return res.data;
+    });
   };
 
  function saveNewQuestSuccess(data, status){
-
+    //
  };
 
  function saveNewQuestError(data, status){
-
+    //
  };
+
+ 
 
   return {
     getAllQuests: getAllQuests,
-    saveNewQuest: saveNewQuest
+    saveNewQuest: saveNewQuest,
+    saveCity: saveCity
   }
+})
+
+.factory('Auth', function ($http, $location, $window) {
+  var signin = function (user) {
+    return $http({
+      method: 'POST',
+      url: '/api/users/signin',
+      data: user
+    })
+    .then(function (resp) {
+      return resp.data.token;
+    });
+  };
+
+  var signup = function (user) {
+    return $http({
+      method: 'POST',
+      url: '/api/users/signup',
+      data: user
+    })
+    .then(function (resp) {
+      return resp.data.token;
+    });
+  };
+
+  var isAuth = function () {
+    return !!$window.localStorage.getItem('com.cityQuest');
+  };
+
+  var signout = function () {
+    $window.localStorage.removeItem('com.cityQuest');
+    $location.path('/signin');
+  };
+
+  return {
+    signin: signin,
+    signup: signup,
+    isAuth: isAuth,
+    signout: signout,
+  };
 });

@@ -1,16 +1,18 @@
 var cityQuestApp = angular.module('cityQuestApp',[
-                         'ngRoute',
-                         'cityQuest.services',
-                         'cityQuest.city',
-                         'cityQuest.questList',
-                         'cityQuest.questView',
-                         'cityQuest.createQuest',
-                         'ngTagsInput']);
+                                 'ngRoute',
+                                 'cityQuest.services',
+                                 'cityQuest.city',
+                                 'cityQuest.questList',
+                                 'cityQuest.questView',
+                                 'cityQuest.createQuest',
+                                 'cityQuest.auth',
+                                 'ngTagsInput']);
 
 cityQuestApp.config(['$routeProvider',
                     routeDefinition]);
 
 cityQuestApp.run(function($rootScope){});
+
 
 function routeDefinition($routeProvider){
   $routeProvider
@@ -30,6 +32,14 @@ function routeDefinition($routeProvider){
     templateUrl: 'client/createQuest/createQuest.html',
     controller: 'createQuestCtrl'
   })
+  .when('/signin', {
+      templateUrl: 'client/auth/signin.html',
+      controller: 'authController'
+    })
+  .when('/signup', {
+      templateUrl: 'client/auth/signup.html',
+      controller: 'authController'
+    })
   .otherwise({
     redirectTo: '/'
   });

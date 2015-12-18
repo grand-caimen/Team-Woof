@@ -4,7 +4,7 @@
   "description": "quest maker for adventure fun",
   "main": "server.js",
   "scripts": {
-    "start": "node ./server/server.js"
+    "start": "nodemon ./server/server.js"
   },
   "dependencies": {
     "body-parser": "^1.14.1",

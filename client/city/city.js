@@ -1,22 +1,12 @@
 angular.module('cityQuest.city', [])
 
-.controller('cityCtrl', function($scope, $location, $window){
+.controller('cityCtrl', function($scope, $location, $window, QuestStorage){
   // $scope.selectedCity
   $scope.city = "";
-  $scope.cities = [
-    { "text": "Austin" },
-    { "text": "Houston" },
-    { "text": "Dallas" },
-    { "text": "New York" },
-    { "text": "Chicago" },
-    { "text": "Miami" },
-    { "text": "Las Vegas" },
-    { "text": "Las Angeles" },
-    { "text": "San Diego" },
-    { "text": "Atlanta" },
-    { "text": "Provo" },
-    { "text": "Portland" },
-    { "text": "Pheonix" },
-    { "text": "Seattle" }
-  ]  
+
+  $scope.citySelect = function(){
+  	QuestStorage.saveCity($scope.city);
+  	$location.path('/questList');
+  };
+
 });
