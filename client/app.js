@@ -7,7 +7,8 @@ var cityQuestApp = angular.module('cityQuestApp',[
                                  'cityQuest.createQuest',
                                  'cityQuest.auth',
                                  'ngTagsInput',
-                                 'uiGmapgoogle-maps']);
+                                 'uiGmapgoogle-maps',
+                                 ]);
 
 cityQuestApp.config(['$routeProvider',
                     routeDefinition]);

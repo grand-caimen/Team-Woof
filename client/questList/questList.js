@@ -25,17 +25,20 @@ angular.module('cityQuest.questList', [])
   //Populate this object with variables
   // $scope.data = {};
   $scope.city = "";
+
   $scope.quests = null;
+
   $scope.ratings = [{
         current: 5,
         max: 5
     }];
+
   $scope.quests = [
   {
     "id": 0,
     "name": "Down in the park",
     "description": "The most perfect summer day",
-    "tags" : "Cheap, Nature, Dogs, Park",
+    "tags" : [{ "text":"cheap"},{ "text":"nature"},{ "text":"dogs"}],
     "city": "Austin, TX",
     "time": 120,
     "cost": 7,
@@ -71,7 +74,7 @@ angular.module('cityQuest.questList', [])
     "id": 1,
     "name": "Down the River",
     "description": "lady bird lake y'all",
-    "tags" : "Cheap, Nature, Dogs, Park",
+    "tags" : [{ "text":"cheap"},{ "text":"nature"},{ "text":"dogs"}],
     "city": "Austin, TX",
     "time": 120,
     "cost": 3,
@@ -113,6 +116,9 @@ angular.module('cityQuest.questList', [])
       console.log(error);
     });
   }
+
+  $scope.getAllQuests();
+
   //TODO - uncomment to stop using fake data - John
   //$scope.getAllQuests();
   //Remove the following function plus corresponding in services.js
@@ -120,4 +126,5 @@ angular.module('cityQuest.questList', [])
     QuestStorage.initializeWithFakeData(quests);
   }
   initializeQuestStorageWithFakeData($scope.quests);
+
 });

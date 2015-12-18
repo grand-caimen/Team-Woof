@@ -3,22 +3,56 @@
     <div class="col-md-6 col-md-offset-3"><img class="logo" src="client/img/logo.png"></div>
     <div class="col-md-10 col-md-offset-1 questContainer">
     <div class="row">
-      <div class='col-md-6 questList' ng-repeat='quest in quests'>
+      <div class='col-md-6 questList input-front fade-in-three-quarter-sec' ng-repeat='quest in quests'>
         <div class="col-md-12 questItem">
-          <div class="col-md-4 quest-image-container">
-            <img class="quest-image" ng-src="{{quest.image}}">
+          <div class="col-md-1 quest-image-container">
+            <img class="quest-image " ng-src="{{quest.image}}">
           </div>
-          <div class="col-md-8">
-            <a href="/#/questView/{{quest.id}}"><h2 class="quest-title">{{ quest.name }}</h2></a>
+          <div class="col-md-5 no-padding-right quest-text">
+            <a href="/quests/{{quest._id}}"><h2 class="quest-title">{{ quest.name }}</h2></a>
+
             <p class="quest-descript">{{ quest.description }}</p>
-            <div>Time: {{ quest.time }} </div><div>Cost: {{ quest.cost }}</div>
-             <span ng-controller="questListCtrl">
+
+            <span class="tags">Tags: </span>
+            <span class="tags" ng-repeat='tag in quest.tags'>{{tag.text}}   </span>
+          </div>
+          <div class="col-md-2 tabs">
+            <div class="col-md-12 tab">
+              <div class="row">
+                <div class="col-md-3 tab-image-container">
+                  <img class="tab-image" src="client/img/icons/cost.png">
+                </div>
+
+                <div class="col-md-2 split-line"></div>
+
+                <div class="col-md-2 tab-image-container">
+                  <p class="tab-text">{{ quest.cost }}</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-12 tab">
+              <div class="row">
+                <div class="col-md-3 tab-image-container">
+                  <img class="tab-image" src="client/img/icons/time.png">
+                </div>
+
+                <div class="col-md-2 split-line"></div>
+
+                <div class="col-md-2 tab-image-container">
+                  <p class="tab-text">{{ quest.time }}</p>
+                </div>
+              </div>
+            </div>
+            <span ng-controller="questListCtrl">
                <span ng-repeat="rating in ratings">{{rating.current}} out of 5
               <span star-rating rating-value="rating.current" max="rating.current"></span>
               </span>
               </span>
-           </div>
-            <div class="clean"></div>
+          </div>
+
+          <div class="clean"></div>
+
           </div>
         </div>
       </div>
