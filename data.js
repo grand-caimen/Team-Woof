@@ -9,6 +9,7 @@ dataArr = [
    "cost": 7,
    "location": "30.267219, -97.764799",
    "image":"http://www.edwardsaquifer.net/images/barton_main_spring.jpg (166KB)",
+   "rating": [3, 4, 4, 5, 5, 5, 3],
 
    "steps" : [  
      {
@@ -46,6 +47,7 @@ dataArr = [
    "cost": 33,
    "location": "35.456187, -97.520540",
    "image": "http://s3-media1.fl.yelpcdn.com/bphoto/_O7_UgvvXTZtDLt6ujPeyA/348s.jpg",
+   "rating": [5, 1, 1, 1, 1, 1, 1],
 
    "steps" : [  
      {
@@ -89,6 +91,7 @@ dataArr = [
     "cost": 30,
     "location": "40.778023, -73.969303",
     "image": "http://graphics8.nytimes.com/images/2012/11/15/arts/15artsbeat-museum/15artsbeat-museum-blog480.jpg",
+    "rating": [4, 4, 4, 5, 5, 5, 4],
 
     "steps": [
       { 
@@ -124,6 +127,7 @@ dataArr = [
    "cost": 70,
    "location": "34.013250, -118.501021",
    "image":"http://www.westland.net/piercam/images/santa-monica-pier-cam.jpg",
+   "rating": [3, 5, 5, 5, 5, 5, 5],
 
    "steps" : [  
      {
@@ -176,6 +180,7 @@ dataArr = [
    "cost": 16,
    "location": "40.730161, -111.897756",
    "image":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDEDEKZs7o_1lv1uqI9idscw2ACNAfhgKQGVPtr80xiZCixs_wiw",
+   "rating": [5, 5, 5, 5, 5, 5, 5],
 
    "steps" : [  
      {
