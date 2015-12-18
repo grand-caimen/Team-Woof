@@ -19,16 +19,13 @@ var questSchema = new Schema({
 	  }]
 });
 
-// var stepSchema = new Schema({
-// 	quest_id: Number,
-// 	location: String,
-// 	description: String,
-// 	time: Number,
-// 	cost: Number,
-// 	number: Number
-// });
+var userSchema = new Schema({
+	username: String,
+	password: String
+});
+
 var Quest = mongoose.model('Quest', questSchema);
-// var Step = mongoose.model('Step', stepSchema);
+var User = mongoose.model('User', userSchema);
 
 module.exports.Quest = Quest;
-// module.exports.Step = Step;
+module.exports.User = User;

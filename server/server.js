@@ -7,6 +7,7 @@ var mongo = require('./db.js');
 var db = mongo.db;
 var models = require('./models.js');
 var Quest = models.Quest;
+<<<<<<< HEAD
 var tokens = require('./config.js');
 var jwt = require('express-jwt');
 
@@ -16,6 +17,10 @@ var jwtCheck = jwt({
 });
 
 app.use('api/quests*', jwtCheck);
+=======
+var User = models.User;
+
+>>>>>>> master
 
 app.use(bodyParser.json());
 
