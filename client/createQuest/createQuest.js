@@ -1,8 +1,9 @@
 angular.module('cityQuest.createQuest', [])
 
+
 .controller('createQuestCtrl', function($scope, $window, $location, QuestStorage){
 
-   $scope.showSubmit = true; 
+   $scope.addAgenda = true; 
 	 $scope.quest = {};
    $scope.step = {};
 
@@ -11,7 +12,6 @@ angular.module('cityQuest.createQuest', [])
 			QuestStorage.saveNewQuest($scope.quest);
 			$location.path('/questList');
 	 };
-
 
    $scope.pushStep = function(){
       $scope.step.number = $scope.quest.steps.length;
