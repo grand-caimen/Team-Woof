@@ -51,7 +51,9 @@
             <div class="col-md-6">
 
               <!-- Map Goes Here :) -->
-            <ui-gmap-google-map center='map.center' zoom='map.zoom' events="map.events"></ui-gmap-google-map>
+            <ui-gmap-google-map center='map.center' zoom='map.zoom' events="map.events">
+              <ui-gmap-markers idkey="marker.id" models="map.markers" coords="'coords'"></markers>
+            </ui-gmap-google-map>
               
             </div>
 
