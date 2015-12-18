@@ -10,6 +10,7 @@
           </div>
           <div class="col-md-5 no-padding-right quest-text">
             <a href="/quests/{{quest._id}}"><h2 class="quest-title">{{ quest.name }}</h2></a>
+
             <p class="quest-descript">{{ quest.description }}</p>
             <span class="tags">Tags: </span>
             <span class="tags" ng-repeat='tag in quest.tags'>{{tag.text}}   </span>
@@ -42,8 +43,6 @@
                 </div>
               </div>
             </div>
-
-
           </div>
           <div class="clean"></div>
           </div>

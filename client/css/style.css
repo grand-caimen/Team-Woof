@@ -233,6 +233,7 @@ tags-input .tags .tag-item {
   padding:10px 15px;
 }
 
+
 .tab {
   background-color: #a3bd29;
   margin-top: 12px;
@@ -280,3 +281,8 @@ tags-input .tags .tag-item {
 .tags {
   color: #949494
 }
+
+.angular-google-map-container {
+ height: 400px; 
+}
+

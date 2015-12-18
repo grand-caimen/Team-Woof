@@ -1,11 +1,36 @@
 angular.module('cityQuest.createQuest', [])
 
 
-.controller('createQuestCtrl', function($scope, $window, $location, QuestStorage){
+.controller('createQuestCtrl', function($scope, $window, $location, QuestStorage, uiGmapGoogleMapApi){
 
    $scope.addAgenda = true; 
 	 $scope.quest = {};
    $scope.step = {};
+   $scope.quest.steps = [];
+   uiGmapGoogleMapApi.then(function(maps) {
+     console.log(maps);
+    $scope.map = {
+      events: {
+            tilesloaded: function (map) {
+                $scope.$apply(function () {
+                    $scope.mapInstance = map;
+                });
+            },
+            click: function(event){
+              console.log('clicked');
+            }
+        },
+      center: { 
+         latitude: 45,
+         longitude: -73 }, 
+      zoom: 8
+    }
+     // $scope.map.events = {'click':'dosomething'};
+     // $scope.map.addListener('click', function(e) {
+     //    placeMarkerAndPanTo(e.latLng, map);
+     // });
+   });
+
 
 	 $scope.questCreate = function(){
       $scope.pushStep();
