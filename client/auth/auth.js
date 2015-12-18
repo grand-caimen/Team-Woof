@@ -18,6 +18,7 @@ angular.module('cityQuest.auth', [])
     Auth.signup($scope.user)
       .then(function (token) {
         $window.localStorage.setItem('com.cityQuest', token);
+        console.log('token: ', token);
         $location.path('/');
       })
       .catch(function (error) {

@@ -7,20 +7,12 @@ var mongo = require('./db.js');
 var db = mongo.db;
 var models = require('./models.js');
 var Quest = models.Quest;
-<<<<<<< HEAD
-var tokens = require('./config.js');
-var jwt = require('express-jwt');
-
-var jwtCheck = jwt({
-  secret: new Buffer(tokens.secret, 'base64'),
-  audience: tokens.audience
-});
-
-app.use('api/quests*', jwtCheck);
-=======
 var User = models.User;
 
->>>>>>> master
+var jwt = require('express-jwt');
+
+
+app.use('api/quests*', jwt);
 
 app.use(bodyParser.json());
 
@@ -47,6 +39,23 @@ app.post('/api/quests*', function(req, res){
 		}
 	});
 });
+
+app.post('/api/users*', function(req, res){
+	User.find(req.body).then(function(users){
+		if(users.length > 0){
+			res.send('Username is already in the system');
+		}
+		else{
+			var newUser = new User(req.body);
+			newUser.save(function(err, result){
+				if(err){
+					throw err;
+				}
+				res.send(result);
+			})
+		}
+	})
+})
 
 app.get('/api/quests*', function(req, res){
 	console.log(req.query);

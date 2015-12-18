@@ -1,4 +1,9 @@
 var mongoose = require('mongoose');
+var bcrypt   = require('bcrypt-nodejs');
+var Q        = require('node-q');
+var SALT_WORK_FACTOR  = 10;
+
+
 var Schema = mongoose.Schema;
 var questSchema = new Schema({
 	name: String,
@@ -20,8 +25,17 @@ var questSchema = new Schema({
 });
 
 var userSchema = new Schema({
-	username: String,
-	password: String
+	username: {
+		type: String,
+		required: true,
+		unique: true
+	},
+
+	password: {
+		type: String,
+		required: true
+	}
+
 });
 
 var Quest = mongoose.model('Quest', questSchema);

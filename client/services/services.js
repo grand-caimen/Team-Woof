@@ -58,10 +58,11 @@ angular.module('cityQuest.services', [])
   var signin = function (user) {
     return $http({
       method: 'POST',
-      url: '/api/users/signin',
+      url: '/api/users',
       data: user
     })
     .then(function (resp) {
+      console.log('resp: ', resp);
       return resp.data.token;
     });
   };
@@ -69,10 +70,11 @@ angular.module('cityQuest.services', [])
   var signup = function (user) {
     return $http({
       method: 'POST',
-      url: '/api/users/signup',
+      url: '/api/users',
       data: user
     })
     .then(function (resp) {
+      console.log('resp signup: ', resp);
       return resp.data.token;
     });
   };
