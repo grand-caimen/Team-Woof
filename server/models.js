@@ -3,7 +3,7 @@ var Schema = mongoose.Schema;
 var questSchema = new Schema({
 	name: String,
 	description: String,
-	tags: String, 
+	tags: [String], 
 	time: Number,
 	id: Number,
 	city: String,
@@ -14,8 +14,8 @@ var questSchema = new Schema({
 		location: String,
 		description: String,
 		time: Number,
-    cost: Number,
-    number: Number
+    	cost: Number,
+    	number: Number
 	  }]
 });
 
