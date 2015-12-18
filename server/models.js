@@ -10,6 +10,7 @@ var questSchema = new Schema({
 	address: String,
 	cost: Number,
 	image: String,
+	rating: [Number],
 	steps: [{
 		location: String,
 		description: String,
