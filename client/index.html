@@ -3,7 +3,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    
+
+    <link href='https://fonts.googleapis.com/css?family=Julee' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="client/lib/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" href="client/lib/ng-tags-input/ng-tags-input.bootstrap.css">
     <link rel="stylesheet" href="client/css/style.css">
@@ -23,9 +24,10 @@
 </head>
 <body ng-controller="cityCtrl"> 
   <div class="nav-bar">
-    <a class="nav-links" href="/#/questList">Quest List</a>
-    <a class="nav-links" href="/#/createQuest">Make Quest</a>
-    <a class="nav-links" href="/#/signin">Sign In</a>
+    <a class="nav-links fade-in-three-quarter-sec" href="/#/">Search City</a>
+    <a class="nav-links fade-in-three-quarter-sec" href="/#/questList">Quest List</a>
+    <a class="nav-links fade-in-three-quarter-sec" href="/#/createQuest">Make Quest</a>
+    <a class="nav-links fade-in-three-quarter-sec" href="/#/signin">Sign In</a>
   </div>
     <div ng-view id='container'></div>
 </body>

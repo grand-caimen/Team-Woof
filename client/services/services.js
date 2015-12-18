@@ -85,4 +85,11 @@ angular.module('cityQuest.services', [])
     $window.localStorage.removeItem('com.cityQuest');
     $location.path('/signin');
   };
+
+  return {
+    signin: signin,
+    signup: signup,
+    isAuth: isAuth,
+    signout: signout
+  }
 });

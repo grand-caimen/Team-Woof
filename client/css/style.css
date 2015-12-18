@@ -76,7 +76,63 @@ body {
   border-radius: 4px;
 }
 
-
 .quest-title {
   margin: 10px 0 3px 0;
 }
+
+.sign-in-up-title {
+  font-size: 4em;
+  font-family: 'Julee', cursive;
+  text-shadow: 2px 2px #888888;
+}
+
+.sign-in-up-button-text {
+  font-size: 2em;
+  font-family: 'Julee', cursive;
+}
+
+.my-margin-half-em {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+.my-margin-quarter-em {
+  margin-top: 0.25em;
+  margin-bottom: 0.25em;
+}
+
+.fade-in-three-quarter-sec {
+    -webkit-animation: fadein 0.75s; /* Safari, Chrome and Opera > 12.1 */
+       -moz-animation: fadein 0.75s; /* Firefox < 16 */
+            animation: fadein 0.75s;
+}
+
+.fade-in-1-and-three-quarter-sec {
+    -webkit-animation: fadein 1.75s; /* Safari, Chrome and Opera > 12.1 */
+       -moz-animation: fadein 1.75s; /* Firefox < 16 */
+            animation: fadein 1.75s;
+}
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Firefox < 16 */
+@-moz-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Safari, Chrome and Opera > 12.1 */
+@-webkit-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+.shadow {
+  -moz-box-shadow:    8px 8px 5px #888888;
+  -webkit-box-shadow: 8px 8px 5px #888888;
+  box-shadow:         8px 8px 5px #888888;
+}
+
