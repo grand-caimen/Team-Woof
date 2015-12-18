@@ -1,4 +1,4 @@
-function hoursToMinutes(minutes){
+function minutesToHours(minutes){
 	var hours = Math.floor(minutes / 60);
 	var remainder = minutes % 60;
 	if(remainder < 10){
@@ -7,4 +7,4 @@ function hoursToMinutes(minutes){
 	return hours + ": " + remainder
 }
 
-module.exports.htm = hoursToMinutes;
+module.exports.mth = minutesToHours;
