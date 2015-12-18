@@ -1,10 +1,35 @@
 angular.module('cityQuest.questList', [])
-
+.directive('starRating', function () {
+    return {
+        restrict: 'A',
+        template: '<ul class="rating">' +
+            '<li ng-repeat="star in stars" ng-class="star">' +
+            '\u2605' +
+            '</li>' +
+            '</ul>',
+        scope: {
+            ratingValue: '=',
+            max: '='
+        },
+        link: function (scope, elem, attrs) {
+            scope.stars = [];
+            for (var i = 0; i < scope.max; i++) {
+                scope.stars.push({
+                    filled: i < scope.ratingValue
+                });
+            }
+        }
+    }
+})
 .controller('questListCtrl', function($scope, QuestStorage){
-  //Populate this object with variables 
+  //Populate this object with variables
   // $scope.data = {};
   $scope.city = "";
   $scope.quests = null;
+  $scope.ratings = [{
+        current: 5,
+        max: 5
+    }];
   $scope.quests = [
   {
     "id": 0,
@@ -16,7 +41,7 @@ angular.module('cityQuest.questList', [])
     "cost": 7,
     "location": "30.267219, -97.764799",
     "image":"http://www.edwardsaquifer.net/images/barton_main_spring.jpg",
-    "steps" : [  
+    "steps" : [
       {
         "number":0,
         "description":"Go take a dip at Barton Springs",
@@ -52,7 +77,7 @@ angular.module('cityQuest.questList', [])
     "cost": 3,
     "location": "30.267219, -97.764799",
     "image":"http://thingstodo.viator.com/austin/files/2013/07/4791083511_49703bb679_z.jpg",
-    "steps" : [  
+    "steps" : [
       {
         "number":0,
         "description":"Go take a dip at Barton Springs",

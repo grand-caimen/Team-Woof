@@ -12,7 +12,12 @@
             <a href="/#/questView/{{quest.id}}"><h2 class="quest-title">{{ quest.name }}</h2></a>
             <p class="quest-descript">{{ quest.description }}</p>
             <div>Time: {{ quest.time }} </div><div>Cost: {{ quest.cost }}</div>
-            </div>
+             <span ng-controller="questListCtrl">
+               <span ng-repeat="rating in ratings">{{rating.current}} out of 5
+              <span star-rating rating-value="rating.current" max="rating.current"></span>
+              </span>
+              </span>
+           </div>
             <div class="clean"></div>
           </div>
         </div>
@@ -21,5 +26,4 @@
     </div>
   </div>
 </div>
-
 
