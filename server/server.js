@@ -7,7 +7,15 @@ var mongo = require('./db.js');
 var db = mongo.db;
 var models = require('./models.js');
 var Quest = models.Quest;
-// var Step = models.Step;
+var tokens = require('./config.js');
+var jwt = require('express-jwt');
+
+var jwtCheck = jwt({
+  secret: new Buffer(tokens.secret, 'base64'),
+  audience: tokens.audience
+});
+
+app.use('api/quests*', jwtCheck);
 
 app.use(bodyParser.json());
 

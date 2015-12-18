@@ -6,13 +6,38 @@ var cityQuestApp = angular.module('cityQuestApp',[
                                  'cityQuest.questView',
                                  'cityQuest.createQuest',
                                  'cityQuest.auth',
-                                 'ngTagsInput']);
+                                 'ngTagsInput',
+                                 'auth0',
+                                 'angular-storage',
+                                 'angular-jwt'
+                                 ]);
 
-cityQuestApp.config(['$routeProvider',
-                    routeDefinition]);
+cityQuestApp.config(function($routeProvider, authProvider, jwtInterceptorProvider, $locationProvider){
+  routeDefinition($routeProvider);
+  authConfig(authProvider);
+  // tokenGetter(jwtInterceptorProvider);
+  prefixHash($locationProvider);
+  
 
-cityQuestApp.run(function($rootScope){});
+});
 
+cityQuestApp.run(function($rootScope, auth, store, jwtHelper, $location){
+  // This hooks all auth events to check everything as soon as the app starts
+  auth.hookEvents();
+   // Add a simple interceptor that will fetch all requests and add the jwt token to its authorization header.
+  $rootScope.$on('$locationChangeStart', function(){
+    if(!auth.isAuthenticated()){
+      var token = store.get('token');
+      if(token){
+        if(!jwtHelper.isTokenExpired(token)){
+          auth.authenticate(store.get('userProfile'), token);
+        }else {
+          $location.path('/login');
+        }
+      }
+    }
+  })
+});
 
 function routeDefinition($routeProvider){
   $routeProvider
@@ -43,4 +68,21 @@ function routeDefinition($routeProvider){
   .otherwise({
     redirectTo: '/'
   });
-}
+};
+
+function authConfig(authProvider){
+  authProvider.init({
+    domain: 'cityQuest.auth0.com',
+    clientID: 'eteqIOCFZ5fX4aE6Dms8Bi8lvxvBEgUG'
+  });
+};
+
+// function tokenGetter(store) {
+//   return store.get('token');
+// };
+
+function prefixHash($locationProvider){
+  $locationProvider.hashPrefix('!');
+};
+
+
