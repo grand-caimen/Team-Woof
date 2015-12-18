@@ -27,14 +27,14 @@ angular.module('cityQuest.services', [])
   };
 
   var saveNewQuest = function(quest){
-    var questObjStr = JSON.stringify(quest);
     $http({
         method: 'POST',
         url: '/api/quests',
-        data: questObjStr
+        data: quest
       })
-    .then(saveNewQuestSuccess,
-          saveNewQuestError);
+    .then(function(res){
+      return res.data;
+    });
   };
 
  function saveNewQuestSuccess(data, status){

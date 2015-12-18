@@ -7,6 +7,11 @@ body {
   -o-background-size: cover;
   background-size: cover;
 }
+
+a:hover {
+  text-decoration: none;
+}
+
 .logo-blank {
   padding: 3em 0;
 }
@@ -60,7 +65,7 @@ body {
 }
 
 .questContainer {
-  padding-top:2em;
+  padding-top:7em;
 }
 
 .quest-descript {
@@ -136,3 +141,62 @@ body {
   box-shadow:         8px 8px 5px #888888;
 }
 
+.input-group {
+  margin:20px 0;
+}
+
+.input-group-addon {
+  background-color: rgba(163, 189, 41, 1) !important;
+  border: 0px solid transparent;
+  color: #fff;
+  text-shadow: 1px 1px 1px #93aa25;
+  font-size: 16px;
+  min-width: 8em;
+}
+
+.add-agenda-btn {
+  background-color: rgba(163, 189, 41, 1) !important;
+  font-size: 16px;
+  text-shadow: 1px 1px 1px #93aa25;
+  padding:10px 15px;
+  border: 0px solid transparent;
+  color: #fff;
+  margin-top: 30px;
+}
+
+.add-agenda-btn:hover {
+  color: #ededed;
+}
+
+.add-agenda-btn:active {
+  color: #fff !important;
+}
+
+tags-input .tags .tag-item {
+  color: #fff;
+  background-color: #86837e;
+  border: 0px solid transparent;
+  border-radius: 3px;
+}
+
+.clean {
+  margin: 20px;
+}
+
+.no-margin {
+  margin:0 !important;
+}
+
+#map {
+    height:420px;
+    width:600px;
+}
+.infoWindowContent {
+    font-size:  14px !important;
+    border-top: 1px solid #ccc;
+    padding-top: 10px;
+}
+h2 {
+    margin-bottom:0;
+    margin-top: 0;
+}
