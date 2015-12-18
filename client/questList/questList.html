@@ -6,10 +6,10 @@
       <div class='col-md-6 questList' ng-repeat='quest in quests'>
         <div class="col-md-12 questItem">
           <div class="col-md-4 quest-image-container">
-            <img class="quest-image" src="{{quest.image}}">
+            <img class="quest-image" ng-src="{{quest.image}}">
           </div>
           <div class="col-md-8">
-            <a href="/quests/{{quest.id}}"><h2 class="quest-title">{{ quest.name }}</h2></a>
+            <a href="/#/questView/{{quest.id}}"><h2 class="quest-title">{{ quest.name }}</h2></a>
             <p class="quest-descript">{{ quest.description }}</p>
             <div>Time: {{ quest.time }} </div><div>Cost: {{ quest.cost }}</div>
             </div>
