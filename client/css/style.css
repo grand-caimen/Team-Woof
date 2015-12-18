@@ -189,3 +189,7 @@ tags-input .tags .tag-item {
 .submit-quest-btn{
   padding:10px 15px;
 }
+
+.angular-google-map-container {
+ height: 400px; 
+}
