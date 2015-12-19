@@ -99,11 +99,14 @@ angular.module('cityQuest.services', [])
     .then(function (resp) {
       console.log('resp.data.token: ', resp.data.token);
       $window.localStorage.setItem('sessiontoken', resp.data.token); 
+      $location.path('/')
     });
   };
 
   var isAuth = function () {
-    return !!$window.localStorage.getItem('sessiontoken');
+    if(!!$window.localStorage.getItem('sessiontoken')){
+      $location.path('/')
+    }
   };
 
   var signout = function () {

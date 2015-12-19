@@ -2,10 +2,12 @@ angular.module('cityQuest.auth', [])
 
 .controller('authController', function ($scope, $window, $location, Auth) {
   $scope.user = {};
+  $scope.authCheck = Auth.isAuth();
 
   $scope.signin = function () {
     Auth.signin($scope.user)
-      .then(function (token) {
+      .then(function () {
+        $scope.authCheck;
         $location.path('/');
       })
       .catch(function (error) {
@@ -15,7 +17,7 @@ angular.module('cityQuest.auth', [])
 
   $scope.signup = function () {
     Auth.signup($scope.user)
-      .then(function () {
+      .then(function (token) {
         $location.path('/');
       })
       .catch(function (error) {
