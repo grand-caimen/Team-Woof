@@ -16,7 +16,7 @@ var questSchema = new Schema({
 	image: String,
 	rating: [Number],
 	steps: [{
-		location: String,
+		location: Schema.Types.Mixed,
 		description: String,
 		time: Number,
     	cost: Number,

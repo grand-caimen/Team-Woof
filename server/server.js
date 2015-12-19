@@ -35,7 +35,7 @@ app.post('/api/quests*', function(req, res){
 			newQuest.save(function(err, result){
 				if(err){
 					console.log('help');
-					throw err;
+					console.log(err);
 				}
 				res.send(result);
 			});

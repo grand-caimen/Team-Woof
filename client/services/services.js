@@ -10,26 +10,16 @@ angular.module('cityQuest.services', [])
   };
 
   var getSingleQuest = function(questId){
-    if(lastFetchedQuests === null){
-      throw "cityQuest.services - Single quest not available! HTTP GET the quests first."
-    }
+    return $http.get(
+      '/api/quests/?_id=' + questId
+      ).then(function(res){
+        return res.data[0];
+    }) 
+    .catch(function(err){
+        console.log("getSingleQuest did not return any quests: ", err);
+    });
+  };
 
-    var foundQuest = null;
-    var numQuests = lastFetchedQuests.length;
-    for(var questIndex = 0; questIndex < numQuests; questIndex++){
-      var currentQuest = lastFetchedQuests[questIndex];
-      if(currentQuest.id === questId){
-        foundQuest = currentQuest;
-        break;
-      }
-    }
-
-    if(foundQuest === null){
-      throw "cityQuest.services - Couldn't find clicked single quest!";
-    }
-
-    return foundQuest;
-  }
 
   var getAllQuests = function(){
     return $http.get(
@@ -38,6 +28,9 @@ angular.module('cityQuest.services', [])
         .then(function(res){
           lastFetchedQuests = res.data;
           return lastFetchedQuests;
+        })
+        .catch(function(err){
+          console.log("getAllQuests did not return any quests: ", err);
         });
   };
 

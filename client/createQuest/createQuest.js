@@ -19,8 +19,9 @@ angular.module('cityQuest.createQuest', [])
    //    // map.panTo(latLng);
    //    console.log('marker')
    // }
+    $scope.markers = [null];
+    // $scope.markers = [];
     $scope.map = {
-      markers: [],
       events: {
             tilesloaded: function (map) {
                 $scope.$apply(function () {
@@ -28,19 +29,17 @@ angular.module('cityQuest.createQuest', [])
                 });
             },
             click: function(mapModel, eventName, originalEventArgs){
-               $scope.$apply(function(){
-                  var lat = originalEventArgs[0].latLng.lat();
-                  var lng = originalEventArgs[0].latLng.lng();
-                  var marker = {};
-                  marker.coords = {
-                     latitude: lat,
-                     longtitude: lng
-                  };
-                  console.log(marker);
-                  $scope.marker = marker;
-                  // $scope.map.markers.push(marker);
-               });
- 
+                var e = originalEventArgs[0];
+                var lat = e.latLng.lat(),lon = e.latLng.lng();
+                var marker = {
+                    id: Date.now(),
+                    coords: {
+                        latitude: lat,
+                        longitude: lon
+                    }
+                };
+                $scope.markers[0] = marker;
+                $scope.$apply();
             }
       },
       center: { 
@@ -48,19 +47,18 @@ angular.module('cityQuest.createQuest', [])
          longitude: -73 }, 
       zoom: 8
     }
-     // $scope.map.events = {'click':'dosomething'};
-     // $scope.map.addListener('click', function(e) {
-     //    placeMarkerAndPanTo(e.latLng, map);
-     // });
    });
 
    $scope.questCreate = function(){
       $scope.pushStep();
+      console.log('saving', $scope.quest)
       QuestStorage.saveNewQuest($scope.quest);
       $location.path('/questList');
    };
 
    $scope.pushStep = function(){
+      $scope.step.location = $scope.markers[0].coords;
+      $scope.markers[0] = null;
       $scope.step.number = $scope.quest.steps.length;
       $scope.quest.steps.push($scope.step);
    };
@@ -69,7 +67,6 @@ angular.module('cityQuest.createQuest', [])
     //Sends step fields into quest, then clears it for the next step.
       $scope.pushStep();
       $scope.step = {};
-      $scope.marker = {};
 
     //Adds new form to the page
       var div = angular.element( document.querySelector( '#addStepDiv' ) );

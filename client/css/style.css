@@ -221,6 +221,10 @@ tags-input .tags .tag-item {
   margin: 20px;
 }
 
+.clear {
+  margin-top: 50px;
+}
+
 .no-margin {
   margin:0 !important;
 }
@@ -286,3 +290,30 @@ tags-input .tags .tag-item {
  height: 400px; 
 }
 
+.quest-view-image {
+  margin-top: 15px;
+  min-width: 100%;
+  max-width: 100%;
+}
+.quest-view-title {
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
+.quest-view-descript {
+  margin-left: 20px;
+  margin-top: 6px;
+  color: #A3BD29;
+}
+
+.quest-view-steps {
+  margin-left:20px;
+}
+
+.quest-view-tags {
+  background-color:#ccc;
+  color: #fff;
+  padding:5px;
+  margin:5px;
+  border-radius: 3px;
+}
