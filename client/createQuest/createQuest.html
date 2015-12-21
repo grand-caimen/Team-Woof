@@ -5,7 +5,7 @@
 <div class="nav-bar">
   <a class="nav-links fade-in-three-quarter-sec" href="/#/">Search City</a>
   <a class="nav-links fade-in-three-quarter-sec" href="/#/questList">Quest List</a>
-  <a class="nav-links fade-in-three-quarter-sec" href="/#/createQuest">Create Quest</a>
+  <a class="nav-links fade-in-three-quarter-sec selected" href="/#/createQuest">Create Quest</a>
   <a class="nav-links fade-in-three-quarter-sec" href="/#/signin">Sign In</a>
 </div>
 
@@ -15,7 +15,8 @@
     <div class="col-md-10 col-md-offset-1 questContainer">
     <form ng-submit='questCreate()'>
       <div class="form-group">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-3"><img class="make-quest-mountains hidden-sm" src="client/img/hill1.svg"></div>
+        <div class="col-md-6">
           <div class="input-group">
             <span class="input-group-addon">Quest Title</span>
             <input required ng-model="quest.name" type="text" class="form-control">
@@ -23,7 +24,7 @@
 
           <div class="input-group">
             <span class="input-group-addon">Description</span>
-            <input required ng-model="quest.description" type="text" class="form-control">
+            <textarea required ng-model="quest.description" class="form-control make-quest-description" rows="2"></textarea>
           </div>
 
           <div class="input-group">
@@ -33,12 +34,16 @@
 
           <div class="input-group">
             <span class="input-group-addon">Tags</span>
-            <tags-input min-length="1" ng-model="tags">
+            <tags-input min-length="1" ng-model="quest.tags">
             </tags-input>
           </div>
         </div>
+        <div class="col-md-3"><img class="make-quest-mountains hidden-sm" src="client/img/hill2.svg"></div>
 
         <div class="col-md-12 clean"></div>
+        <div class="col-md-12 clean"></div>
+        <div class="col-md-12 clean"></div>
+<!--         <div class="col-md-4 col-md-offset-4"><img class="make-quest-tasks-img" src="client/img/tasks2.png"></div> -->
 
         
 
@@ -47,7 +52,7 @@
               <div id="step" class="col-md-12" style="padding:0;"></div>  
 
                 <div class="input-group">
-                  <span class="input-group-addon">Task</span>
+                  <span class="input-group-addon">Task {{stepCount}}</span>
                   <input required ng-model="step.description" type="text" class="form-control">
                 </div>
                 <div class="row">
@@ -73,7 +78,7 @@
                 </div>
               </div>
 
-              <div class="col-md-6">
+              <div class="col-md-6 map-container">
 
               <ui-gmap-google-map center="map.center" zoom="map.zoom" events="map.events">
                 <ui-gmap-marker 
@@ -86,10 +91,6 @@
               </div>
 
               <div class="col-md-12 clean"></div>
-
-              <div id="addStepDiv" class="col-md-12"></div>
-
-              <div class="col-md-12 clean"></div>
           
               <div ng-show="showErr" class="message error">{{err}}</div>
           </div>
@@ -98,6 +99,10 @@
                 <button ng-click="questCreate()" type="button" class="btn btn-danger submit-quest-btn">Submit Quest</button>
             </div>
         </div>
+
+        <div class="col-md-12 clean"></div>
+        <div class="col-md-12 clean"></div>
+
       </div>
     </form>
     </div>
