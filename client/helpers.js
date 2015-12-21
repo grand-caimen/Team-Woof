@@ -9,6 +9,19 @@ function minutesToHours(minutes){
 	return hours + ":" + remainder
 }
 
+function timeExtraction(time){
+  time = time.replace("minutes","");
+  time = time.replace("min","");
+  return Number(time);
+}
+
+function moneyExtraction(money){
+  money = money.replace("$","");
+  money = money.replace("dollars","");
+  if((/free/i).test(money)) return 0;
+  return Number(money);
+}
+
 function moneyConversion(dollars){
   if(dollars===0) return "Free"
   else return "$" + dollars;

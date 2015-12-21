@@ -12,13 +12,17 @@ a:hover {
   text-decoration: none;
 }
 
+.selected {
+  color: #B3D221 !important;
+}
+
 .logo-blank {
   padding: 3em 0;
 }
 
 .logo {
-  width: 100%;
-  padding-left: 3em;
+  width: 97%;
+  padding-left: 0.5em;
 }
 
 .input-blank {
@@ -302,6 +306,10 @@ tags-input .tags .tag-item {
   border-radius: 25px;
 }
 
+.map-container {
+  padding: 20px;
+}
+
 .angular-google-map-container {
  height: 400px; 
 }
@@ -363,4 +371,21 @@ tags-input .tags .tag-item {
   padding: 7px 28px;
   font-size: 17px;
   margin-top: 20px;
+}
+
+.make-quest-description {
+  resize: none;
+}
+
+.make-quest-mountains {
+  margin-left: 13%;
+  width: 75%;
+  margin-top: 3em;
+  opacity: 0.8;
+}
+
+.make-quest-tasks-img {
+  width: 85%;
+  margin-bottom: 15px;
+  margin-left: 1.8em;
 }

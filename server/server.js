@@ -1,6 +1,11 @@
 var http = require("http");
 var bodyParser = require('body-parser');
 var express = require('express');
+<<<<<<< HEAD
+=======
+var geocoder = require('geocoder');
+var app = express();
+>>>>>>> master
 var path = require('path');
 var mongo = require('./db.js');
 var models = require('./models.js');
@@ -49,15 +54,24 @@ app.post('/api/users*', function(req, res){
 
 app.get('/api/quests*', function(req, res){
 	console.log(req.query);
-	//req.query == { city: 'austin' }
 	Quest.find(req.query).then(function(quests){
 		res.send(quests);
 	});
 });
 
+app.post('/api/geocode*', function(req, res){
+  geocoder.geocode(req.body.city, function ( err, data ) {
+    if(err) throw error;
+    res.send(data.results[0].geometry.location);
+  });
+})
+
+
+
+
 // Wildcard Files
 app.get('/*', function(req, res){
-    res.sendFile(path.join(__dirname + '/../' + req.url));
+      res.sendFile(path.join(__dirname + '/../' + req.url));
 });
 
 app.listen(app.get('port'), function(){
