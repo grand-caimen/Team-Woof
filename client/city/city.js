@@ -9,6 +9,14 @@ angular.module('cityQuest.city', [])
   	$location.path('/questList');
   };
 
-  $scope.signout = Auth.signout();
+  $scope.sessionCheck = function(){
+  	if(Auth.isAuth()){
+  		$location.path('/');
+  	}else{
+  		$location.path('/signin');
+  	}
+  }
+
+  $scope.sessionCheck();
 
 });

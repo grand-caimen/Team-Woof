@@ -13,6 +13,7 @@ var db = mongo.db;
 var Quest = models.Quest;
 var User = models.User;
 var signup = userModels.signup;
+var signin = userModels.signin;
 var authUser = userModels.checkAuth;
 
 
@@ -45,9 +46,14 @@ app.post('/api/quests*', function(req, res){
 	});
 });
 
-app.post('/api/users*', function(req, res){
+app.post('/api/users/signup', function(req, res){
 	signup(req, res, console.log);
 });
+
+app.post('/api/users/signin', function(req, res){
+	signin(req, res, console.log);
+});
+
 
 app.get('/api/quests*', function(req, res){
 	console.log(req.query);

@@ -98,20 +98,20 @@ angular.module('cityQuest.services', [])
   var signin = function (user) {
     return $http({
       method: 'POST',
-      url: '/api/users',
+      url: '/api/users/signin',
       data: user
     })
     .then(function (resp) {
       console.log('resp: ', resp);
-      // $window.localStorage.setItem('sessiontoken', resp.data.token); 
-      $location.path('/')
+      $window.localStorage.setItem('sessiontoken', resp.data.token); 
+      $location.path('/');
     });
   };
 
   var signup = function (user) {
     return $http({
       method: 'POST',
-      url: '/api/users',
+      url: '/api/users/signup',
       data: user
     })
     .then(function (resp) {
@@ -122,9 +122,7 @@ angular.module('cityQuest.services', [])
   };
 
   var isAuth = function () {
-    if(!!$window.localStorage.getItem('sessiontoken')){
-      $location.path('/')
-    }
+    return !!$window.localStorage.getItem('sessiontoken'); 
   };
 
   var signout = function () {
