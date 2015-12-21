@@ -13,7 +13,8 @@ angular.module('cityQuest.createQuest', [])
    $scope.stepCount = 1;
    $scope.lastStep = "";
 
-   console.log("Hi:", $scope.quest);
+   console.log("city", $scope.city);
+
 
    uiGmapGoogleMapApi.then(function(maps) {
    // function placeMarkerAndPanTo(latLng, map) {
@@ -57,6 +58,7 @@ angular.module('cityQuest.createQuest', [])
 
 
    $scope.questCreate = function(){
+    if($scope.requireFields()){
      //If next step has been filled out, add it to the array
      if($scope.step.description){
        $scope.pushStep(); 
@@ -65,6 +67,7 @@ angular.module('cityQuest.createQuest', [])
        QuestStorage.saveNewQuest($scope.quest);
        $location.path('/questList');
      }
+    }
    };
 
    $scope.pushStep = function(){
@@ -106,5 +109,13 @@ angular.module('cityQuest.createQuest', [])
     var newMoney = moneyExtraction(money);
     if(typeof newMoney === "number") $scope.quest.cost += newMoney;
     else console.error("Cost is not a valid format:", money);
+  }
+
+  $scope.requireFields = function(){
+    if(!$scope.quest.name) alert("Provide a quest title");
+    else if(!$scope.quest.description)  alert("Provide a quest description");
+    else if(!$scope.quest.image) alert("Provide a quest image");
+    else if(!$scope.steps) alert("Provide at least one step");
+    else return true;
   }
 });

@@ -1,6 +1,6 @@
 angular.module('cityQuest.services', [])
 
-.factory('QuestStorage', function($http){
+.factory('QuestStorage', function($http, $location){
 
   var selectedCity = '';
   var selectedCordinates = {};
@@ -12,7 +12,8 @@ angular.module('cityQuest.services', [])
   };
 
   var getCity = function(){
-    return selectedCity;
+    if(selectedCity==="") $location.path('/');
+    else return selectedCity;
   };
 
   var getCoords = function(){
