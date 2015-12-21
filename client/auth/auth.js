@@ -8,7 +8,6 @@ angular.module('cityQuest.auth', [])
     Auth.signin($scope.user)
       .then(function () {
         $scope.authCheck;
-        $location.path('/');
       })
       .catch(function (error) {
         console.error(error);
@@ -18,7 +17,6 @@ angular.module('cityQuest.auth', [])
   $scope.signup = function () {
     Auth.signup($scope.user)
       .then(function (token) {
-        $scope.authCheck;
         $location.path('/');
       })
       .catch(function (error) {

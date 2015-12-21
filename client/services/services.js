@@ -110,7 +110,7 @@ angular.module('cityQuest.services', [])
     })
     .then(function (resp) {
       console.log('resp: ', resp);
-      $window.localStorage.setItem('sessiontoken', resp.data.token); 
+      // $window.localStorage.setItem('sessiontoken', resp.data.token); 
       $location.path('/')
     });
   };

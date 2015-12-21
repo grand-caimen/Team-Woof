@@ -1,11 +1,8 @@
 var http = require("http");
 var bodyParser = require('body-parser');
 var express = require('express');
-<<<<<<< HEAD
-=======
 var geocoder = require('geocoder');
 var app = express();
->>>>>>> master
 var path = require('path');
 var mongo = require('./db.js');
 var models = require('./models.js');
