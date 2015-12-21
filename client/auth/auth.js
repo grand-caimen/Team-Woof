@@ -18,6 +18,7 @@ angular.module('cityQuest.auth', [])
   $scope.signup = function () {
     Auth.signup($scope.user)
       .then(function (token) {
+        $scope.authCheck;
         $location.path('/');
       })
       .catch(function (error) {
@@ -28,6 +29,7 @@ angular.module('cityQuest.auth', [])
   $scope.signout = function() {
     console.log('Sign out Function ran');
     Auth.signout();
+    $location.path('/signin');
 
   };
 });

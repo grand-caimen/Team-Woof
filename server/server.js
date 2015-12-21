@@ -45,7 +45,7 @@ app.post('/api/quests*', function(req, res){
 
 app.post('/api/users*', function(req, res){
 	signup(req, res, console.log);
-})
+});
 
 app.get('/api/quests*', function(req, res){
 	console.log(req.query);
@@ -53,7 +53,7 @@ app.get('/api/quests*', function(req, res){
 	Quest.find(req.query).then(function(quests){
 		res.send(quests);
 	});
-})
+});
 
 // Wildcard Files
 app.get('/*', function(req, res){

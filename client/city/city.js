@@ -1,6 +1,6 @@
 angular.module('cityQuest.city', [])
 
-.controller('cityCtrl', function($scope, $location, $window, QuestStorage){
+.controller('cityCtrl', function($scope, $location, $window, QuestStorage, Auth){
   // $scope.selectedCity
   $scope.city = "";
 
@@ -8,5 +8,7 @@ angular.module('cityQuest.city', [])
   	QuestStorage.saveCity($scope.city);
   	$location.path('/questList');
   };
+
+  $scope.signout = Auth.signout();
 
 });
