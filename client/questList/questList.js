@@ -13,7 +13,6 @@ angular.module('cityQuest.questList', [])
       if(quests.length>0){
         quests.forEach(function(quest){
           quest.time = minutesToHours(quest.time);
-          console.log(quest);
         })
       }else{
         $scope.showErr = true;

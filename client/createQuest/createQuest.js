@@ -2,8 +2,9 @@ angular.module('cityQuest.createQuest', [])
 
 
 .controller('createQuestCtrl', function($scope, $window, $location, QuestStorage, uiGmapGoogleMapApi){
-
-   $scope.quest = {"city":"salt lake city"};
+   $scope.myloc = QuestStorage.getCoords();
+   $scope.quest = {};
+   $scope.quest.city = QuestStorage.getCity();
    $scope.quest.tags = [];
    $scope.quest.steps = [];
    $scope.quest.cost = 0;
@@ -11,6 +12,8 @@ angular.module('cityQuest.createQuest', [])
    $scope.step = {};
    $scope.stepCount = 1;
    $scope.lastStep = "";
+
+   console.log("Hi:", $scope.quest);
 
    uiGmapGoogleMapApi.then(function(maps) {
    // function placeMarkerAndPanTo(latLng, map) {
@@ -46,9 +49,9 @@ angular.module('cityQuest.createQuest', [])
             }
       },
       center: { 
-         latitude: 30.267219,
-         longitude: -97.764799 }, 
-      zoom: 12
+         latitude: $scope.myloc.lat,
+         longitude: $scope.myloc.lng}, 
+      zoom: 13
     }
    });
 

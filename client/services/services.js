@@ -3,10 +3,20 @@ angular.module('cityQuest.services', [])
 .factory('QuestStorage', function($http){
 
   var selectedCity = '';
+  var selectedCordinates = {};
   var lastFetchedQuests = null;
 
   var saveCity = function(city){
     selectedCity = city;
+    geocode(city);
+  };
+
+  var getCity = function(){
+    return selectedCity;
+  };
+
+  var getCoords = function(){
+    return selectedCordinates;
   };
 
   var getSingleQuest = function(questId){
@@ -54,6 +64,18 @@ angular.module('cityQuest.services', [])
     });
   };
 
+  var geocode = function(city){
+    $http({
+        method: 'POST',
+        url: '/api/geocode',
+        data: {"city":city}
+      })
+    .then(function(res){
+      console.log(res.data);
+      selectedCordinates = res.data;
+    });
+  };
+
   function saveNewQuestSuccess(data, status){
     //
   };
@@ -73,7 +95,9 @@ angular.module('cityQuest.services', [])
     getSingleQuest: getSingleQuest,
     getAllQuests: getAllQuests,
     saveNewQuest: saveNewQuest,
-    saveCity: saveCity
+    saveCity: saveCity,
+    getCoords: getCoords,
+    getCity: getCity
   }
 })
 
