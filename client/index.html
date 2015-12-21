@@ -16,8 +16,8 @@
     <script src="client/lib/ng-tags-input/ng-tags-input.js"></script>
     <!-- google maps -->
     <script src='/client/lib/lodash/lodash.min.js'></script>
-    // <script src='/client/lib/angular-simple-logger/dist/angular-simple-logger.min.js'></script>
-    // <script src='/client/lib/angular-google-maps/dist/angular-google-maps.min.js'></script>
+    <script src='/client/lib/angular-simple-logger/dist/angular-simple-logger.min.js'></script>
+    <script src='/client/lib/angular-google-maps/dist/angular-google-maps.min.js'></script>
     <!-- angular controllers, services, routing -->
 
     <script src="client/services/services.js"></script>
@@ -31,14 +31,14 @@
 </head>
 <body ng-controller="cityCtrl"> 
 
-  <div class="nav-bar">
+<!--   <div class="nav-bar">
     <a class="nav-links fade-in-three-quarter-sec" href="/#/">Search City</a>
     <a class="nav-links fade-in-three-quarter-sec" href="/#/questList">Quest List</a>
     <a class="nav-links fade-in-three-quarter-sec" href="/#/createQuest">Make Quest</a>
     <a class="nav-links fade-in-three-quarter-sec" href="/#/signin">Sign In</a>
     <a class="nav-links fade-in-three-quarter-sec" href="/#/" ng-click='singout()'>Sign Out</a>
   </div>
-
+ -->
     <div ng-view id='container'></div>
 </body>
 

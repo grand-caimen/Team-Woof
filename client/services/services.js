@@ -45,7 +45,7 @@ angular.module('cityQuest.services', [])
   };
 
   function getQuestsSuccess(data, status){
-        // $http will return the entire response object. To get the data returned from the database use data.data
+  // $http will return the entire response object. To get the data returned from the database use data.data
     return data.data;
   };
 
@@ -84,14 +84,7 @@ angular.module('cityQuest.services', [])
     //
   };
 
-  //TODO: Remove once hooked up to real server database. - John
-  var initializeWithFakeData = function(fakeQuests){
-    //Pre-filling 'global-ish' lastFetchedQuests without HTTP GET
-    lastFetchedQuests = fakeQuests;
-  }  //End TODO
-
   return {
-    initializeWithFakeData: initializeWithFakeData, //TODO: remove this - John
     getSingleQuest: getSingleQuest,
     getAllQuests: getAllQuests,
     saveNewQuest: saveNewQuest,

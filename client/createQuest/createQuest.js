@@ -51,7 +51,8 @@ angular.module('cityQuest.createQuest', [])
       },
       center: { 
          latitude: $scope.myloc.lat,
-         longitude: $scope.myloc.lng}, 
+         longitude: $scope.myloc.lng
+       }, 
       zoom: 13
     }
    });
