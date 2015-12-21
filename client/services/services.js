@@ -9,6 +9,10 @@ angular.module('cityQuest.services', [])
     selectedCity = city;
   };
 
+  var getSelectedCity = function(){
+    return selectedCity;
+  };
+
   var getSingleQuest = function(questId){
     if(lastFetchedQuests === null){
       throw "cityQuest.services - Single quest not available! HTTP GET the quests first."

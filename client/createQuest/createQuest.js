@@ -49,7 +49,6 @@ angular.module('cityQuest.createQuest', [])
     }
    });
 
-
    $scope.questCreate = function(){
       $scope.pushStep();
       console.log('saving', $scope.quest)
@@ -73,4 +72,21 @@ angular.module('cityQuest.createQuest', [])
       var div = angular.element( document.querySelector( '#addStepDiv' ) );
       div.append('<h3>Hi</h3>'); 
     }
+
+  function getLatLongOfCity(cityNameStr){
+    var geocode =  (new google.maps.Geocoder()).geocoder;
+    var searchAddress = {
+      "address": cityNameStr
+    };
+    geocode(searchAddress,
+            function(results, status) {
+              if (status == google.maps.GeocoderStatus.OK) {
+                var cityLatitude = results[0].geometry.location.lat();
+                var cityLongitude = results[0].geometry.location.lng();
+              } else {
+                console.log("Geocoding failed trying to find city lat/long", status);
+              }
+            }
+    );
+  }
 });
