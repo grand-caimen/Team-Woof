@@ -200,6 +200,7 @@ a:hover {
   padding:10px 15px;
   border: 0px solid transparent;
   color: #fff;
+  margin: 20px;
 }
 
 .add-agenda-btn:hover {
@@ -222,7 +223,7 @@ tags-input .tags .tag-item {
 }
 
 .clear {
-  margin-top: 50px;
+  margin-top: 53px;
 }
 
 .no-margin {
@@ -231,6 +232,10 @@ tags-input .tags .tag-item {
 
 .no-padding-right {
   padding-right: 0;
+}
+
+.margin-left {
+  margin-left:15px !important;
 }
 
 .submit-quest-btn{
@@ -286,6 +291,17 @@ tags-input .tags .tag-item {
   color: #949494
 }
 
+.no-quests {
+  text-align: center;
+  font-size: 20px;
+  color: #fff;
+  font-weight: 400;
+  line-height: 40px;
+  text-shadow: 0px 0px 2px #888888;
+  background-color: rgba(30, 30, 30, 0.5);
+  border-radius: 25px;
+}
+
 .angular-google-map-container {
  height: 400px; 
 }
@@ -300,6 +316,11 @@ tags-input .tags .tag-item {
   margin-bottom: 0;
 }
 
+.quest-view-title {
+  margin-top: 20px;
+  margin-bottom: 5px;
+}
+
 .quest-view-descript {
   margin-left: 20px;
   margin-top: 6px;
@@ -310,10 +331,36 @@ tags-input .tags .tag-item {
   margin-left:20px;
 }
 
+.quest-view-step-tab {
+  margin:5px;
+  color:#A3BD29;
+}
+
 .quest-view-tags {
   background-color:#ccc;
   color: #fff;
   padding:5px;
   margin:5px;
   border-radius: 3px;
+}
+
+.make-quest-step {
+  background-color: #A3BD29;
+  color: #fff;
+  font-size: 20px;
+  padding: 5px 15px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+.make-quest-step-num {
+  color: #424242;
+}
+
+.make-quest-err {
+  cursor: default;
+  background-color: #DA0E08;
+  padding: 7px 28px;
+  font-size: 17px;
+  margin-top: 20px;
 }

@@ -1,3 +1,14 @@
+<style>
+  body {background-size: contain;} 
+</style>
+
+<div class="nav-bar">
+  <a class="nav-links fade-in-three-quarter-sec" href="/#/">Search City</a>
+  <a class="nav-links fade-in-three-quarter-sec" href="/#/questList">Quest List</a>
+  <a class="nav-links fade-in-three-quarter-sec" href="/#/createQuest">Create Quest</a>
+  <a class="nav-links fade-in-three-quarter-sec" href="/#/signin">Sign In</a>
+</div>
+
 <div id='container'>
     <div class="col-md-12 logo-blank"></div>
     <div class="col-md-8 col-md-offset-2">
@@ -6,37 +17,39 @@
           <div class="col-md-12">
             <img class="quest-view-image" ng-src="{{quest.image}}">
           </div>
-          <div class="col-md-8">
+          <div class="col-md-9">
             <h1 class="quest-view-title">{{ quest.name }}</h1>
             <h4 class="quest-view-descript">{{ quest.description }}</h4>
           </div>
-          <div class="col-md-4 tabs">
-            <div class="col-md-12 tab">
-              <div class="row">
-                <div class="col-md-3 tab-image-container">
-                  <img class="tab-image" src="client/img/icons/cost.png">
-                </div>
+          <div class="col-md-3" style="margin-top:15px;">
+            <div class="row">
+              <div class="col-md-5 tab">
+                <div class="row">
+                  <div class="col-md-3 tab-image-container">
+                    <img class="tab-image" src="client/img/icons/cost.png">
+                  </div>
 
-                <div class="col-md-2 split-line"></div>
+                  <div class="col-md-2 split-line"></div>
 
-                <div class="col-md-2 tab-image-container">
-                  <p class="tab-text">{{ quest.cost }}</p>
+                  <div class="col-md-2 tab-image-container">
+                    <p class="tab-text">{{ quest.cost }}</p>
+                  </div>
                 </div>
               </div>
-            </div>
 
-            <div class="clear"></div>
+              <div class="col-md-1" style="padding:0;"></div>
 
-            <div class="col-md-12 tab">
-              <div class="row">
-                <div class="col-md-3 tab-image-container">
-                  <img class="tab-image" src="client/img/icons/time.png">
-                </div>
+              <div class="col-md-5 tab">
+                <div class="row">
+                  <div class="col-md-3 tab-image-container">
+                    <img class="tab-image" src="client/img/icons/time.png">
+                  </div>
 
-                <div class="col-md-2 split-line"></div>
-                
-                <div class="col-md-2 tab-image-container">
-                  <p class="tab-text">{{ quest.time }}</p>
+                  <div class="col-md-2 split-line"></div>
+                  
+                  <div class="col-md-2 tab-image-container">
+                    <p class="tab-text">{{ quest.time }}</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -44,22 +57,29 @@
           <div class="col-md-6">
             <h2 class="">Steps</h2>
             <div class="quest-view-steps" ng-repeat='step in quest.steps'>
-              <h3>{{step.number+1}}. {{step.description}}</h3>
-              <p>Time: {{step.time}} Cost: {{step.cost}}</p>
+              <h3 class="quest-view-title">{{step.number+1}}. {{step.description}}</h3>
+              <span style="color:#fff">..</span>
+              <span class="quest-view-step-tab margin-left">Time: {{step.time}}</span><span class="quest-view-step-tab">Cost: {{step.cost}}</span>
             </div>
+
+            <div class="clean"></div>
+
             <span class="tags">Tags: </span>
             <span ng-repeat='tag in quest.tags'><span class="quest-view-tags">{{tag.text}}</span></span>
           </div>
           <div class="col-md-6 maps" style="background-color:#ccc;margin:20px -10px 0 0;height:400px"></div>
+
+          
           
 
-<!--           Insert Map Here!
+  <!--           Insert Map Here!
           Also, delete the style portion of this DIV. -->
 
           <div class="clean"></div>
+
           </div>
         </div>
-    </div>
+      </div>
     </div>
   </div>
 </div>
