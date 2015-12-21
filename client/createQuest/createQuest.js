@@ -2,13 +2,18 @@ angular.module('cityQuest.createQuest', [])
 
 
 .controller('createQuestCtrl', function($scope, $window, $location, QuestStorage, uiGmapGoogleMapApi){
-
-   $scope.addAgenda = true; 
+   $scope.myloc = QuestStorage.getCoords();
    $scope.quest = {};
-   $scope.step = {};
+   $scope.quest.city = QuestStorage.getCity();
+   $scope.quest.tags = [];
    $scope.quest.steps = [];
+   $scope.quest.cost = 0;
+   $scope.quest.time = 0;
+   $scope.step = {};
    $scope.stepCount = 1;
    $scope.lastStep = "";
+
+   console.log("Hi:", $scope.quest);
 
    uiGmapGoogleMapApi.then(function(maps) {
    // function placeMarkerAndPanTo(latLng, map) {
@@ -21,7 +26,6 @@ angular.module('cityQuest.createQuest', [])
    //    console.log('marker')
    // }
     $scope.markers = [];
-    // $scope.markers = [];
     $scope.map = {
       events: {
             tilesloaded: function (map) {
@@ -40,54 +44,67 @@ angular.module('cityQuest.createQuest', [])
                     }
                 };
                 $scope.markers[0] = marker;
+                $scope.markerErr = false;
                 $scope.$apply();
             }
       },
-      // center: { 
-      //    latitude: 45,
-      //    longitude: -73 }, 
       center: { 
-         latitude: 45,
-         longitude: -73 }, 
-      zoom: 8
+         latitude: $scope.myloc.lat,
+         longitude: $scope.myloc.lng}, 
+      zoom: 13
     }
    });
 
 
    $scope.questCreate = function(){
-      if($scope.step.description.length>0){
-        $scope.pushStep();
-      }
-      console.log('saving', $scope.quest)
-      QuestStorage.saveNewQuest($scope.quest);
-      $location.path('/questList');
+     //If next step has been filled out, add it to the array
+     if($scope.step.description){
+       $scope.pushStep(); 
+     }else{
+       console.log('saving', $scope.quest)
+       QuestStorage.saveNewQuest($scope.quest);
+       $location.path('/questList');
+     }
    };
 
    $scope.pushStep = function(){
       $scope.step.location = $scope.markers[0].coords;
       $scope.markers = [];
       $scope.step.number = $scope.quest.steps.length;
+      console.log($scope.step)
+      $scope.addTime($scope.step.time);
+      $scope.addCost($scope.step.cost);
+
       $scope.quest.steps.push($scope.step);
       $scope.lastStep = $scope.step.description;
       $scope.step = {};
    };
 
    $scope.addStepDiv = function() {
-    //Sends step fields into quest, then clears it for the next step.
+    // Throw err if marker hasn't been set
     if($scope.markers.length===0){
-      console.log("need marker");
       $scope.markerErr = true;
     }else{
+      // add step to array and clear form for next step
       $scope.pushStep();
       $scope.markerErr = false;
       
-
+      //Add last step to page list
       var stepList = angular.element(document.querySelector( '#step' ) );
       stepList.append('<div class="make-quest-step"><span class="make-quest-step-num">Step ' + $scope.stepCount + '.</span> ' + $scope.lastStep + '</div>');
       $scope.stepCount++;
-    //Adds new form to the page
-      //var stepDiv = angular.element(document.querySelector( '#addStepDiv' ) );
-      //stepDiv.append('<div ng-hide="hideStep' + $scope.stepCount + '" id="step' + $scope.stepCount + '"><div class="row"><div class="col-md-6"><div class="input-group"><span class="input-group-addon">Task</span><input ng-model="step.description" type="text" class="form-control"></div><div class="row"><div class="col-md-6"><div class="input-group no-margin"><span class="input-group-addon">Cost</span></div></div><div class="col-md-6"><div class="input-group no-margin"><span class="input-group-addon">Minutes</span><input ng-model="step.time" type="text" class="form-control"></div></div></div></div><div class="col-md-6"><ui-gmap-google-map center="map.center" zoom="map.zoom" events="map.events"><ui-gmap-marker ng-repeat="marker in markers" coords="marker.coords" idkey="marker.id" ></ui-gmap-marker></ui-gmap-google-map></div><div class="col-md-12 clean"></div><div class="col-md-12 clean"></div>'); 
     }
+  }
+
+  $scope.addTime = function(time){
+    var newTime = timeExtraction(time);
+    if(typeof newTime === "number") $scope.quest.time += newTime;
+    else console.error("Time is not a valid format:", time);
+  }
+
+  $scope.addCost = function(money){
+    var newMoney = moneyExtraction(money);
+    if(typeof newMoney === "number") $scope.quest.cost += newMoney;
+    else console.error("Cost is not a valid format:", money);
   }
 });
