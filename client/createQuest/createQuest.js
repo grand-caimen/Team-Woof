@@ -120,6 +120,7 @@ angular.module('cityQuest.createQuest', [])
     if(!Auth.isAuth()){
       $location.path('/signin');
     }
+  };
 
   $scope.sessionCheck();
 });
