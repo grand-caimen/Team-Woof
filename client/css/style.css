@@ -390,3 +390,16 @@ tags-input .tags .tag-item {
   margin-bottom: 15px;
   margin-left: 1.8em;
 }
+
+.stepContainer{
+  border: 2px solid black;
+  padding: 2px;
+  margin: 3px;
+}
+
+.streetView{
+  background-color:#ccc;
+  height:200px;
+  margin-top:3px;
+  margin-bottom: 3px;
+}

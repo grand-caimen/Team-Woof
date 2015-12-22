@@ -11,7 +11,7 @@
 
 <div id='container'>
     <div class="col-md-12 logo-blank"></div>
-    <div class="col-md-8 col-md-offset-2">
+    <div class="col-md-10 col-md-offset-1">
       <div class='col-md-12 fade-in-three-quarter-sec'>
         <div class="col-md-12 questItem">
           <div class="col-md-12">
@@ -57,13 +57,7 @@
           <div class="col-md-6">
             <h2 class="">Steps</h2>
             <div class="row quest-view-steps" ng-repeat='step in quest.steps'>
-              <div class="col-md-4 streetView" style="background-color:#ccc; height:100px; margin-top:3px; margin-bottom: 3px;">
-              </div>
-              <div class="col-md-8">
-                <h3 class="quest-view-title">{{step.number+1}}. {{step.description}}</h3>
-                <span style="color:#fff">..</span>
-                <span class="quest-view-step-tab margin-left">Time: {{step.time}}</span><span class="quest-view-step-tab">Cost: {{step.cost}}</span>
-              </div>
+              <step-view-directive/>
             </div>
 
             <div class="clean"></div>

@@ -42,6 +42,59 @@ angular.module('cityQuest.questView', [])
       });
     });
   };
+})
+
+.directive('stepViewDirective',function(){
+  var stepViewTemplate = 
+   '<div class="col-md-12 stepContainer">\
+     <div class="col-md-12">\
+        <h3 class="quest-view-title">{{step.number+1}}. {{step.description}}</h3>\
+        <span style="color:#fff">..</span>\
+        <span class="quest-view-step-tab margin-left">Time: {{step.time}}</span><span class="quest-view-step-tab">Cost: {{step.cost}}</span>\
+      </div>\
+      <div class="col-md-12 streetView">\
+      </div>\
+    </div>';
+
+  function populateDirectiveWithStreetView(scope, directiveMatchedElements, attrs){
+    var streetViewDomElement =
+      findStreetViewDomElementInTemplate(directiveMatchedElements);
+    createStreetView(scope.step, streetViewDomElement);
+  };
+
+  function findStreetViewDomElementInTemplate(directiveMatchedElements){
+    var directiveElement = directiveMatchedElements[0];
+    var borderDiv = directiveElement.children[0];
+    var streetViewDomElement = borderDiv.children[1];
+    return streetViewDomElement;
+  };
+
+  function createStreetView(questStep, streetViewDomElement){
+    var stepLatLng = new google.maps.LatLng(questStep.location.latitude,
+                                            questStep.location.longitude);
+    new google.maps.StreetViewPanorama(
+      streetViewDomElement, {
+        position: stepLatLng,
+        pov: {
+          heading: 0,
+          pitch: 0
+        },
+        // Hiding extra controls
+        addressControl: false,
+        panControl: false,
+        zoomControl: false
+      }
+    );
+  };
+
+  var stepViewDirective =  {
+    replace: false,
+    template: stepViewTemplate,
+    link: populateDirectiveWithStreetView
+  };
+
+  return stepViewDirective;
 });
+
 
 
