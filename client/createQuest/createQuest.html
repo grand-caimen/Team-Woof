@@ -72,14 +72,20 @@
                 <div ng-show="markerErr" class="col-md-4 col-md-offset-3">
                   <button type="button" class="btn btn-danger make-quest-err">Place a Marker of the Location</button>
                 </div>
-                <div ng-show="markerErr" class="col-md-12"></div>
-                <div class="col-md-2 col-md-offset-4">
-                  <button ng-click="addStepDiv()" type="button" class="btn btn-default add-agenda-btn">Add Task</button>
+                <div class="row">
+                  <div ng-show="markerErr" class="col-md-12"></div>
                 </div>
-              </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <button ng-click="addStepDiv()" type="button" class="btn btn-default add-agenda-btn">Add Task</button>
+                  </div>
+                  <div class="col-md-6">
+                    <button ng-click="questCreate()" type="button" class="btn btn-danger submit-quest-btn">Submit Quest</button>
+                  </div>
+                </div>
+            </div>
 
-              <div class="col-md-6 map-container">
-
+            <div class="col-md-6 map-container">
               <ui-gmap-google-map center="map.center" zoom="map.zoom" events="map.events">
                 <ui-gmap-marker 
                     ng-repeat="marker in markers" 
@@ -87,23 +93,21 @@
                     idkey="marker.id" >
                 </ui-gmap-marker>
               </ui-gmap-google-map>
-                
-              </div>
+            </div>
 
-              <div class="col-md-12 clean"></div>
-          
-              <div ng-show="showErr" class="message error">{{err}}</div>
+            <div class="col-md-12 clean"></div>
+
+            <div ng-show="showErr" class="message error">{{err}}</div>
           </div>
-        <div class="row">
+<!--         <div class="row">
             <div class="col-lg-2 col-lg-offset-5 text-center">
                 <button ng-click="questCreate()" type="button" class="btn btn-danger submit-quest-btn">Submit Quest</button>
             </div>
-        </div>
+        </div> -->
 
         <div class="col-md-12 clean"></div>
         <div class="col-md-12 clean"></div>
 
-      </div>
     </form>
     </div>
     </div>
