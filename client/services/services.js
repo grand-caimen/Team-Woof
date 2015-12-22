@@ -46,7 +46,7 @@ angular.module('cityQuest.services', [])
   };
 
   function getQuestsSuccess(data, status){
-        // $http will return the entire response object. To get the data returned from the database use data.data
+  // $http will return the entire response object. To get the data returned from the database use data.data
     return data.data;
   };
 
@@ -85,14 +85,7 @@ angular.module('cityQuest.services', [])
     //
   };
 
-  //TODO: Remove once hooked up to real server database. - John
-  var initializeWithFakeData = function(fakeQuests){
-    //Pre-filling 'global-ish' lastFetchedQuests without HTTP GET
-    lastFetchedQuests = fakeQuests;
-  }  //End TODO
-
   return {
-    initializeWithFakeData: initializeWithFakeData, //TODO: remove this - John
     getSingleQuest: getSingleQuest,
     getAllQuests: getAllQuests,
     saveNewQuest: saveNewQuest,
@@ -110,7 +103,9 @@ angular.module('cityQuest.services', [])
       data: user
     })
     .then(function (resp) {
-      return resp.data.token;
+      console.log('resp: ', resp);
+      $window.localStorage.setItem('sessiontoken', resp.data.token); 
+      $location.path('/');
     });
   };
 
@@ -121,16 +116,18 @@ angular.module('cityQuest.services', [])
       data: user
     })
     .then(function (resp) {
-      return resp.data.token;
+      console.log('resp.data.token: ', resp.data.token);
+      $window.localStorage.setItem('sessiontoken', resp.data.token); 
+      $location.path('/')
     });
   };
 
   var isAuth = function () {
-    return !!$window.localStorage.getItem('com.cityQuest');
+    return !!$window.localStorage.getItem('sessiontoken'); 
   };
 
   var signout = function () {
-    $window.localStorage.removeItem('com.cityQuest');
+    $window.localStorage.removeItem('sessiontoken');
     $location.path('/signin');
   };
 
