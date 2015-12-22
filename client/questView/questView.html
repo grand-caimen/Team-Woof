@@ -71,14 +71,18 @@
             <span class="tags">Tags: </span>
             <span ng-repeat='tag in quest.tags'><span class="quest-view-tags">{{tag.text}}</span></span>
           </div>
-          <div class="col-md-6 maps" style="background-color:#ccc;margin:20px -10px 0 0;height:400px"></div>
-
-          
-          
-
-  <!--           Insert Map Here!
-          Also, delete the style portion of this DIV. -->
-
+          <div class="col-md-6 maps">
+            
+           <ui-gmap-google-map center="map.center" zoom="map.zoom" events="map.events">
+                <ui-gmap-marker 
+                    ng-repeat="marker in markers" 
+                    coords="marker.coords" 
+                    idKey="marker.id"
+                    options="marker.options"
+                    >
+                </ui-gmap-marker>
+          </ui-gmap-google-map>
+          </div>
           <div class="clean"></div>
 
           </div>

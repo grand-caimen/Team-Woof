@@ -1,18 +1,47 @@
 angular.module('cityQuest.questView', [])
 
-.controller('questViewCtrl', function($scope, $routeParams, QuestStorage){
+.controller('questViewCtrl', function($scope, $routeParams, QuestStorage, uiGmapGoogleMapApi){
   $scope.questId = $routeParams.questId;
-
-  QuestStorage.getSingleQuest($scope.questId).then(function(quest){
-    $scope.quest = quest;
-    $scope.quest.time = minutesToHours($scope.quest.time);
-    $scope.quest.steps.forEach(function(step){
-      var x = angular.element('.streetView');
-      step.cost = moneyConversion(step.cost)
-      step.time = minutesToHours(step.time);
-    });
+  $scope.myloc = QuestStorage.getCoords();
+  $scope.markers = [];
+  uiGmapGoogleMapApi.then(function(maps){
+    $scope.fetch();
+    $scope.map = {
+      events: {
+            tilesloaded: function (map) {
+                $scope.$apply(function () {
+                    $scope.mapInstance = map;
+                });
+            },
+      },
+      center: { 
+         latitude: $scope.myloc.lat,
+         longitude: $scope.myloc.lng
+      }, 
+      zoom: 11
+    }
   });
-})
+  $scope.fetch = function(cb){
+    QuestStorage.getSingleQuest($scope.questId).then(function(quest){
+    	$scope.quest = quest;
+      $scope.quest.time = minutesToHours($scope.quest.time);
+      $scope.quest.steps.forEach(function(step){
+        step.cost = moneyConversion(step.cost)
+        step.time = minutesToHours(step.time);
+        var iconNum = $scope.markers.length + 1;
+        var iconUrl = "http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=" + iconNum + "|FF0000|000000";
+        var newMarker = {
+          id: $scope.markers.length,
+          coords: step.location,
+          options: {
+            icon: iconUrl,
+            labelClass: "marker-labels"
+          }
+        };
+        $scope.markers.push(newMarker);
+      });
+    });
+  };
+});
 
-.directive('streetViewDirective', function())
 
