@@ -17,15 +17,6 @@ angular.module('cityQuest.createQuest', [])
 
 
    uiGmapGoogleMapApi.then(function(maps) {
-   // function placeMarkerAndPanTo(latLng, map) {
-   //    console.log(latLng);
-   //    // var marker = new maps.Marker({
-   //    //   position: latLng,
-   //    //   map: map
-   //    // });
-   //    // map.panTo(latLng);
-   //    console.log('marker')
-   // }
     $scope.markers = [];
     $scope.map = {
       events: {
@@ -51,7 +42,8 @@ angular.module('cityQuest.createQuest', [])
       },
       center: { 
          latitude: $scope.myloc.lat,
-         longitude: $scope.myloc.lng}, 
+         longitude: $scope.myloc.lng
+      }, 
       zoom: 13
     }
    });
