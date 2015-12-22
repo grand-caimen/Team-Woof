@@ -26,10 +26,4 @@ angular.module('cityQuest.auth', [])
       });
   };
 
-  $scope.signout = function() {
-    console.log('Sign out Function ran');
-    Auth.signout();
-    $location.path('/signin');
-
-  };
 });

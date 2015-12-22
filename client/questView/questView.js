@@ -1,6 +1,6 @@
 angular.module('cityQuest.questView', [])
 
-.controller('questViewCtrl', function($scope, $routeParams, QuestStorage, uiGmapGoogleMapApi){
+.controller('questViewCtrl', function($scope, $routeParams, QuestStorage, uiGmapGoogleMapApi, Auth){
   $scope.questId = $routeParams.questId;
   $scope.myloc = QuestStorage.getCoords();
   $scope.markers = [];
@@ -41,6 +41,12 @@ angular.module('cityQuest.questView', [])
         $scope.markers.push(newMarker);
       });
     });
+  };
+
+  $scope.signout = function() {
+    console.log('Sign out Function ran');
+    Auth.signout();
+    $location.path('/signin');
   };
 });
 
