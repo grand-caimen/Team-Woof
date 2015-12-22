@@ -1,6 +1,6 @@
 angular.module('cityQuest.questList', [])
 
-.controller('questListCtrl', function($scope, QuestStorage){
+.controller('questListCtrl', function($scope, QuestStorage, Auth, $location){
   //Populate this object with variables 
   $scope.city = "";
   $scope.showErr = false;
@@ -25,5 +25,12 @@ angular.module('cityQuest.questList', [])
   }
 
   $scope.getAllQuests();
+
+  $scope.signout = function() {
+    console.log('Sign out Function ran');
+    Auth.signout();
+    $location.path('/signin');
+
+  };
 
 });

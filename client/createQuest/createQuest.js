@@ -2,7 +2,7 @@ angular.module('cityQuest.createQuest', [])
 
 
 
-.controller('createQuestCtrl', function($scope, $window, $location, QuestStorage, uiGmapGoogleMapApi){
+.controller('createQuestCtrl', function($scope, $window, $location, QuestStorage, uiGmapGoogleMapApi, Auth){
    $scope.myloc = QuestStorage.getCoords();
    $scope.quest = {};
    $scope.quest.city = QuestStorage.getCity();
@@ -108,4 +108,11 @@ angular.module('cityQuest.createQuest', [])
     else if(!$scope.quest.steps) alert("Provide at least one step");
     else return true;
   }
+
+  $scope.signout = function() {
+    console.log('Sign out Function ran');
+    Auth.signout();
+    $location.path('/signin');
+
+  };
 });
