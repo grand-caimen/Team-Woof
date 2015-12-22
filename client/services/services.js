@@ -55,14 +55,17 @@ angular.module('cityQuest.services', [])
   };
 
   var saveNewQuest = function(quest){
-    $http({
-        method: 'POST',
-        url: '/api/quests',
-        data: quest
-      })
-    .then(function(res){
-      return res.data;
-    });
+    return $http({
+             method: 'POST',
+             url: '/api/quests',
+             data: quest
+           })
+           .then(function(res){
+             //Nothing to do.
+           })
+           .catch(function(err){
+             console.log("saveNewQuest failed in services.js");
+           });
   };
 
   var geocode = function(city){

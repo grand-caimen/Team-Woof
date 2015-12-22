@@ -59,14 +59,16 @@ angular.module('cityQuest.createQuest', [])
 
    $scope.questCreate = function(){
     if($scope.requireFields()){
-     //If next step has been filled out, add it to the array
-     if($scope.step.description){
+      //If next step has been filled out, add it to the array
+      if($scope.step.description){
        $scope.pushStep(); 
-     }else{
+      }else{
        console.log('saving', $scope.quest)
-       QuestStorage.saveNewQuest($scope.quest);
-       $location.path('/questList');
-     }
+       QuestStorage.saveNewQuest($scope.quest)
+       .then(function(){
+         $location.path('/questList');
+       });
+      }
     }
    };
 
