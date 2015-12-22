@@ -1,6 +1,6 @@
 angular.module('cityQuest.questView', [])
 
-.controller('questViewCtrl', function($scope, $routeParams, QuestStorage, uiGmapGoogleMapApi){
+.controller('questViewCtrl', function($scope, $routeParams, QuestStorage, uiGmapGoogleMapApi, Auth){
   $scope.questId = $routeParams.questId;
   $scope.myloc = QuestStorage.getCoords();
   $scope.markers = [];
@@ -23,7 +23,7 @@ angular.module('cityQuest.questView', [])
   });
   $scope.fetch = function(cb){
     QuestStorage.getSingleQuest($scope.questId).then(function(quest){
-    	$scope.quest = quest;
+      $scope.quest = quest;
       $scope.quest.time = minutesToHours($scope.quest.time);
       $scope.quest.steps.forEach(function(step){
         step.cost = moneyConversion(step.cost)
@@ -41,6 +41,12 @@ angular.module('cityQuest.questView', [])
         $scope.markers.push(newMarker);
       });
     });
+  };
+
+  $scope.signout = function() {
+    console.log('Sign out Function ran');
+    Auth.signout();
+    $location.path('/signin');
   };
 })
 

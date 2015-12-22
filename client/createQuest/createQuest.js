@@ -1,7 +1,8 @@
 angular.module('cityQuest.createQuest', [])
 
 
-.controller('createQuestCtrl', function($scope, $window, $location, QuestStorage, uiGmapGoogleMapApi){
+
+.controller('createQuestCtrl', function($scope, $window, $location, QuestStorage, uiGmapGoogleMapApi, Auth){
    $scope.myloc = QuestStorage.getCoords();
    $scope.quest = {};
    $scope.quest.city = QuestStorage.getCity();
@@ -12,9 +13,6 @@ angular.module('cityQuest.createQuest', [])
    $scope.step = {};
    $scope.stepCount = 1;
    $scope.lastStep = "";
-
-   console.log("city", $scope.city);
-
 
    uiGmapGoogleMapApi.then(function(maps) {
     $scope.markers = [];
@@ -43,11 +41,11 @@ angular.module('cityQuest.createQuest', [])
       center: { 
          latitude: $scope.myloc.lat,
          longitude: $scope.myloc.lng
-      }, 
+       }, 
+
       zoom: 13
     }
    });
-
 
    $scope.questCreate = function(){
     if($scope.requireFields()){
@@ -110,4 +108,11 @@ angular.module('cityQuest.createQuest', [])
     else if(!$scope.quest.steps) alert("Provide at least one step");
     else return true;
   }
+
+  $scope.signout = function() {
+    console.log('Sign out Function ran');
+    Auth.signout();
+    $location.path('/signin');
+
+  };
 });

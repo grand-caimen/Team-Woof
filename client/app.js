@@ -19,8 +19,6 @@ cityQuestApp.config(function(uiGmapGoogleMapApiProvider) {
         libraries: 'places,weather,geometry,visualization'
     });
 });
-cityQuestApp.run(function($rootScope){});
-
 
 function routeDefinition($routeProvider){
   $routeProvider
@@ -51,4 +49,8 @@ function routeDefinition($routeProvider){
   .otherwise({
     redirectTo: '/'
   });
-}
+};
+
+
+
+
