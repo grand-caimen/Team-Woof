@@ -33,4 +33,12 @@ angular.module('cityQuest.questList', [])
 
   };
 
+  $scope.authCheck = function(){
+    if(!Auth.isAuth()){
+      $location.path('/signin')
+    }
+  };
+
+  $scope.authCheck();
+
 });
