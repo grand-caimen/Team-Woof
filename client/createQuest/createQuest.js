@@ -115,7 +115,7 @@ angular.module('cityQuest.createQuest', [])
     if(!$scope.quest.name) alert("Provide a quest title");
     else if(!$scope.quest.description)  alert("Provide a quest description");
     else if(!$scope.quest.image) alert("Provide a quest image");
-    else if(!$scope.steps) alert("Provide at least one step");
+    else if(!$scope.quest.steps) alert("Provide at least one step");
     else return true;
   }
 });
