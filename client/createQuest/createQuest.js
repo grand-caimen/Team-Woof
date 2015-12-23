@@ -115,4 +115,12 @@ angular.module('cityQuest.createQuest', [])
     $location.path('/signin');
 
   };
+  
+  $scope.sessionCheck = function(){
+    if(!Auth.isAuth()){
+      $location.path('/signin');
+    }
+  };
+
+  $scope.sessionCheck();
 });
