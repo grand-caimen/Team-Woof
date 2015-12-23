@@ -23,7 +23,7 @@ angular.module('cityQuest.questView', [])
   });
   $scope.fetch = function(cb){
     QuestStorage.getSingleQuest($scope.questId).then(function(quest){
-    	$scope.quest = quest;
+      $scope.quest = quest;
       $scope.quest.time = minutesToHours($scope.quest.time);
       $scope.quest.steps.forEach(function(step){
         step.cost = moneyConversion(step.cost)
@@ -48,7 +48,7 @@ angular.module('cityQuest.questView', [])
     Auth.signout();
     $location.path('/signin');
   };
-  
+
   $scope.sessionCheck = function(){
     if(!Auth.isAuth()){
       $location.path('/signin')
@@ -56,5 +56,59 @@ angular.module('cityQuest.questView', [])
   };
 
   $scope.sessionCheck();
+})
+
+.directive('stepViewDirective',function(){
+  var stepViewTemplate = 
+   '<div class="col-md-12 stepContainer">\
+     <div class="col-md-12">\
+        <h3 class="quest-view-title">{{step.number+1}}. {{step.description}}</h3>\
+        <span style="color:#fff">..</span>\
+        <span class="quest-view-step-tab margin-left">Time: {{step.time}}</span><span class="quest-view-step-tab">Cost: {{step.cost}}</span>\
+      </div>\
+      <div class="col-md-12 streetView">\
+      </div>\
+    </div>';
+
+  function populateDirectiveWithStreetView(scope, directiveMatchedElements, attrs){
+    var streetViewDomElement =
+      findStreetViewDomElementInTemplate(directiveMatchedElements);
+    createStreetView(scope.step, streetViewDomElement);
+  };
+
+  function findStreetViewDomElementInTemplate(directiveMatchedElements){
+    var directiveElement = directiveMatchedElements[0];
+    var borderDiv = directiveElement.children[0];
+    var streetViewDomElement = borderDiv.children[1];
+    return streetViewDomElement;
+  };
+
+  function createStreetView(questStep, streetViewDomElement){
+    var stepLatLng = new google.maps.LatLng(questStep.location.latitude,
+                                            questStep.location.longitude);
+    new google.maps.StreetViewPanorama(
+      streetViewDomElement, {
+        position: stepLatLng,
+        pov: {
+          heading: 0,
+          pitch: 0
+        },
+        // Hiding extra controls
+        addressControl: false,
+        panControl: false,
+        zoomControl: false
+      }
+    );
+  };
+
+  var stepViewDirective =  {
+    replace: false,
+    template: stepViewTemplate,
+    link: populateDirectiveWithStreetView
+  };
+
+  return stepViewDirective;
 });
+
+
 
