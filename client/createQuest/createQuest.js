@@ -52,11 +52,11 @@ angular.module('cityQuest.createQuest', [])
      //If next step has been filled out, add it to the array
      if($scope.step.description){
        $scope.pushStep(); 
-     }else{
+     }
+       $scope.quest.cost = $scope.quest.cost.toFixed(2);
        console.log('saving', $scope.quest)
        QuestStorage.saveNewQuest($scope.quest);
        $location.path('/questList');
-     }
     }
    };
 
@@ -106,6 +106,7 @@ angular.module('cityQuest.createQuest', [])
     else if(!$scope.quest.description)  alert("Provide a quest description");
     else if(!$scope.quest.image) alert("Provide a quest image");
     else if(!$scope.quest.steps) alert("Provide at least one step");
+    else if($scope.markers.length===0) $scope.markerErr = true;
     else return true;
   }
 
