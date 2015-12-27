@@ -1,6 +1,5 @@
 # City Quest #
-
-## How will you quest? ##
+ > **How will you quest?**
 
 ## How to Get Started ##
   > Search your destination and complete a quest of your choosing.
