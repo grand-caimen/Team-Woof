@@ -47,11 +47,12 @@ app.post('/api/quests*', function(req, res){
 });
 
 app.post('/api/users/signup', function(req, res){
-	signup(req, res, console.log);
+	signup(req, res, res.send);
 });
 
 app.post('/api/users/signin', function(req, res){
-	signin(req, res, console.log);
+	signin(req, res, res.send);
+	
 });
 
 
