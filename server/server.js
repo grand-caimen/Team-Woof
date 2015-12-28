@@ -65,7 +65,7 @@ app.get('/api/quests*', function(req, res){
 
 app.post('/api/geocode*', function(req, res){
   geocoder.geocode(req.body.city, function ( err, data ) {
-    if(err) throw error;
+    if(err) throw err;
     res.send(data.results[0].geometry.location);
   });
 })
