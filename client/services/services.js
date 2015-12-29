@@ -1,23 +1,41 @@
 angular.module('cityQuest.services', [])
 
 .factory('QuestStorage', function($http, $location){
+  var EMPTY_CITY = '';
+  var selectedCity = {
+    name: EMPTY_CITY,
+    coordinates: {},
+    isEmpty: function(){
+      return selectedCity.name === EMPTY_CITY;
+    }
+  };
 
-  var selectedCity = '';
-  var selectedCordinates = {};
-  var lastFetchedQuests = null;
+  var saveCity = function(cityStr){
+    selectedCity.name = cityStr;
+    setCityCoordinates(selectedCity);
+  };
 
-  var saveCity = function(city){
-    selectedCity = city;
-    geocode(city);
+  var setCityCoordinates = function(cityObj){
+    $http({
+        method: 'POST',
+        url: '/api/geocode',
+        data: {"city": cityObj.name}
+    })
+    .then(function(res){
+      cityObj.coordinates = res.data;
+    });
   };
 
   var getCity = function(){
-    if(selectedCity==="") $location.path('/');
-    else return selectedCity;
+    if(selectedCity.isEmpty()){
+      $location.path('/');
+    } else {
+      return selectedCity.name;
+    }
   };
 
   var getCoords = function(){
-    return selectedCordinates;
+    return selectedCity.coordinates;
   };
 
   var getSingleQuest = function(questId){
@@ -31,27 +49,17 @@ angular.module('cityQuest.services', [])
     });
   };
 
-
   var getAllQuests = function(){
     return $http.get(
-       '/api/quests/?city=' + selectedCity
+       '/api/quests/?city=' + selectedCity.name
         )
         .then(function(res){
-          lastFetchedQuests = res.data;
-          return lastFetchedQuests;
+          var fetchedQuests = res.data;
+          return fetchedQuests;
         })
         .catch(function(err){
           console.log("getAllQuests did not return any quests: ", err);
         });
-  };
-
-  function getQuestsSuccess(data, status){
-  // $http will return the entire response object. To get the data returned from the database use data.data
-    return data.data;
-  };
-
-  function getQuestsError(data, status){
-    console.log(status);
   };
 
   var saveNewQuest = function(quest){
@@ -63,26 +71,6 @@ angular.module('cityQuest.services', [])
     .then(function(res){
       return res.data;
     });
-  };
-
-  var geocode = function(city){
-    $http({
-        method: 'POST',
-        url: '/api/geocode',
-        data: {"city":city}
-      })
-    .then(function(res){
-      console.log(res.data);
-      selectedCordinates = res.data;
-    });
-  };
-
-  function saveNewQuestSuccess(data, status){
-    //
-  };
-
-  function saveNewQuestError(data, status){
-    //
   };
 
   return {
