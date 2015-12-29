@@ -44,9 +44,7 @@ angular.module('cityQuest.questView', [])
   };
 
   $scope.signout = function() {
-    console.log('Sign out Function ran');
     Auth.signout();
-    $location.path('/signin');
   };
 
   $scope.sessionCheck = function(){

@@ -111,12 +111,9 @@ angular.module('cityQuest.createQuest', [])
   }
 
   $scope.signout = function() {
-    console.log('Sign out Function ran');
     Auth.signout();
-    $location.path('/signin');
-
   };
-  
+
   $scope.sessionCheck = function(){
     if(!Auth.isAuth()){
       $location.path('/signin');
