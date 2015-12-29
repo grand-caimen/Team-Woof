@@ -404,3 +404,17 @@ tags-input .tags .tag-item {
   margin-top:3px;
   margin-bottom: 3px;
 }
+
+.message-error{
+  height: 35px;
+  width: 280px;
+  background-color: #d63049;
+  color: white;
+  opacity: 0.7;
+  border-radius: 2px;
+  font-family: 'Julee', cursive;
+  text-align: center;
+  line-height: 35px;
+  font-size: 1.3em;
+  margin-top: 14px;
+}

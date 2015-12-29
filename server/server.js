@@ -47,11 +47,12 @@ app.post('/api/quests*', function(req, res){
 });
 
 app.post('/api/users/signup', function(req, res){
-	signup(req, res, console.log);
+	signup(req, res, res.send);
 });
 
 app.post('/api/users/signin', function(req, res){
-	signin(req, res, console.log);
+	signin(req, res, res.send);
+	
 });
 
 
@@ -64,7 +65,7 @@ app.get('/api/quests*', function(req, res){
 
 app.post('/api/geocode*', function(req, res){
   geocoder.geocode(req.body.city, function ( err, data ) {
-    if(err) throw error;
+    if(err) throw err;
     res.send(data.results[0].geometry.location);
   });
 })

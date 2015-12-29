@@ -11,7 +11,7 @@ module.exports = {
     findUser({username: username})
       .then(function (user) {
         if (!user) {
-          next(new Error('User does not exist'));
+          res.status(401).send( { message: 'Incorrect Username/Password'  });
         } else {
           return user.comparePasswords(password)
             .then(function(foundUser) {
@@ -19,7 +19,7 @@ module.exports = {
                 var token = jwt.encode(user, 'secret');
                 res.json({token: token});
               } else {
-                return next(new Error('Passwords do not match'));
+                res.status(401).send( { message: 'Incorrect Username/Password'  });
               }
             });
         }

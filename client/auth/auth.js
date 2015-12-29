@@ -12,7 +12,9 @@ angular.module('cityQuest.auth', [])
         }
       })
       .catch(function (error) {
-        console.error(error);
+        $scope.err = error.data.message;
+        $scope.showErr = true;
+        console.log(error.data.message);
       });
   };
 
