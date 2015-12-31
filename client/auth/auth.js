@@ -1,8 +1,7 @@
 angular.module('cityQuest.auth', [])
 
-.controller('authController', function ($scope, $window, $location, Auth) {
+.controller('authController', function ($scope, $location, Auth) {
   $scope.user = {};
-  // $scope.authCheck = Auth.isAuth();
 
   $scope.signin = function () {
     Auth.signin($scope.user)
