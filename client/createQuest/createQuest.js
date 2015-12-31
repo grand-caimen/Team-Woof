@@ -1,8 +1,6 @@
 angular.module('cityQuest.createQuest', [])
 
-
-
-.controller('createQuestCtrl', function($scope, $window, $location, QuestStorage, uiGmapGoogleMapApi, Auth){
+.controller('createQuestCtrl', function($scope, $location, QuestStorage, uiGmapGoogleMapApi, Auth, InputConversion){
    $scope.myloc = QuestStorage.getCoords();
    $scope.quest = {};
    $scope.quest.city = QuestStorage.getCity();
@@ -25,12 +23,12 @@ angular.module('cityQuest.createQuest', [])
             },
             click: function(mapModel, eventName, originalEventArgs){
                 var e = originalEventArgs[0];
-                var lat = e.latLng.lat(),lon = e.latLng.lng();
+
                 var marker = {
                     id: Date.now(),
                     coords: {
-                        latitude: lat,
-                        longitude: lon
+                        latitude: e.latLng.lat(),
+                        longitude: e.latLng.lng()
                     }
                 };
                 $scope.markers[0] = marker;
@@ -47,78 +45,136 @@ angular.module('cityQuest.createQuest', [])
     }
    });
 
-   $scope.questCreate = function(){
-    if($scope.requireFields()){
-     //If next step has been filled out, add it to the array
-     if($scope.step.description){
-       $scope.pushStep(); 
-     }
-       $scope.quest.cost = $scope.quest.cost.toFixed(2);
-       console.log('saving', $scope.quest)
-       QuestStorage.saveNewQuest($scope.quest);
-       $location.path('/questList');
-    }
-   };
-
-   $scope.pushStep = function(){
-      $scope.step.location = $scope.markers[0].coords;
-      $scope.markers = [];
-      $scope.step.number = $scope.quest.steps.length;
-      console.log($scope.step)
-      $scope.addTime($scope.step.time);
-      $scope.addCost($scope.step.cost);
-
-      $scope.quest.steps.push($scope.step);
-      $scope.lastStep = $scope.step.description;
-      $scope.step = {};
-   };
-
-   $scope.addStepDiv = function() {
-    // Throw err if marker hasn't been set
-    if($scope.markers.length===0){
-      $scope.markerErr = true;
-    }else{
-      // add step to array and clear form for next step
-      $scope.pushStep();
-      $scope.markerErr = false;
-      
-      //Add last step to page list
-      var stepList = angular.element(document.querySelector( '#step' ) );
-      stepList.append('<div class="make-quest-step"><span class="make-quest-step-num">Step ' + $scope.stepCount + '.</span> ' + $scope.lastStep + '</div>');
-      $scope.stepCount++;
-    }
-  }
-
-  $scope.addTime = function(time){
-    var newTime = timeExtraction(time);
-    if(typeof newTime === "number") $scope.quest.time += newTime;
-    else console.error("Time is not a valid format:", time);
-  }
-
-  $scope.addCost = function(money){
-    var newMoney = moneyExtraction(money);
-    if(typeof newMoney === "number") $scope.quest.cost += newMoney;
-    else console.error("Cost is not a valid format:", money);
-  }
-
-  $scope.requireFields = function(){
-    if(!$scope.quest.name) alert("Provide a quest title");
-    else if(!$scope.quest.description)  alert("Provide a quest description");
-    else if(!$scope.quest.image) alert("Provide a quest image");
-    else if(!$scope.quest.steps) alert("Provide at least one step");
-    else if($scope.markers.length===0) $scope.markerErr = true;
-    else return true;
-  }
-
   $scope.signout = function() {
     Auth.signout();
   };
 
-  $scope.sessionCheck = function(){
-    if(!Auth.isAuth()){
+  $scope.questCreate = function(){
+    if(isRequiredQuestFieldMissing()) return;
+    if($scope.step.description){
+      alert("Add your last task first.");
+      return;
+    }
+
+    $scope.quest.cost = $scope.quest.cost.toFixed(2);
+    QuestStorage.saveNewQuestAndGoToQuestList($scope.quest);
+  };
+
+  $scope.addStep = function() {
+    if(isRequiredStepFieldMissing()) return;
+    if(isMarkerMissing()) return;
+
+    addStepAndClearForm();
+    addStepToDOMPageList();
+  };
+
+  var addStepAndClearForm = function(){
+    $scope.step.location = $scope.markers[0].coords;
+    $scope.markers = [];
+    $scope.step.number = $scope.quest.steps.length;
+    addTime($scope.step.time);
+    addCost($scope.step.cost);
+
+    $scope.quest.steps.push($scope.step);
+    $scope.lastStep = $scope.step.description;
+    $scope.step = {};
+  };
+
+  var addStepToDOMPageList = function(){
+    var stepList = angular.element(document.querySelector( '#step' ) );
+    stepList.append('<div class="make-quest-step"><span class="make-quest-step-num">Step ' + $scope.stepCount + '.</span> ' + $scope.lastStep + '</div>');
+    $scope.stepCount++;
+  }
+
+  var addTime = function(time){
+    var newTime = InputConversion.timeExtraction(time);
+    $scope.quest.time += newTime;
+  }
+
+  var addCost = function(money){
+    var newMoney = InputConversion.moneyExtraction(money);
+    $scope.quest.cost += newMoney;
+  }
+
+  var isRequiredQuestFieldMissing = function(){
+    var fieldMissing = true;
+    if( ! $scope.quest.name){
+      alert("Provide a quest title");
+      return fieldMissing;
+    }
+
+    if( ! $scope.quest.description){
+      alert("Provide a quest description");
+      return fieldMissing;
+    }
+
+    if( ! $scope.quest.image){
+      alert("Provide a quest image");
+      return fieldMissing;
+    }
+
+    if( ! $scope.quest.steps){
+      alert("Provide at least one step");
+      return fieldMissing;
+    }
+
+    fieldMissing = false;
+    return fieldMissing;
+  };
+
+  var isRequiredStepFieldMissing = function(){
+    var fieldMissing = true;
+    if( ! $scope.step.description){
+      alert("Provide a task description");
+      return fieldMissing;
+    }
+
+    if( ! $scope.step.time){
+      alert("Provide a task time");
+      return fieldMissing;
+    }
+
+    var time = InputConversion.timeExtraction($scope.step.time);
+    var timeIsNaN = time !== time; // NaN is the only JavaScript value that is treated as unequal to itself.
+    var timeIsNotTypeNumber = typeof time !== "number";
+    if(timeIsNaN ||
+       timeIsNotTypeNumber){
+      alert("Minutes is not a valid format: ", $scope.step.time);
+      return fieldMissing;
+    }
+
+    if( ! $scope.step.cost){
+      alert("Provide a task cost");
+      return fieldMissing;
+    }
+
+    var cost = InputConversion.moneyExtraction($scope.step.cost);
+    var costIsNaN = cost !== cost; // NaN is the only JavaScript value that is treated as unequal to itself.
+    var costIsNotTypeNumber = typeof cost !== "number";
+    if(costIsNaN || costIsNotTypeNumber){
+      alert("Cost is not a valid format: ", $scope.step.cost);
+      return fieldMissing;
+    }
+
+    fieldMissing = false;
+    return fieldMissing;
+  };
+
+  var isMarkerMissing = function(){
+    if($scope.markers.length === 0){
+      $scope.markerErr = true;
+    } else {
+      $scope.markerErr = false;
+    }
+
+    return $scope.markerErr;
+  };
+
+  var sessionCheck = function(){
+    if( ! Auth.isAuth()){
       $location.path('/signin');
     }
   };
 
-  $scope.sessionCheck();
+  sessionCheck();
 });
