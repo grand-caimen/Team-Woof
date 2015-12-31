@@ -8,11 +8,11 @@ angular.module('cityQuest.city', [])
     $location.path('/questList');
   };
 
-  $scope.sessionCheck = function(){
+  var sessionCheck = function(){
     if( ! Auth.isAuth()) {
       $location.path('/signin');
     }
   }
 
-  $scope.sessionCheck();
+  sessionCheck();
 });

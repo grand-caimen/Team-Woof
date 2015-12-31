@@ -4,7 +4,11 @@ angular.module('cityQuest.questList', [])
   $scope.quests = null;
   $scope.showNoQuestsFoundMsg = false;
 
-  $scope.getAllQuests = function(){
+  $scope.signout = function() {
+    Auth.signout();
+  };
+
+  var getAllQuests = function(){
     QuestStorage.getAllQuests()
     .then(function(quests){
       var questsFound = quests.length > 0;
@@ -22,16 +26,12 @@ angular.module('cityQuest.questList', [])
     });
   }
 
-  $scope.signout = function() {
-    Auth.signout();
-  };
-
-  $scope.sessionCheck = function(){
+  var sessionCheck = function(){
     if(!Auth.isAuth()){
       $location.path('/signin')
     }
   };
 
-  $scope.sessionCheck();
-  $scope.getAllQuests();
+  sessionCheck();
+  getAllQuests();
 });

@@ -5,7 +5,7 @@ angular.module('cityQuest.questView', [])
   $scope.myloc = QuestStorage.getCoords();
   $scope.markers = [];
   uiGmapGoogleMapApi.then(function(maps){
-    $scope.fetch();
+    fetch();
     $scope.map = {
       events: {
             tilesloaded: function (map) {
@@ -21,7 +21,8 @@ angular.module('cityQuest.questView', [])
       zoom: 11
     }
   });
-  $scope.fetch = function(cb){
+
+  var fetch = function(cb){
     QuestStorage.getSingleQuest($scope.questId).then(function(quest){
       $scope.quest = quest;
       $scope.quest.time = InputConversion.minutesToHours($scope.quest.time);
@@ -47,12 +48,12 @@ angular.module('cityQuest.questView', [])
     Auth.signout();
   };
 
-  $scope.sessionCheck = function(){
+  var sessionCheck = function(){
     if(!Auth.isAuth()){
       $location.path('/signin')
     }
   };
 
-  $scope.sessionCheck();
+  sessionCheck();
 });
 
