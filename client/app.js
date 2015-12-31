@@ -3,6 +3,7 @@ var cityQuestApp = angular.module('cityQuestApp',[
                                  'cityQuest.services',
                                  'cityQuest.city',
                                  'cityQuest.questList',
+                                 'cityQuest.stepViewDirective',
                                  'cityQuest.questView',
                                  'cityQuest.createQuest',
                                  'cityQuest.auth',
