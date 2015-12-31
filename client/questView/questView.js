@@ -57,17 +57,6 @@ angular.module('cityQuest.questView', [])
 })
 
 .directive('stepViewDirective',function(){
-  var stepViewTemplate = 
-   '<div class="col-md-12 stepContainer">\
-     <div class="col-md-12">\
-        <h3 class="quest-view-title">{{step.number+1}}. {{step.description}}</h3>\
-        <span style="color:#fff">..</span>\
-        <span class="quest-view-step-tab margin-left">Time: {{step.time}}</span><span class="quest-view-step-tab">Cost: {{step.cost}}</span>\
-      </div>\
-      <div class="col-md-12 streetView">\
-      </div>\
-    </div>';
-
   function populateDirectiveWithStreetView(scope, directiveMatchedElements, attrs){
     var streetViewDomElement =
       findStreetViewDomElementInTemplate(directiveMatchedElements);
@@ -101,7 +90,7 @@ angular.module('cityQuest.questView', [])
 
   var stepViewDirective =  {
     replace: false,
-    template: stepViewTemplate,
+    templateUrl: 'client/questView/stepViewTemplate.html',
     link: populateDirectiveWithStreetView
   };
 
