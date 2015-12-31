@@ -62,21 +62,21 @@ angular.module('cityQuest.services', [])
         });
   };
 
-  var saveNewQuest = function(quest){
+  var saveNewQuestAndGoToQuestList = function(quest){
     $http({
         method: 'POST',
         url: '/api/quests',
         data: quest
       })
     .then(function(res){
-      return res.data;
+      $location.path('/questList');
     });
   };
 
   return {
     getSingleQuest: getSingleQuest,
     getAllQuests: getAllQuests,
-    saveNewQuest: saveNewQuest,
+    saveNewQuestAndGoToQuestList: saveNewQuestAndGoToQuestList,
     saveCity: saveCity,
     getCoords: getCoords,
     getCity: getCity

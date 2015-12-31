@@ -1,6 +1,6 @@
 angular.module('cityQuest.questList', [])
 
-.controller('questListCtrl', function($scope, QuestStorage, Auth, $location){
+.controller('questListCtrl', function($scope, QuestStorage, Auth, InputConversion, $location){
   $scope.quests = null;
   $scope.showNoQuestsFoundMsg = false;
 
@@ -10,7 +10,7 @@ angular.module('cityQuest.questList', [])
       var questsFound = quests.length > 0;
       if(questsFound){
         quests.forEach(function(quest){
-          quest.time = minutesToHours(quest.time);
+          quest.time = InputConversion.minutesToHours(quest.time);
         });
         $scope.quests = quests;
       }else{
