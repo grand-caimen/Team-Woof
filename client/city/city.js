@@ -1,22 +1,18 @@
 angular.module('cityQuest.city', [])
 
-.controller('cityCtrl', function($scope, $location, $window, QuestStorage, Auth){
-  // $scope.selectedCity
+.controller('cityCtrl', function($scope, $location, QuestStorage, Auth){
   $scope.city = "";
 
   $scope.citySelect = function(){
-  	QuestStorage.saveCity($scope.city.toLowerCase());
-  	$location.path('/questList');
+    QuestStorage.saveCity($scope.city.toLowerCase());
+    $location.path('/questList');
   };
 
   $scope.sessionCheck = function(){
-  	if(Auth.isAuth()){
-  		$location.path('/');
-  	}else{
-  		$location.path('/signin');
-  	}
+    if( ! Auth.isAuth()) {
+      $location.path('/signin');
+    }
   }
 
   $scope.sessionCheck();
-
 });
