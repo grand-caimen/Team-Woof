@@ -1,7 +1,8 @@
 var cityQuestApp = angular.module('cityQuestApp',[
                                  'ngRoute',
                                  'cityQuest.inputConversionService',
-                                 'cityQuest.services',
+                                 'cityQuest.authenticationService',
+                                 'cityQuest.questStorageService',
                                  'cityQuest.city',
                                  'cityQuest.questList',
                                  'cityQuest.stepViewDirective',
