@@ -47,14 +47,18 @@ a:hover {
   border-color: transparent;
 }
 
-.nav-bar {
+ .navbar.navbar-default{
+  background-color: #333331;
+  border-color: #443B30;
+ }
+
+
+.navbar {
   float: right;
   color: #edebe3;
-  padding-top: 2em;
   padding-right: 2em;
 }
-
-.nav-links {
+.navbar-default .navbar-nav > li > a  {
   text-decoration: none;
   color: #fff;
   font-size: 18px;
@@ -63,8 +67,8 @@ a:hover {
   margin: 10px;
 }
 
-.nav-links:hover {
-  color: #ccc;
+.active:hover {
+  color: #ccc !important;
   text-decoration: none;
 }
 
