@@ -47,14 +47,20 @@ a:hover {
   border-color: transparent;
 }
 
-.nav-bar {
+ .navbar.navbar-default{
+   background: none;
+   border-bottom: none;
+   
+ }
+
+
+.navbar {
   float: right;
   color: #edebe3;
   padding-top: 2em;
   padding-right: 2em;
 }
-
-.nav-links {
+.navbar-default .navbar-nav > li > a  {
   text-decoration: none;
   color: #fff;
   font-size: 18px;
