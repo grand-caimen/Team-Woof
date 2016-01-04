@@ -34,7 +34,7 @@ a:hover {
 }
 
 .input-blank {
-  padding: 7em 0;
+  padding: 7em 10px;
 }
 
 .input-front {
@@ -47,14 +47,18 @@ a:hover {
   border-color: transparent;
 }
 
-.nav-bar {
+ .navbar.navbar-default{
+  background-color: #333331;
+  border-color: #443B30;
+ }
+
+
+.navbar {
   float: right;
   color: #edebe3;
-  padding-top: 2em;
   padding-right: 2em;
 }
-
-.nav-links {
+.navbar-default .navbar-nav > li > a  {
   text-decoration: none;
   color: #fff;
   font-size: 18px;
@@ -63,8 +67,8 @@ a:hover {
   margin: 10px;
 }
 
-.nav-links:hover {
-  color: #ccc;
+.active:hover {
+  color: #ccc !important;
   text-decoration: none;
 }
 
@@ -73,7 +77,7 @@ a:hover {
 }
 
 .questItem {
-  padding:1px 0 15px 0;
+  padding:0 0 15px 0;
   background-color: #fff;
   border-radius: 2px;
 }
@@ -85,32 +89,29 @@ a:hover {
 
 
 .quest-image {
-  height: 230px;
+  width: 100%;
   padding-top: 15px;
-  margin-left: -19px;
+  margin-left: -5px;
+  transform: scale(2);
+  -moz-transform: scale(2);
+  -webkit-transform: scale(2);
+  -o-transform: scale(2);
 }
 
 .quest-image-container {
-  border-radius: 4px;
-  width: 160px;
-  margin-left: 20px;
+  width:100%;
   overflow: hidden;
 }
 
 
 @media screen and (min-width: 992px) {
   .quest-image-container {
-    margin-left: 0;
-    visibility: hidden;
-    width: 0;
-    padding-right: 0;
-    padding-left: 0;
+    width: 93%;
+    margin: 15px;
+    padding: 0;
   }
 
   .quest-image {
-    height: 126px;
-    padding-top: 15px;
-    margin-left: -19px;
   }
 
   .quest-text {
@@ -121,11 +122,12 @@ a:hover {
 
 @media screen and (min-width: 1325px) {
   .quest-image-container {
-    margin-left: 20px;
-    visibility: visible;
-    width: 160px;
-    padding-right: 15px;
-    padding-left: 15px;
+    margin: 15px 0 0 15px;
+    width: 32%;
+    height: 135px;
+  }
+
+  .quest-image {
   }
 
   .quest-text {

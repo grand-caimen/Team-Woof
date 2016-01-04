@@ -1,3 +1,4 @@
+
 <div class="nav-bar">
   <!-- css cleanup -->
   <span style="color:#B3D221; "class="nav-links fade-in-three-quarter-sec"> {{ currCity }} </span>
@@ -6,13 +7,38 @@
   <a class="nav-links fade-in-three-quarter-sec selected" href="/#/questList">Quest List</a>
   <a class="nav-links fade-in-three-quarter-sec" href="/#/createQuest">Create Quest</a>
   <a class="nav-links fade-in-three-quarter-sec" href="/#/signin" ng-click="signout()">Sign Out</a>
+<style>
+  body {background-size: cover !important;}
+</style>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" ng-init="isCollapsed = true" ng-click="isCollapsed = !isCollapsed">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav class="navbar-collapse" ng-class="{collapse: isCollapsed}">
+      <ul class="nav navbar-nav navbar-right dropdown">
+        <li><a class="active fade-in-three-quarter-sec" href="/#/">Search City</a></li>
+        <li><a class="active fade-in-three-quarter-sec selected" href="/#/questList">Quest List</a></li>
+        <li><a class="active fade-in-three-quarter-sec" href="/#/createQuest">Create Quest</a></li>
+        <li><a class="active fade-in-three-quarter-sec" href="/#/signin" ng-click="signout()">Sign Out</a></li>
+      </ul>
+    </nav><!--/.nav-collapse -->
+  </div>
 </div>
+
+<!-- hidden-xs hidden-sm -->
 
 <div id='container'>
     <div class="col-md-12 logo-blank"></div>
+    <div class="col-md-12 logo-blank"></div>
     <div class="col-md-6 col-md-offset-3"><img class="logo" src="client/img/logo.png"></div>
     <div class="col-md-10 col-md-offset-1 questContainer">
-    <div ng-show="showNoQuestsFoundMsg" class="col-md-4 col-md-offset-4 no-quests">Found nay quests </br> Please createth one...</div>
+    <div ng-show="showNoQuestsFoundMsg" class="col-md-4 col-md-offset-4 no-quests">Found nay quests, please createth one...</div>
     <div class="row">
       <div class='col-md-6 questList input-front fade-in-three-quarter-sec' ng-repeat='quest in quests'>
         <div class="col-md-12 questItem">
@@ -25,7 +51,7 @@
             <p class="quest-descript">{{ quest.description }}</p>
             <span ng-repeat='tag in quest.tags'><span class="quest-view-tags">{{tag.text}}</span></span>
           </div>
-          <div class="col-md-2 tabs">
+          <div class="col-md-2 tabs hidden-xs hidden-sm">
             <div class="col-md-12 tab">
               <div class="row">
                 <div class="col-md-3 tab-image-container">
