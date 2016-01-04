@@ -30,7 +30,7 @@ angular.module('cityQuest.questView', [])
         step.cost = InputConversion.moneyConversion(step.cost)
         step.time = InputConversion.minutesToHours(step.time);
         var iconNum = $scope.markers.length + 1;
-        var iconUrl = "http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=" + iconNum + "|FF0000|000000";
+        var iconUrl = "http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=" + iconNum + "|a3bd29|000000";
         var newMarker = {
           id: $scope.markers.length,
           coords: step.location,
