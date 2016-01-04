@@ -18,6 +18,8 @@
   </div>
 </div>
 
+<!-- hidden-xs hidden-sm -->
+
 <div id='container'>
     <div class="col-md-12 logo-blank"></div>
     <div class="col-md-6 col-md-offset-3"><img class="logo" src="client/img/logo.png"></div>
@@ -35,7 +37,7 @@
             <p class="quest-descript">{{ quest.description }}</p>
             <span ng-repeat='tag in quest.tags'><span class="quest-view-tags">{{tag.text}}</span></span>
           </div>
-          <div class="col-md-2 tabs">
+          <div class="col-md-2 tabs hidden-xs hidden-sm">
             <div class="col-md-12 tab">
               <div class="row">
                 <div class="col-md-3 tab-image-container">
