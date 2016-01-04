@@ -29,6 +29,9 @@ Now visit [localhost:3000](http://localhost:3000/)
 
 The tech stack is MongoDB, Express, Angular, and Node.
 
+![alt text](https://github.com/teamwoof/Team-Woof/assets/mean.jpg)
+
+
 #### City View (search box to select a city)
 
 The app starts with client/city/city.html as the root '/' view.
