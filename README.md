@@ -29,8 +29,7 @@ Now visit [localhost:3000](http://localhost:3000/)
 
 The tech stack is MongoDB, Express, Angular, and Node.
 
-![Mean Stack](https://i.ytimg.com/vi/Jh0er2pRcq8/maxresdefault.jpg)
-
+<img src="https://i.ytimg.com/vi/Jh0er2pRcq8/maxresdefault.jpg" height="200" width="300">
 
 #### City View (search box to select a city)
 
