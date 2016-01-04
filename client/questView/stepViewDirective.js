@@ -4,7 +4,7 @@ angular.module('cityQuest.stepViewDirective', [])
   function populateDirectiveWithStreetView(scope, directiveMatchedElements, attrs){
     var streetViewDomElement =
       findStreetViewDomElementInTemplate(directiveMatchedElements);
-    createStreetView(scope.step, streetViewDomElement);
+      createStreetView(scope.step, streetViewDomElement);
   };
 
   function findStreetViewDomElementInTemplate(directiveMatchedElements){
