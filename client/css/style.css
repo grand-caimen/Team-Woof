@@ -12,6 +12,14 @@ a:hover {
   text-decoration: none;
 }
 
+#signin{
+  margin-top: 60px;
+}
+
+#signup{
+  margin-top: 60px;
+}
+
 .selected {
   color: #B3D221 !important;
 }
@@ -83,9 +91,10 @@ a:hover {
 }
 
 .quest-image-container {
-    border-radius: 4px;
-    width: 160px;
-    margin-left: 20px;
+  border-radius: 4px;
+  width: 160px;
+  margin-left: 20px;
+  overflow: hidden;
 }
 
 
@@ -126,6 +135,7 @@ a:hover {
 
 .quest-title {
   margin: 10px 0 3px 0;
+  overflow: hidden;
 }
 
 .sign-in-up-title {
@@ -231,6 +241,10 @@ tags-input .tags .tag-item {
 
 .clear {
   margin-top: 53px;
+}
+
+.logo-search {
+  margin-top: 73px;
 }
 
 .no-margin {
