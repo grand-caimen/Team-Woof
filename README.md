@@ -1,5 +1,9 @@
 # City Quest #
-  > **How will you quest?**
+  > **Looking for a new adventure while on vacation or even in your hometown?**  
+  > Use the City Quest app to search for "quests" that align with your interests.  
+  > Once you've chosen a quest, follow the quest's steps and have fun!  
+  > **Have an awesome agenda for a day in the city that you would like to recommend to others?**  
+  > Get creative and turn that agenda into a "quest" with the City Quest app.
 
 ## How to Get Started ##
   > Search your destination and complete a quest of your choosing.
