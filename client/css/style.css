@@ -42,7 +42,8 @@ a:hover {
 }
 
 .input-submit {
-  background-color: rgba(163, 189, 41, 0.6) !important;
+  background-color: rgba(163, 189, 41, 0.9) !important;
+  color: #fff;
   border-color: transparent;
 }
 
@@ -215,7 +216,8 @@ a:hover {
   padding:10px 15px;
   border: 0px solid transparent;
   color: #fff;
-  margin: 20px;
+  margin: 20px 0;
+  float: right;
 }
 
 .add-agenda-btn:hover {
@@ -259,7 +261,7 @@ tags-input .tags .tag-item {
 
 .submit-quest-btn{
   padding:10px 15px;
-  margin: 20px;
+  margin: 20px 0;
 }
 
 
@@ -316,7 +318,8 @@ tags-input .tags .tag-item {
   font-size: 20px;
   color: #fff;
   font-weight: 400;
-  line-height: 40px;
+  line-height: 27px;
+  padding: 14px;
   text-shadow: 0px 0px 2px #888888;
   background-color: rgba(30, 30, 30, 0.5);
   border-radius: 25px;
@@ -324,6 +327,10 @@ tags-input .tags .tag-item {
 
 .map-container {
   padding: 20px;
+}
+
+.maps {
+  margin-top: 66px;
 }
 
 .angular-google-map-container {
@@ -352,7 +359,7 @@ tags-input .tags .tag-item {
 }
 
 .quest-view-steps {
-  margin-left:20px;
+  margin: 0 -15px 17px 0;
 }
 
 .quest-view-step-tab {
@@ -407,16 +414,19 @@ tags-input .tags .tag-item {
 }
 
 .stepContainer{
-  border: 2px solid black;
+  background-color: #B3B3B3;
   padding: 2px;
   margin: 3px;
 }
 
+.stepContainer-title {
+  background-color: #fff;
+  margin: 1px 1px 0 1px;
+  padding: 1px 26px 20px;
+}
+
 .streetView{
-  background-color:#ccc;
-  height:200px;
-  margin-top:3px;
-  margin-bottom: 3px;
+  height:235px;
 }
 
 .message-error{

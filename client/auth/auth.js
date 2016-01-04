@@ -23,6 +23,8 @@ angular.module('cityQuest.auth', [])
         $location.path('/');
       })
       .catch(function (error) {
+        $scope.err = error.data.message;
+        $scope.showErr = true;
         console.error(error);
       });
   };

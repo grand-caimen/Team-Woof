@@ -64,9 +64,11 @@
 
             <span class="tags">Tags: </span>
             <span ng-repeat='tag in quest.tags'><span class="quest-view-tags">{{tag.text}}</span></span>
+
+            <div class="clean"></div>
+
           </div>
           <div class="col-md-6 maps">
-            
            <ui-gmap-google-map center="map.center" zoom="map.zoom" events="map.events">
                 <ui-gmap-marker 
                     ng-repeat="marker in markers" 
@@ -77,6 +79,7 @@
                 </ui-gmap-marker>
           </ui-gmap-google-map>
           </div>
+          
           <div class="clean"></div>
 
           </div>
