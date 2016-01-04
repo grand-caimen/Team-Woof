@@ -1,41 +1,50 @@
 angular.module('cityQuest.questStorageService', [])
 
-.factory('QuestStorage', function($http, $location){
+.factory('QuestStorage', function($http, $location, $window){
   var EMPTY_CITY = '';
   var selectedCity = {
     name: EMPTY_CITY,
     coordinates: {},
     isEmpty: function(){
+      var cityName = $window.localStorage.getItem('city');
+      if(cityName){
+        selectedCity.name = cityName;
+        return false;
+      }
       return selectedCity.name === EMPTY_CITY;
     }
   };
 
   var saveCity = function(cityStr){
-    selectedCity.name = cityStr;
-    setCityCoordinates(selectedCity);
+    $window.localStorage.setItem('city', cityStr);
+    setCityCoordinates(cityStr);
   };
 
-  var setCityCoordinates = function(cityObj){
+  var setCityCoordinates = function(cityStr){
     $http({
         method: 'POST',
         url: '/api/geocode',
-        data: {"city": cityObj.name}
+        data: {"city": cityStr}
     })
     .then(function(res){
-      cityObj.coordinates = res.data;
+      $window.localStorage.setItem('coords', JSON.stringify(res.data));
     });
   };
 
   var getCity = function(){
-    if(selectedCity.isEmpty()){
+    var cityName = $window.localStorage.getItem('city');
+    if(cityName){
+      return cityName;
+    }
+    else{
       $location.path('/');
-    } else {
-      return selectedCity.name;
     }
   };
 
   var getCoords = function(){
-    return selectedCity.coordinates;
+    var coords = $window.localStorage.getItem('coords');
+    console.log(coords);
+    return JSON.parse(coords);
   };
 
   var getSingleQuest = function(questId){
@@ -51,7 +60,7 @@ angular.module('cityQuest.questStorageService', [])
 
   var getAllQuests = function(){
     return $http.get(
-       '/api/quests/?city=' + selectedCity.name
+       '/api/quests/?city=' + $window.localStorage.getItem('city')
         )
         .then(function(res){
           var fetchedQuests = res.data;

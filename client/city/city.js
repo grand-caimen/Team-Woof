@@ -1,10 +1,10 @@
 angular.module('cityQuest.city', [])
 
-.controller('cityCtrl', function($scope, $location, QuestStorage, Auth){
+.controller('cityCtrl', function($scope, $location, $window, QuestStorage, Auth){
   $scope.city = "";
 
   $scope.citySelect = function(){
-    QuestStorage.saveCity($scope.city.toLowerCase());
+    QuestStorage.saveCity($scope.city.toLowerCase()); 
     $location.path('/questList');
   };
 

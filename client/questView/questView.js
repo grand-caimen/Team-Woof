@@ -1,9 +1,10 @@
 angular.module('cityQuest.questView', [])
 
-.controller('questViewCtrl', function($scope, $routeParams, QuestStorage, uiGmapGoogleMapApi, Auth, InputConversion){
+.controller('questViewCtrl', function($scope, $routeParams, $window, QuestStorage, uiGmapGoogleMapApi, Auth, InputConversion){
   $scope.questId = $routeParams.questId;
   $scope.myloc = QuestStorage.getCoords();
   $scope.markers = [];
+  $scope.currCity = InputConversion.capitalizeFirstLetter($window.localStorage.getItem('city'));
   uiGmapGoogleMapApi.then(function(maps){
     fetch();
     $scope.map = {

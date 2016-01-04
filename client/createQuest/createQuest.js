@@ -2,11 +2,13 @@ angular.module('cityQuest.createQuest', [])
 
 .controller('createQuestCtrl', function($scope,
                                         $location,
+                                        $window,
                                         QuestStorage,
                                         uiGmapGoogleMapApi,
                                         Auth,
                                         InputConversion,
                                         FormValidation){
+  $scope.currCity = InputConversion.capitalizeFirstLetter($window.localStorage.getItem('city'));
   $scope.userLocation = QuestStorage.getCoords();
 
   $scope.quest = {
