@@ -63,20 +63,20 @@
               <div id="step" class="col-md-12" style="padding:0;"></div>  
 
                 <div class="input-group">
-                  <span class="input-group-addon">Task {{stepCount}}</span>
-                  <input required ng-model="step.description" type="text" class="form-control">
+                  <span class="input-group-addon">Task {{stepCount + 1}}</span>
+                  <input required ng-model="currentStep.description" type="text" class="form-control">
                 </div>
                 <div class="row">
                   <div class="col-md-6">
                     <div class="input-group no-margin">
                       <span class="input-group-addon">Cost</span>
-                      <input required ng-model="step.cost" type="text" class="form-control">
+                      <input required ng-model="currentStep.cost" type="text" class="form-control">
                     </div>
                   </div> 
                   <div class="col-md-6">
                     <div class="input-group no-margin">
                       <span class="input-group-addon">Minutes</span>
-                      <input required ng-model="step.time" type="text" class="form-control">
+                      <input required ng-model="currentStep.time" type="text" class="form-control">
                     </div>
                   </div> 
                 </div>
