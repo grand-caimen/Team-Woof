@@ -20,3 +20,24 @@ $ node server/server.js
 ```
 
 Now visit [localhost:3000](http://localhost:3000/)
+
+### Architecture Overview
+
+The tech stack is MongoDB, Express, Angular, and Node.
+
+The app starts with client/city/city.html as the root '/' view.
+The controller in client/city/city.js will take in the user's desired city
+and save it away in the service in client/services/questStorageService.js.
+Next, the controller in city.js will redirect to the client/questList/questList.html.
+
+The controller in client/questList/questList.js will, upon loading, call into
+client/services/questStorageService.js to fetch all quests that are
+associated with the selected city that was saved to questStorageService.js
+by the previous page/controller.  By clicking on a quest title in
+questList.html, the app will route to client/questView/questView.html while passing
+the corresponding quest._id as a routing parameter to client/questView/questView.js.
+
+The controller in questView.js will receive the quest ID as a routing
+parameter and then use the service in questStorageService.js to fetch
+that quest's information and then place a marker for each quest step location
+on a Google Map.
