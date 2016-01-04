@@ -64,3 +64,17 @@ get to the Street View Div).  Using the scope passed in. we have access
 to the "step" from the ng-repeat ('step in quest.steps').  Then, with
 each quest step, we take its latitude and longitude and create
 a Google Street View.
+
+#### Create Quest View
+
+The two main actions in this view is to (1) add a task and to (2) submit
+a quest once all tasks are added.  There are two clusters of HTML input
+elements that map to those two actions.  $scope.addStep starts off 
+quest creation by (1) taking the step info and saving it away and
+by (2) adding a representation of that step to the DOM.  There is additional
+logic (helper functions) to check that all the input fields have values and
+we also call into the client/services/inputConversionService.js to handle
+formatting time and money.  By clicking Submit Quest, we call into
+questStorageService.js post the entire quest up to the server and then
+redirect the user to the Quest List View.
+
