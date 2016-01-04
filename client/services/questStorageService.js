@@ -17,33 +17,34 @@ angular.module('cityQuest.questStorageService', [])
 
   var saveCity = function(cityStr){
     $window.localStorage.setItem('city', cityStr);
-    selectedCity.name = cityStr;
-    setCityCoordinates(selectedCity);
+    setCityCoordinates(cityStr);
   };
 
-  var setCityCoordinates = function(cityObj){
+  var setCityCoordinates = function(cityStr){
     $http({
         method: 'POST',
         url: '/api/geocode',
-        data: {"city": cityObj.name}
+        data: {"city": cityStr}
     })
     .then(function(res){
-      $window.localStorage.setItem('coords', res.data);
-      cityObj.coordinates = res.data;
+      $window.localStorage.setItem('coords', JSON.stringify(res.data));
     });
   };
 
   var getCity = function(){
-    if(selectedCity.isEmpty()){
+    var cityName = $window.localStorage.getItem('city');
+    if(cityName){
+      return cityName;
+    }
+    else{
       $location.path('/');
-    } else {
-      return selectedCity.name;
     }
   };
 
   var getCoords = function(){
-    return $window.localStorage.getItem('coords');
-    // return selectedCity.coordinates;
+    var coords = $window.localStorage.getItem('coords');
+    console.log(coords);
+    return JSON.parse(coords);
   };
 
   var getSingleQuest = function(questId){

@@ -3,7 +3,7 @@ angular.module('cityQuest.questList', [])
 .controller('questListCtrl', function($scope, $window, QuestStorage, Auth, InputConversion, $location){
   $scope.quests = null;
   $scope.showNoQuestsFoundMsg = false;
-  $scope.currCity = $window.localStorage.getItem('city');
+  $scope.currCity = InputConversion.capitalizeFirstLetter($window.localStorage.getItem('city'));
   $scope.signout = function() {
     Auth.signout();
   };

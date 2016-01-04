@@ -3,6 +3,14 @@ angular.module('cityQuest.inputConversionService', [])
 .factory('InputConversion', function(){
   var inputConversion = {};
 
+  inputConversion.capitalizeFirstLetter = function(str) {
+    var words = str.split(' ');
+    words.forEach(function(val, i, coll){
+      coll[i] = val.charAt(0).toUpperCase() + val.slice(1);
+    });
+    return words.join(' ');
+  };
+
   inputConversion.minutesToHours = function(minutes){
     var hours = Math.floor(minutes / 60);
     var remainder = minutes % 60;

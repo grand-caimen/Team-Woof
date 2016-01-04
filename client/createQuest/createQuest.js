@@ -1,6 +1,6 @@
 angular.module('cityQuest.createQuest', [])
 
-.controller('createQuestCtrl', function($scope, $location, QuestStorage, uiGmapGoogleMapApi, Auth, InputConversion){
+.controller('createQuestCtrl', function($scope, $location, $window, QuestStorage, uiGmapGoogleMapApi, Auth, InputConversion){
    $scope.myloc = QuestStorage.getCoords();
    $scope.quest = {};
    $scope.quest.city = QuestStorage.getCity();
@@ -11,7 +11,7 @@ angular.module('cityQuest.createQuest', [])
    $scope.step = {};
    $scope.stepCount = 1;
    $scope.lastStep = "";
-
+   $scope.currCity = InputConversion.capitalizeFirstLetter($window.localStorage.getItem('city'));
    uiGmapGoogleMapApi.then(function(maps) {
     $scope.markers = [];
     $scope.map = {
