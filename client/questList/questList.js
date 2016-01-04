@@ -1,9 +1,9 @@
 angular.module('cityQuest.questList', [])
 
-.controller('questListCtrl', function($scope, QuestStorage, Auth, InputConversion, $location){
+.controller('questListCtrl', function($scope, $window, QuestStorage, Auth, InputConversion, $location){
   $scope.quests = null;
   $scope.showNoQuestsFoundMsg = false;
-
+  $scope.currCity = $window.localStorage.getItem('city');
   $scope.signout = function() {
     Auth.signout();
   };

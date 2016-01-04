@@ -1,16 +1,22 @@
 angular.module('cityQuest.questStorageService', [])
 
-.factory('QuestStorage', function($http, $location){
+.factory('QuestStorage', function($http, $location, $window){
   var EMPTY_CITY = '';
   var selectedCity = {
     name: EMPTY_CITY,
     coordinates: {},
     isEmpty: function(){
+      var cityName = $window.localStorage.getItem('city');
+      if(cityName){
+        selectedCity.name = cityName;
+        return false;
+      }
       return selectedCity.name === EMPTY_CITY;
     }
   };
 
   var saveCity = function(cityStr){
+    $window.localStorage.setItem('city', cityStr);
     selectedCity.name = cityStr;
     setCityCoordinates(selectedCity);
   };
@@ -22,6 +28,7 @@ angular.module('cityQuest.questStorageService', [])
         data: {"city": cityObj.name}
     })
     .then(function(res){
+      $window.localStorage.setItem('coords', res.data);
       cityObj.coordinates = res.data;
     });
   };
@@ -35,7 +42,8 @@ angular.module('cityQuest.questStorageService', [])
   };
 
   var getCoords = function(){
-    return selectedCity.coordinates;
+    return $window.localStorage.getItem('coords');
+    // return selectedCity.coordinates;
   };
 
   var getSingleQuest = function(questId){
@@ -51,7 +59,7 @@ angular.module('cityQuest.questStorageService', [])
 
   var getAllQuests = function(){
     return $http.get(
-       '/api/quests/?city=' + selectedCity.name
+       '/api/quests/?city=' + $window.localStorage.getItem('city')
         )
         .then(function(res){
           var fetchedQuests = res.data;
