@@ -1,26 +1,13 @@
 angular.module('cityQuest.questStorageService', [])
 
 .factory('QuestStorage', function($http, $location, $window){
-  var EMPTY_CITY = '';
-  var selectedCity = {
-    name: EMPTY_CITY,
-    coordinates: {},
-    isEmpty: function(){
-      var cityName = $window.localStorage.getItem('city');
-      if(cityName){
-        selectedCity.name = cityName;
-        return false;
-      }
-      return selectedCity.name === EMPTY_CITY;
-    }
-  };
-
-  var saveCity = function(cityStr){
+  var questStorage = {};
+  questStorage.saveCity = function(cityStr){
     $window.localStorage.setItem('city', cityStr);
-    setCityCoordinates(cityStr);
+    this.setCityCoordinates(cityStr);
   };
 
-  var setCityCoordinates = function(cityStr){
+  questStorage.setCityCoordinates = function(cityStr){
     $http({
         method: 'POST',
         url: '/api/geocode',
@@ -31,7 +18,7 @@ angular.module('cityQuest.questStorageService', [])
     });
   };
 
-  var getCity = function(){
+  questStorage.getCity = function(){
     var cityName = $window.localStorage.getItem('city');
     if(cityName){
       return cityName;
@@ -41,13 +28,12 @@ angular.module('cityQuest.questStorageService', [])
     }
   };
 
-  var getCoords = function(){
+  questStorage.getCoords = function(){
     var coords = $window.localStorage.getItem('coords');
-    console.log(coords);
     return JSON.parse(coords);
   };
 
-  var getSingleQuest = function(questId){
+  questStorage.getSingleQuest = function(questId){
     return $http.get(
       '/api/quests/?_id=' + questId
       ).then(function(res){
@@ -58,7 +44,7 @@ angular.module('cityQuest.questStorageService', [])
     });
   };
 
-  var getAllQuests = function(){
+  questStorage.getAllQuests = function(){
     return $http.get(
        '/api/quests/?city=' + $window.localStorage.getItem('city')
         )
@@ -71,7 +57,7 @@ angular.module('cityQuest.questStorageService', [])
         });
   };
 
-  var saveNewQuestAndGoToQuestList = function(quest){
+  questStorage.saveNewQuestAndGoToQuestList = function(quest){
     $http({
         method: 'POST',
         url: '/api/quests',
@@ -82,13 +68,6 @@ angular.module('cityQuest.questStorageService', [])
     });
   };
 
-  return {
-    getSingleQuest: getSingleQuest,
-    getAllQuests: getAllQuests,
-    saveNewQuestAndGoToQuestList: saveNewQuestAndGoToQuestList,
-    saveCity: saveCity,
-    getCoords: getCoords,
-    getCity: getCity
-  }
+  return questStorage;
 });
 
