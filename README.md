@@ -44,4 +44,18 @@ the corresponding quest._id as a routing parameter to client/questView/questView
 The controller in questView.js will receive the quest ID as a routing
 parameter and then use the service in questStorageService.js to fetch
 that quest's information and then place a marker for each quest step location
-on a Google Map.
+on a Google Map embedded in questView.html.
+
+Another aspect of questView.html to call out is the usage of a custom directive,
+client/questView/stepViewDirective.js.  This directive will use
+the stepViewTemplate.html to ng-repeat all the individual steps in a quest.
+The motivating reason for creating a custom directive was to dynamically
+populate the Google Street View for each step of the quest.
+To accomplish this, we pass a function to the directive's "link" property.
+This "link" function will get passed the current $scope and the
+directive's html element (which we have to drill down into to ultimately
+get to the Street View Div).  Using the scope passed in. we have access
+to the "step" from the ng-repeat ('step in quest.steps').  Then, with
+each quest step, we take its latitude and longitude and create
+a Google Street View.
+
