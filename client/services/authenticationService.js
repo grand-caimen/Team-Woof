@@ -1,7 +1,8 @@
 angular.module('cityQuest.authenticationService', [])
 
 .factory('Auth', function ($http, $location, $window) {
-  var signin = function (user) {
+  var auth = {};
+  auth.signin = function (user) {
     return $http({
       method: 'POST',
       url: '/api/users/signin',
@@ -14,7 +15,7 @@ angular.module('cityQuest.authenticationService', [])
     });
   };
 
-  var signup = function (user) {
+  auth.signup = function (user) {
     return $http({
       method: 'POST',
       url: '/api/users/signup',
@@ -27,19 +28,14 @@ angular.module('cityQuest.authenticationService', [])
     });
   };
 
-  var isAuth = function () {
+  auth.isAuth = function () {
     return !!$window.localStorage.getItem('sessiontoken'); 
   };
 
-  var signout = function () {
+  auth.signout = function () {
     $window.localStorage.removeItem('sessiontoken');
     $location.path('/signin');
   };
 
-  return {
-    signin: signin,
-    signup: signup,
-    isAuth: isAuth,
-    signout: signout
-  }
+  return auth;
 });
