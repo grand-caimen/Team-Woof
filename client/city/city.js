@@ -5,7 +5,7 @@ angular.module('cityQuest.city', [])
   $scope.gPlace;
 
   $scope.citySelect = function(){
-    QuestStorage.saveCity($scope.city.toLowerCase()); 
+    QuestStorage.saveCity($scope.city); 
     $location.path('/questList');
   };
 
@@ -18,13 +18,15 @@ angular.module('cityQuest.city', [])
   sessionCheck();
 })
 //Google Places Autocomplete
-.directive('googleplace', function() {
+.directive('googleplaces', function() {
   return {
     require: 'ngModel',
     link: function(scope, element, attrs, model) {
       var options = {
         types: [],
-        componentRestrictions: {}
+        componentRestrictions: {
+          country: 'US'
+        }
       };
       scope.gPlace = new google.maps.places.Autocomplete(element[0], options);
 
