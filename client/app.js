@@ -60,5 +60,3 @@ function routeDefinition($routeProvider){
 };
 
 
-
-
