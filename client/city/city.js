@@ -4,7 +4,7 @@ angular.module('cityQuest.city', [])
   $scope.city = "";
 
   $scope.citySelect = function(){
-    QuestStorage.saveCity($scope.city.toLowerCase()); 
+    QuestStorage.saveCity($scope.city.toLowerCase());
     $location.path('/questList');
   };
 
