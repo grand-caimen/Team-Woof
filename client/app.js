@@ -12,6 +12,7 @@ var cityQuestApp = angular.module('cityQuestApp',[
                                  'cityQuest.auth',
                                  'ngTagsInput',
                                  'uiGmapgoogle-maps',
+                                 'angular.filter'
                                  ]);
 
 cityQuestApp.config(['$routeProvider',
