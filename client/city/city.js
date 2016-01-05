@@ -23,9 +23,8 @@ angular.module('cityQuest.city', [])
     require: 'ngModel',
     link: function(scope, element, attrs, model) {
       var options = {
-        types: [],
+        types: ['(cities)'],
         componentRestrictions: {
-          country: 'US'
         }
       };
       scope.gPlace = new google.maps.places.Autocomplete(element[0], options);
