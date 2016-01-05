@@ -1,0 +1,25 @@
+<style>
+  body {background-size: cover !important;}
+</style>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" ng-init="isCollapsed = true" ng-click="isCollapsed = !isCollapsed">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav class="navbar-collapse" ng-class="{collapse: isCollapsed}">
+      <ul class="nav navbar-nav navbar-right dropdown">
+        <li><a class="active fade-in-three-quarter-sec" style="color:#B3D221;"> {{ currCity }} </a></li>
+        <li><a class="active fade-in-three-quarter-sec" href="/#/">Select City</a></li>
+        <li><a class="active fade-in-three-quarter-sec selected" href="/#/questList">Quest List</a></li>
+        <li><a class="active fade-in-three-quarter-sec" href="/#/createQuest">Create Quest</a></li>
+        <li><a class="active fade-in-three-quarter-sec" href="/#/profile">Profile</a></li>
+        <li><a class="active fade-in-three-quarter-sec" href="/#/signin" ng-click="signout()">Sign Out</a></li>
+      </ul>
+    </nav><!--/.nav-collapse -->
+  </div>
+</div>

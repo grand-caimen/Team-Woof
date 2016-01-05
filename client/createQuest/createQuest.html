@@ -1,5 +1,5 @@
 <style>
-  body { background-size: contain; } 
+  body { background-size: contain; }
 </style>
 
 <div class="navbar transparent navbar-default navbar-fixed-top" role="navigation">
@@ -17,6 +17,7 @@
         <li><a class="active fade-in-three-quarter-sec" href="/#/">Select City</a></li>
         <li><a class="active fade-in-three-quarter-sec selected" href="/#/questList">Quest List</a></li>
         <li><a class="active fade-in-three-quarter-sec" href="/#/createQuest">Create Quest</a></li>
+        <li><a class="active fade-in-three-quarter-sec" href="/#/profile">Profile</a></li>
         <li><a class="active fade-in-three-quarter-sec" href="/#/signin" ng-click="signout()">Sign Out</a></li>
       </ul>
     </nav><!--/.nav-collapse -->
@@ -61,7 +62,7 @@
 
             <div class="row">
               <div class="col-md-6">
-              <div id="step" class="col-md-12" style="padding:0;"></div>  
+              <div id="step" class="col-md-12" style="padding:0;"></div>
 
                 <div class="input-group">
                   <span class="input-group-addon">Task {{stepCount + 1}}</span>
@@ -73,13 +74,13 @@
                       <span class="input-group-addon">Cost</span>
                       <input required ng-model="currentStep.cost" type="text" class="form-control">
                     </div>
-                  </div> 
+                  </div>
                   <div class="col-md-6">
                     <div class="input-group no-margin">
                       <span class="input-group-addon">Minutes</span>
                       <input required ng-model="currentStep.time" type="text" class="form-control">
                     </div>
-                  </div> 
+                  </div>
                 </div>
                 <div ng-show="markerErr" class="col-md-4 col-md-offset-3">
                   <button type="button" class="btn btn-danger make-quest-err">Place a Marker of the Location</button>
@@ -99,9 +100,9 @@
 
             <div class="col-md-6 map-container">
               <ui-gmap-google-map center="map.center" zoom="map.zoom" events="map.events">
-                <ui-gmap-marker 
-                    ng-repeat="marker in markers" 
-                    coords="marker.coords" 
+                <ui-gmap-marker
+                    ng-repeat="marker in markers"
+                    coords="marker.coords"
                     idkey="marker.id" >
                 </ui-gmap-marker>
               </ui-gmap-google-map>
