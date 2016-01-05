@@ -19,7 +19,7 @@ cityQuestApp.config(['$routeProvider',
 cityQuestApp.config(function(uiGmapGoogleMapApiProvider) {
     uiGmapGoogleMapApiProvider.configure({
         key: 'AIzaSyB_EZ_1pgc_Ig9iVlXNTRkIN_4y7VFax3s',
-        v: '3.20', 
+        v: '3.20',
         libraries: 'places,weather,geometry,visualization'
     });
 });
@@ -43,13 +43,17 @@ function routeDefinition($routeProvider){
     controller: 'createQuestCtrl'
   })
   .when('/signin', {
-      templateUrl: 'client/auth/signin.html',
-      controller: 'authController'
-    })
+    templateUrl: 'client/auth/signin.html',
+    controller: 'authController'
+  })
   .when('/signup', {
-      templateUrl: 'client/auth/signup.html',
-      controller: 'authController'
-    })
+    templateUrl: 'client/auth/signup.html',
+    controller: 'authController'
+  })
+  .when('/profile', {
+    templateUrl: 'client/profile/profile.html',
+    controller: 'profileCtrl'
+  })
   .otherwise({
     redirectTo: '/'
   });
