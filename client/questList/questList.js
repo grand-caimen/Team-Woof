@@ -15,6 +15,7 @@ angular.module('cityQuest.questList', [])
       if(questsFound){
         quests.forEach(function(quest){
           quest.time = InputConversion.minutesToHours(quest.time);
+          quest.rating = InputConversion.ratingAverage(quest.rating);
         });
         $scope.quests = quests;
       }else{

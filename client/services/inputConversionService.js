@@ -40,5 +40,17 @@ angular.module('cityQuest.inputConversionService', [])
     else return "$" + dollars;
   };
 
+  inputConversion.ratingAverage = function (ratingArray) {
+    if (ratingArray.length === 0) {
+      return 0;
+    }
+    var total = 0;
+    for (var x = 0; x < ratingArray.length; x++) {
+      total += ratingArray[x];
+    }
+    var average = total / ratingArray.length;
+    return average.toFixed(2);
+  };
+
   return inputConversion;
 });
