@@ -20,6 +20,7 @@
     "ng-tags-input": "~3.0.0",
     "angular": "~1.4.8",
     "angular-route": "~1.4.8",
-    "angular-google-maps": "~2.2.1"
+    "angular-google-maps": "~2.2.1",
+    "angular-filter": "~0.5.8"
   }
 }
