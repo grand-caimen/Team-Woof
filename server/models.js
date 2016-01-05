@@ -35,7 +35,11 @@ var userSchema = new Schema({
 	password: {
 		type: String,
 		required: true
-	}
+	},
+	experience: Number,
+	createdQuests: [Number],
+	completedQuests: [Number],
+	xp: Number
 
 });
 
