@@ -5,7 +5,7 @@ angular.module('cityQuest.city', [])
   $scope.gPlace;
 
   $scope.citySelect = function(){
-    QuestStorage.saveCity($scope.city); 
+    QuestStorage.saveCity($scope.city.toLowerCase());
     $location.path('/questList');
   };
 
@@ -32,7 +32,7 @@ angular.module('cityQuest.city', [])
 
       google.maps.event.addListener(scope.gPlace, 'place_changed', function() {
         scope.$apply(function() {
-            model.$setViewValue(element.val());                
+            model.$setViewValue(element.val());
         });
       });
     }
