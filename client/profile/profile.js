@@ -1,4 +1,4 @@
-angular.module('cityQuest.questList', [])
+angular.module('cityQuest.profile', [])
 
 .controller('profileCtrl', function($scope, $window, QuestStorage, Auth, InputConversion, $location){
   $scope.quests = null;

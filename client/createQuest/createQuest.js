@@ -118,10 +118,10 @@ angular.module('cityQuest.createQuest', [])
                 $scope.$apply();
             }
       },
-      center: { 
+      center: {
          latitude: $scope.userLocation.lat,
          longitude: $scope.userLocation.lng
-       }, 
+       },
       zoom: 13
     }
     });

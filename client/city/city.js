@@ -5,7 +5,11 @@ angular.module('cityQuest.city', [])
   $scope.gPlace;
 
   $scope.citySelect = function(){
+<<<<<<< HEAD
     QuestStorage.saveCity($scope.city); 
+=======
+    QuestStorage.saveCity($scope.city.toLowerCase());
+>>>>>>> fixed questList bug
     $location.path('/questList');
   };
 
