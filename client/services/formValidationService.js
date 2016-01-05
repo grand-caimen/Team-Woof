@@ -1,7 +1,8 @@
 angular.module('cityQuest.formValidationService', [])
 
 .factory('FormValidation', function(InputConversion){
-  var isRequiredQuestFieldMissing = function(scopeQuest){
+  var formValidation = {};
+  formValidation.isRequiredQuestFieldMissing = function(scopeQuest){
     var fieldMissing = true;
     if( ! scopeQuest.name){
       alert("Provide a quest title");
@@ -27,7 +28,7 @@ angular.module('cityQuest.formValidationService', [])
     return fieldMissing;
   };
 
-  var isRequiredStepFieldMissing = function(scopeCurrentStep){
+  formValidation.isRequiredStepFieldMissing = function(scopeCurrentStep){
     var fieldMissing = true;
     if( ! scopeCurrentStep.description){
       alert("Provide a task description");
@@ -65,7 +66,7 @@ angular.module('cityQuest.formValidationService', [])
     return fieldMissing;
   };
 
-  var isMarkerMissing = function(scopeMarkers){
+  formValidation.isMarkerMissing = function(scopeMarkers){
     if(scopeMarkers.length === 0){
       return true;
     } else {
@@ -73,10 +74,6 @@ angular.module('cityQuest.formValidationService', [])
     }
   };
 
-  return {
-    isRequiredQuestFieldMissing: isRequiredQuestFieldMissing,
-    isRequiredStepFieldMissing: isRequiredStepFieldMissing,
-    isMarkerMissing: isMarkerMissing
-  };
+  return formValidation;
 });
 
