@@ -27,6 +27,7 @@ angular.module('cityQuest.questView', [])
     QuestStorage.getSingleQuest($scope.questId).then(function(quest){
       $scope.quest = quest;
       $scope.quest.time = InputConversion.minutesToHours($scope.quest.time);
+      $scope.quest.rating = InputConversion.ratingAverage($scope.quest.rating);
       $scope.quest.steps.forEach(function(step){
         step.cost = InputConversion.moneyConversion(step.cost)
         step.time = InputConversion.minutesToHours(step.time);

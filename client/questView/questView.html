@@ -33,15 +33,15 @@
           <div class="col-md-12">
             <img class="quest-view-image" ng-src="{{quest.image}}">
           </div>
-          <div class="col-md-9">
+          <div class="col-md-7">
             <h1 class="quest-view-title">{{ quest.name }}</h1>
             <h4 class="quest-view-descript">{{ quest.description }}</h4>
           </div>
-          <div class="col-md-3" style="margin-top:15px;">
+          <div class="col-md-5" style="margin-top:15px;">
             <div class="row">
-              <div class="col-md-5 tab">
+              <div class="col-md-4 tab">
                 <div class="row">
-                  <div class="col-md-3 tab-image-container">
+                  <div class="col-md-2 tab-image-container">
                     <img class="tab-image" src="client/img/icons/cost.png">
                   </div>
 
@@ -52,12 +52,27 @@
                   </div>
                 </div>
               </div>
+                <div class="col-md-1" style="padding:0;"></div>
+
+                <div class="col-md-4 tab">
+                    <div class="row">
+                        <div class="col-md-2 tab-image-container">
+                            <img class="tab-image" src="client/img/icons/star.png">
+                        </div>
+
+                        <div class="col-md-2 split-line"></div>
+
+                        <div class="col-md-2 tab-image-container">
+                            <p class="tab-text">{{ quest.rating }}</p>
+                        </div>
+                    </div>
+                </div>
 
               <div class="col-md-1" style="padding:0;"></div>
 
-              <div class="col-md-5 tab">
+              <div class="col-md-4 tab">
                 <div class="row">
-                  <div class="col-md-3 tab-image-container">
+                  <div class="col-md-2 tab-image-container">
                     <img class="tab-image" src="client/img/icons/time.png">
                   </div>
 
