@@ -52,7 +52,7 @@ app.post('/api/users/signup', function(req, res){
 
 app.post('/api/users/signin', function(req, res){
 	signin(req, res, res.send);
-	
+
 });
 
 
@@ -69,6 +69,11 @@ app.post('/api/geocode*', function(req, res){
     res.send(data.results[0].geometry.location);
   });
 })
+
+app.post('/api/users/profile', function (req, res) {
+ console.log('req', req);
+ res.send('User information requested for', req.body);
+});
 
 
 
