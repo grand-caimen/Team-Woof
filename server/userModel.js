@@ -4,6 +4,18 @@ var jwt  = require('jwt-simple');
 
 module.exports = {
 
+  addReview: function (req, res, next) {
+    var user = req.body.username;
+    var review = req.body.review;
+    var rating = req.body.rating;
+    var questId = req.body.questId;
+
+    //modify DB with the quest ID 
+
+
+
+  },
+ 
   returnUser: function(req, res, next){
     var username = req.body.username;
     var findUser = Q.nbind(User.findOne, User);

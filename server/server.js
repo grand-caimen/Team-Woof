@@ -76,6 +76,11 @@ app.post('/api/users/profile', function (req, res) {
  returnUser(req, res);
 });
 
+app.post('/api/reviews', function (req, res) {
+  addReview(req, res, next);
+  res.send(req.body);
+});
+
 
 
 
