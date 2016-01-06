@@ -1,6 +1,6 @@
 <div class="clear"></div>
 <div id='signup' class='col-md-12'>
-  <div class="col-md-4 col-md-offset-4">
+  <div class="col-md-4 col-md-offset-4 loginbox">
     <h2 class="sign-in-up-title fade-in-three-quarter-sec">Sign Up</h2>
     <form name="signupForm" ng-submit='signup()'>
       <input type='text' name='Username' placeholder='Username' class='form-control my-margin-quarter-em fade-in-three-quarter-sec shadow' ng-model='user.username' ng-minlength="3">
@@ -10,6 +10,6 @@
       <div ng-show="showErr" class='message-error shadow'>{{err}}</div>
       <button class="btn btn-primary fade-in-1-and-three-quarter-sec sign-in-up-button-text my-margin-half-em shadow">Join the fellowship</button>
     </form>
-    <a href="#/signin" class='account fade-in-1-and-three-quarter-sec'>Perchance already have an account? If aye, click hither and <strong>sign in!</strong></a>
+    <a href="#/signin" class='account fade-in-1-and-three-quarter-sec loginlink'>Perchance already have an account? If aye, click hither and <strong>sign in!</strong></a>
   </div>
 </div>
