@@ -8,6 +8,16 @@ body {
   background-size: cover;
 }
 
+.loginbox {
+    background-color:rgba(80,80,80,0.3);
+    padding-bottom:20px;
+    border-radius:10px;
+}
+
+.loginlink {
+    color:white;
+}
+
 a:hover {
   text-decoration: none;
 }
