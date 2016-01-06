@@ -37,8 +37,8 @@ var userSchema = new Schema({
 		required: true
 	},
 	experience: Number,
-	createdQuests: [Number],
-	completedQuests: [Number],
+	createdQuests: [],
+	completedQuests: [],
 	xp: Number
 
 });
