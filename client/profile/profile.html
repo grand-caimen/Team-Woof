@@ -27,21 +27,121 @@
 <div id='container'>
     <div class="col-md-12 logo-blank"></div>
     <div class="col-md-12 logo-blank"></div>
+    <div class="col-md-6 col-md-offset-3 user"><h3>Welcome, thouest {{ user.username }}...<h3></div>
+    <div class="col-md-10 col-md-offset-1 questContainer">
+
+      <div class="row">
+        <div class='col-md-6 questList input-front fade-in-three-quarter-sec' ng-repeat="completedQuest in user.completedQuests | searchField: 'tags' | filter:search"> A Completed Quest:
+          <div class="col-md-12 questItem">
+            <div class="col-md-1 quest-image-container">
+              <img class="quest-image " ng-src="{{ completedQuest.image }}">
+            </div>
+            <div class="col-md-5 no-padding-right quest-text">
+              <a href="/#/questView/{{completedQuest._id}}"><h2 class="quest-title">{{ completedQuest.name }}</h2></a>
+
+              <p class="quest-descript">{{ completedQuest.description }}</p>
+              <span ng-repeat='tag in completedQuest.tags'><span class="quest-view-tags">{{tag.text}}</span></span>
+            </div>
+            <div class="col-md-2 tabs hidden-xs hidden-sm">
+              <div class="col-md-12 tab">
+                <div class="row">
+                  <div class="col-md-3 tab-image-container">
+                    <img class="tab-image" src="client/img/icons/cost.png">
+                  </div>
+
+                  <div class="col-md-2 split-line"></div>
+
+                  <div class="col-md-2 tab-image-container">
+                    <p class="tab-text">{{ completedQuest.cost }}</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-12 tab">
+                <div class="row">
+                  <div class="col-md-3 tab-image-container">
+                    <img class="tab-image" src="client/img/icons/time.png">
+                  </div>
+
+                  <div class="col-md-2 split-line"></div>
+
+                  <div class="col-md-2 tab-image-container">
+                    <p class="tab-text">{{ completedQuest.time }}</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-12 tab">
+                  <div class="row">
+                      <div class="col-md-3 tab-image-container">
+                          <img class="tab-image" src="client/img/icons/star.png">
+                      </div>
+
+                      <div class="col-md-2 split-line"></div>
+
+                      <div class="col-md-2 tab-image-container">
+                          <p class="tab-text">{{ completedQuest.rating }}</p>
+                      </div>
+                  </div>
+              </div>
+
+              <!-- complete button/completed -->
+
+              <!-- <div class="col-md-4 tab">
+                  <div class="row">
+                      <div class="col-md-2 tab-image-container">
+                          <img class="tab-image" src="client/img/icons/checkmark.png">
+                      </div>
+
+                      <div class="col-md-2 split-line"></div>
+
+                      <div class="col-md-2 tab-image-container">
+                          <p class="tab-text complete">Complete</p>
+                      </div>
+                  </div>
+              </div> -->
+
+            </div>
+            <div class="clean"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="clean"></div>
+    </div>
+<!-- <div class="row">
+        <div class='col-md-6 questList input-front fade-in-three-quarter-sec' ng-repeat="completedQuest in user.completedQuests | searchField: 'tags' | filter:search">
+          <div class="col-md-12 questItem">
+            <div class="col-md-1 quest-image-container">
+              <img class="quest-image " ng-src="{{user.completedQuest.image}}">
+            </div>
+            <div class="col-md-5 no-padding-right quest-text">Completed Quests: {{ completedQuest.name }}
+              <a href="/#/questView/{{quest._id}}"><h2 class="quest-title">{{ quest.name }}</h2></a>
+              </div>
+              </div>
+              </div>
+              </div>
+              </div> -->
+
+
+
+<!--     <div class="col-md-12 logo-blank"></div>
+    <div class="col-md-12 logo-blank"></div>
     <div class="col-md-6 questList input-front fade-in-three-quarter-sec">
     <div class="col-md-6 col-md-offset-3 user">Welcome, {{ user.username }}</div>
     <br>
       <div>
+
+
+
         <ul class='profile-stats'>
-          <div class="profile profile-xp">{{ user.xp }}</div>
-          <div class="profile profile-created">{{ user.createdQuests }}</div>
-          <div class="profile profile-completed">{{ user.completedQuests }}</div>
+          <div class="profile profile-xp">XP: {{ user.xp }}</div>
+          <div class="profile profile-created">Created Quests: {{ user.createdQuests }}</div>
+          <div class="profile profile-completed">Completed Quests: {{ user.completedQuests }}</div>
         </ul>
       </div>
 
 
     </div>
-
-    <div class="clean"></div>
-    </div>
+    </div> -->
 
 

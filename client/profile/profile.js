@@ -15,13 +15,23 @@ angular.module('cityQuest.profile', [])
     }
   };
 
-  var user = JSON.stringify($rootScope.user);
-
   $scope.getProfile = function() {
-    QuestStorage.getProfile(user)
+    QuestStorage.getProfile($rootScope.user)
     .then(function(res) {
-      console.log('res after clicking profile :', res)
+      res.completedQuests.forEach(function(completedQuest){
+        completedQuest.time = InputConversion.minutesToHours(completedQuest.time);
+        completedQuest.rating = InputConversion.ratingAverage(completedQuest.rating);
+      });
+
       $rootScope.user = res;
+
+      console.log('user after clicking profile:', $rootScope.user);
+
+      // $rootScope.user.completedQuests = [{
+      //   image: null,
+      //   name: 'Test Quest!'
+      // }];
+      // console.log('completedQuests: ', $rootScope.user.completedQuests);
     })
   };
 
