@@ -3,6 +3,16 @@ var Q    = require('q');
 var jwt  = require('jwt-simple');
 
 module.exports = {
+
+  returnUser: function(req, res, next){
+    var username = req.body.username;
+    var findUser = Q.nbind(User.findOne, User);
+    findUser({username: username})
+      .then(function (user) {
+        res.status(200).send(user);
+      })  
+  },
+
   signin: function (req, res, next) {
     var username = req.body.username,
         password = req.body.password;

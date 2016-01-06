@@ -14,6 +14,7 @@ var Quest = models.Quest;
 var User = models.User;
 var signup = userModels.signup;
 var signin = userModels.signin;
+var returnUser = userModels.returnUser;
 var authUser = userModels.checkAuth;
 
 
@@ -71,8 +72,8 @@ app.post('/api/geocode*', function(req, res){
 })
 
 app.post('/api/users/profile', function (req, res) {
- console.log('req', req);
- res.send('User information requested for', req.body);
+ console.log('User profile requested for', req.body.username);
+ returnUser(req, res);
 });
 
 
