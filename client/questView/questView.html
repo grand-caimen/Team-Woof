@@ -142,6 +142,12 @@
                     >
                 </ui-gmap-marker>
           </ui-gmap-google-map>
+          <div>
+              <h2 class="review_h2">Reviews</h2>
+              <ul>
+             <span class="row review-view-steps" ng-repeat='review in quest.reviews'><span class="review-view-review"><li>"...{{review.review}}" </br>- {{review.username}}</li></span></span>
+              </ul>
+              </span>
           </div>
 
           <div class="clean"></div>

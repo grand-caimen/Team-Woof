@@ -487,3 +487,13 @@ tags-input .tags .tag-item {
   cursor: pointer;
   background-color: #990000;
 }
+
+.review-view-review {
+    font-style: italic;
+    font-size: 18px;
+    line-height: 0.9;
+}
+
+.review_h2 {
+    text-decoration: underline;
+}
