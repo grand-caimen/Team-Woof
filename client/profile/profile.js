@@ -21,6 +21,7 @@ angular.module('cityQuest.profile', [])
     QuestStorage.getProfile(user)
     .then(function(res) {
       console.log('res after clicking profile :', res)
+      $rootScope.user = res;
     })
   };
 
