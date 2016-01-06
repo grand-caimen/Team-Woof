@@ -1,7 +1,7 @@
 body {
-  background-image: url(../img/bg.jpg);
+  background: url(../img/bg.jpg) no-repeat top center fixed;
   background-color: #000001;
-  background-repeat: no-repeat;
+  /*background-repeat: no-repeat;*/
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
