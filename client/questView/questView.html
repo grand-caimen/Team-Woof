@@ -88,22 +88,25 @@
               <div class="col-md-4 tab" ng-controller='ReviewCtrl'>
                 <script type="text/ng-template" id="myModalContent.html">
                     <div class="modal-header">
-                        <h3 class="modal-title">I am a modal!</h3>
+                        <h1 class="modal-title quest-view-title">Thou hast completed thy quest!</h1>
+                        <h4>Review the quest to gain XP.</h4>
                     </div>
                     <div class="modal-body">
-                        <ul>
-                            <li ng-repeat="item in items">
-                                <a href="#" ng-click="$event.preventDefault(); selected.item = item">{{ item }}</a>
-                            </li>
-                        </ul>
-                        Selected: <b>{{ selected.item }}</b>
+                        <div ng-controller="RatingCtrl">
+                          <h3>Rating</h3>
+                          <uib-rating ng-model="rate" max="max" readonly="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null" aria-labelledby="default-rating"></uib-rating>
+                        </div>
+                        <div>
+                          <h3>Review</h1>
+                          <textarea class='form-control' ng-model='review.text'></textarea>
+                        </div>
                     </div>
                     <div class="modal-footer">
-                        <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
-                        <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+                        <button class="btn btn-primary review-btn" type="button" ng-click="ok()">OK</button>
+                        <button class="btn btn-warning review-btn" type="button" ng-click="cancel()">Cancel</button>
                     </div>
                 </script>                
-                <div class="row complete" ng-click='open()'>
+                <div class="row complete" ng-click="open('lg')">
                     <div class="col-md-2 tab-image-container">
                         <img class="tab-image" src="client/img/icons/checkmark.png">
                     </div>
@@ -152,7 +155,7 @@
     </div>
   </div>
 </div>
-<div ng-controller="ReviewCtrl">
+<!-- <div ng-controller="ReviewCtrl">
         <script type="text/ng-template" id="myModalContent.html">
             <div class="modal-header">
                 <h3 class="modal-title">I am a modal!</h3>
@@ -174,3 +177,4 @@
         <button type="button" class="btn btn-default" ng-click="open()">Open me!</button>
         <div ng-show="selected">Selection from a modal: {{ selected }}</div>
     </div>
+ -->

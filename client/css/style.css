@@ -487,3 +487,17 @@ tags-input .tags .tag-item {
   cursor: pointer;
   background-color: #990000;
 }
+
+.rating-star {
+  height: 30px;
+  width: 30px;
+}
+.glyphicon.ng-scope.glyphicon-star {
+  font-size: 2em;
+  color: #FFCC00;
+}    
+  
+.glyphicon.ng-scope.glyphicon-star-empty {
+    font-size: 2em;
+}
+
