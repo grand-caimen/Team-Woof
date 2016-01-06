@@ -18,6 +18,10 @@ body {
     color:white;
 }
 
+.user {
+  text-align: center;
+}
+
 a:hover {
   text-decoration: none;
 }
@@ -87,7 +91,7 @@ input {
 }
 
 .search {
-  padding: 0 0 0 35px;  
+  padding: 0 0 0 35px;
   height: 40px;
   margin-top: 30px;
   margin-bottom: 30px;
@@ -364,7 +368,7 @@ tags-input .tags .tag-item {
 }
 
 .angular-google-map-container {
- height: 400px; 
+ height: 400px;
 }
 
 .quest-view-image {

@@ -23,3 +23,25 @@
     </nav><!--/.nav-collapse -->
   </div>
 </div>
+
+<div id='container'>
+    <div class="col-md-12 logo-blank"></div>
+    <div class="col-md-12 logo-blank"></div>
+    <div class="col-md-6 questList input-front fade-in-three-quarter-sec">
+    <div class="col-md-6 col-md-offset-3 user">Welcome, {{ user.username }}</div>
+    <br>
+      <div>
+        <ul class='profile-stats'>
+          <div class="profile profile-xp">{{ user.xp }}</div>
+          <div class="profile profile-created">{{ user.createdQuests }}</div>
+          <div class="profile profile-completed">{{ user.completedQuests }}</div>
+        </ul>
+      </div>
+
+
+    </div>
+
+    <div class="clean"></div>
+    </div>
+
+
