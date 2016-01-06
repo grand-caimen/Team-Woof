@@ -10,6 +10,8 @@ body {
 
 .complete {
   padding-left: 5px;
+  background-color: #FF3300;
+  border-radius: 5px;
 }
 
 .loginbox {
@@ -479,4 +481,9 @@ tags-input .tags .tag-item {
   line-height: 35px;
   font-size: 1.3em;
   margin-top: 14px;
+}
+
+.complete:hover {
+  cursor: pointer;
+  background-color: #990000;
 }
