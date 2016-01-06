@@ -5,7 +5,7 @@ angular.module('cityQuest.city', [])
   $scope.gPlace;
 
   $scope.citySelect = function(){
-    QuestStorage.saveCity($scope.city.toLowerCase());
+    QuestStorage.saveCity($scope.city.split(',').splice(0,2).join());
     $location.path('/questList');
   };
 
