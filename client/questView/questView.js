@@ -15,10 +15,10 @@ angular.module('cityQuest.questView', [])
                 });
             },
       },
-      center: { 
+      center: {
          latitude: $scope.myloc.lat,
          longitude: $scope.myloc.lng
-      }, 
+      },
       zoom: 11
     }
   });

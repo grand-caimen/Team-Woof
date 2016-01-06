@@ -38,7 +38,7 @@ angular.module('cityQuest.questStorageService', [])
       '/api/quests/?_id=' + questId
       ).then(function(res){
         return res.data[0];
-    }) 
+    })
     .catch(function(err){
         console.log("getSingleQuest did not return any quests: ", err);
     });
