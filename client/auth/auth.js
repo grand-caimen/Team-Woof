@@ -19,6 +19,7 @@ angular.module('cityQuest.auth', [])
   };
 
   $scope.signup = function () {
+    $rootScope.user = $scope.user;
     Auth.signup($scope.user)
       .then(function (token) {
         $location.path('/');
