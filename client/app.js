@@ -12,6 +12,7 @@ var cityQuestApp = angular.module('cityQuestApp',[
                                  'cityQuest.createQuest',
                                  'cityQuest.auth',
                                  'cityQuest.review',
+                                 // 'cityQuest.reviewService',
                                  'ngTagsInput',
                                  'uiGmapgoogle-maps',
                                  'angular.filter',

@@ -1,6 +1,3 @@
-<style>
-  body {background-size: contain;}
-</style>
 
 <div class="navbar transparent navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -87,26 +84,26 @@
 
               <div class="col-md-4 tab" ng-controller='ReviewCtrl'>
                 <script type="text/ng-template" id="myModalContent.html">
-                    <div class="modal-header">
+                    <div class="modal-header review-header">
                         <h1 class="modal-title quest-view-title">Thou hast completed thy quest!</h1>
-                        <h4>Review the quest to gain XP.</h4>
+                        <h4 class="review-tagline">Review the quest to gain XP.</h4>
                     </div>
                     <div class="modal-body">
                         <div ng-controller="RatingCtrl">
                           <h3>Rating</h3>
-                          <uib-rating ng-model="rate" max="max" readonly="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null" aria-labelledby="default-rating"></uib-rating>
+                          <uib-rating ng-model="newReview.rating" max="max" readonly="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null" aria-labelledby="default-rating"></uib-rating>
                         </div>
                         <div>
                           <h3>Review</h1>
-                          <textarea class='form-control' ng-model='review.text'></textarea>
+                          <textarea class='form-control' ng-model='newReview.review'></textarea>
                         </div>
                     </div>
-                    <div class="modal-footer">
-                        <button class="btn btn-primary review-btn" type="button" ng-click="ok()">OK</button>
+                    <div class="modal-footer" >
+                        <button class="btn btn-primary review-btn" type="button" ng-click="addReview()">Submit</button>
                         <button class="btn btn-warning review-btn" type="button" ng-click="cancel()">Cancel</button>
                     </div>
                 </script>                
-                <div class="row complete" ng-click="open('lg')">
+                <div class="row complete" ng-click="open()">
                     <div class="col-md-2 tab-image-container">
                         <img class="tab-image" src="client/img/icons/checkmark.png">
                     </div>

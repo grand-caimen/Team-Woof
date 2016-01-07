@@ -8,6 +8,7 @@ angular.module('cityQuest.auth', [])
     Auth.signin($scope.user)
       .then(function () {
         if(Auth.isAuth()){
+          sessionStorage.setItem('username', $scope.user.username);
           $location.path('/');
         }
       })
