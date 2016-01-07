@@ -74,7 +74,7 @@ app.post('/api/geocode*', function(req, res){
 
 app.post('/api/users/profile', function (req, res) {
  console.log('User profile requested for', req.body.username);
- returnUser(req, res, next);
+ returnUser(req, res);
 });
 
 app.post('/api/reviews', function (req, res) {
