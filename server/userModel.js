@@ -5,6 +5,22 @@ var jwt = require('jwt-simple');
 
 module.exports = {
 
+  userAddQuest: function(reqbody){
+    console.log('userAddQuest has been called with ', reqbody.creator);
+    var creator = reqbody.creator
+    var userUpdate = Q.nbind(User.update, User);
+    var findOne = Q.nbind(Quest.findOne, Quest);
+    findOne({ name: questName })
+    .then(function(data){
+      userUpdate({username: creator}, { $push: { createdQuests: data } });
+    })
+    .then(function(data){
+      console.log('Added quest to user created quests ', data);
+    })
+
+
+  },
+
   addReview: function (req, res, next) {
     var inputUser = req.body.user;
     var inputReview = req.body.review;
