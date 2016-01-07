@@ -12,7 +12,7 @@ var cityQuestApp = angular.module('cityQuestApp',[
                                  'cityQuest.createQuest',
                                  'cityQuest.auth',
                                  'cityQuest.review',
-                                 // 'cityQuest.reviewService',
+                                 'cityQuest.viewUser',
                                  'ngTagsInput',
                                  'uiGmapgoogle-maps',
                                  'angular.filter',
@@ -58,6 +58,10 @@ function routeDefinition($routeProvider){
   .when('/profile', {
     templateUrl: 'client/profile/profile.html',
     controller: 'profileCtrl'
+  })
+  .when('/viewUser', {
+    templateUrl: 'client/viewUser/viewUser.html',
+    controller: 'ViewUserCtrl'
   })
   .otherwise({
     redirectTo: '/'
