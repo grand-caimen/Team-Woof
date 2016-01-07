@@ -5,6 +5,7 @@ angular.module('cityQuest.profile', [])
   $scope.showNoQuestsFoundMsg = false;
   $scope.currCity = InputConversion.capitalizeFirstLetter($window.localStorage.getItem('city'));
   $scope.user = QuestStorage.getUserProfile('user');
+  $scope.Math = window.Math;
 
   $scope.signout = function() {
     Auth.signout();
