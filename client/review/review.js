@@ -1,10 +1,20 @@
+
 angular.module('cityQuest.review', [])
 
-.controller('ReviewCtrl', function($scope, $uibModal, $log) {
-  $scope.items = ['item1', 'item2', 'item3'];
-  $scope.review = {
-    quest: undefined,
+.controller('ReviewCtrl', function ($scope, $rootScope, $uibModal, $log, Review) {
+  $scope.items = ['item1', 'item2', 'item3', 'fuckyou'];
+  $rootScope.newReview = {
+    questName: sessionStorage.questName,
+    user: sessionStorage.username,
+    rating: undefined,
+    review: undefined,
+  }
 
+  $scope.addReview = function () {
+    // $uibModalInstance.close($scope.selected.item);
+    console.log('running $scope.addReview()');
+    console.log('new review: ', $scope.review)
+    // Reviews.addReview(newReview)
   }
 
   $scope.animationsEnabled = true;
@@ -33,18 +43,25 @@ angular.module('cityQuest.review', [])
   $scope.toggleAnimation = function () {
     $scope.animationsEnabled = !$scope.animationsEnabled;
   };
-
 })
 
-.controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, items) {
-
+.controller('ModalInstanceCtrl', function ($scope, $http, $uibModalInstance, $rootScope, items) {
   $scope.items = items;
   $scope.selected = {
     item: $scope.items[0]
   };
 
-  $scope.ok = function () {
+  $scope.addReview = function () {
+    console.log('newReview: ', $rootScope.newReview)
     $uibModalInstance.close($scope.selected.item);
+    return $http({
+      method: 'POST',
+      url: '/api/reviews',
+      data: $rootScope.newReview
+    })
+    .then(function (res) {
+      console.log('resp.body: ', res.data)
+    });
   };
 
   $scope.cancel = function () {
@@ -53,7 +70,7 @@ angular.module('cityQuest.review', [])
 })
 
 .controller('RatingCtrl', function ($scope) {
-  $scope.rate = 0;
+  // $scope.rate = 0;
   $scope.max = 5;
   $scope.isReadonly = false;
 
@@ -69,4 +86,6 @@ angular.module('cityQuest.review', [])
     {stateOn: 'glyphicon-heart'},
     {stateOff: 'glyphicon-off'}
   ];
-});
+}).service("Review", function () {
+
+})

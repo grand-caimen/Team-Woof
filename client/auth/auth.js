@@ -1,13 +1,15 @@
 angular.module('cityQuest.auth', [])
 
-.controller('authController', function ($scope, $location, Auth, $rootScope) {
+.controller('authController', function ($scope, $location, $window, Auth, QuestStorage) {
   $scope.user = {};
 
   $scope.signin = function () {
-    $rootScope.user = $scope.user;
+    console.log('user: ', $scope.user );
     Auth.signin($scope.user)
       .then(function () {
+        QuestStorage.setUserProfile($scope.user);
         if(Auth.isAuth()){
+          sessionStorage.setItem('username', $scope.user.username);
           $location.path('/');
         }
       })

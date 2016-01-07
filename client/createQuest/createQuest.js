@@ -1,6 +1,6 @@
 angular.module('cityQuest.createQuest', [])
 
-.controller('createQuestCtrl', function($scope,
+.controller('createQuestCtrl', function ($scope,
                                         $location,
                                         $window,
                                         QuestStorage,

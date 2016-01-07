@@ -8,6 +8,50 @@ body {
   background-size: cover;
 }
 
+.completedQuests-container {
+  display: block;
+  text-align: center;
+  padding: 15px;
+  background-color: rgba(80,80,80,0.3);
+  border-radius: 10px;
+  width: 25%;
+  margin-left: 38%;
+}
+
+.completedQuests-container-header {
+  display: block;
+  text-align: center;
+  padding: 15px;
+  background-color: rgba(80,80,80,0.3);
+  border-radius: 10px;
+  width: relative;
+  font-size: 50px;
+}
+
+.completedQuests-container-main {
+  display: inline-block;
+  text-align: center;
+  padding: 15px;
+  background-color: rgba(80,80,80,0.3);
+  border-radius: 10px;
+  width: relative;
+  font-size: 50px;
+  margin-bottom: 15px;
+  margin-top: 15px;
+}
+
+.row.createdQuests {
+  overflow: scroll;
+   /* height: 200px;*/
+
+}
+
+.row.completedQuests {
+  overflow: scroll;
+  height: 200px;
+  margin-top: 0px;
+}
+
 .complete {
   padding-left: 5px;
   background-color: #FF3300;
@@ -26,6 +70,10 @@ body {
 
 .user {
   text-align: center;
+}
+
+.user-nav {
+
 }
 
 a:hover {
@@ -124,6 +172,10 @@ input {
   padding-top:1em;
 }
 
+.completedQuests {
+  margin-top: 150px;
+  overflow-y: hidden;
+}
 
 
 .quest-image {
@@ -511,3 +563,6 @@ tags-input .tags .tag-item {
     text-decoration: underline;
 }
 
+.review-tagline {
+  color: #a3bd29;
+}
