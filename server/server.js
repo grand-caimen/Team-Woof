@@ -35,7 +35,8 @@ app.post('/api/quests*', function(req, res){
 		if(quests.length > 0){
 			res.send('An identical quest already exists');
 		}
-		else{
+		else {
+		  console.log(req.body);
 			var newQuest = new Quest(req.body);
 			newQuest.save(function(err, result){
 				if(err){

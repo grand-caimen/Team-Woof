@@ -14,6 +14,7 @@ module.exports = {
     var update = Q.nbind(Quest.update, Quest);
     var findOne = Q.nbind(Quest.findOne, Quest);
     var sender;
+    var xpToAdd = 0;
     update({ name: questName }, { $push: { reviews: { "review": inputReview, "username": inputUser } } })
       .then(function (data) {
         console.log('Review changes made confirmation', data);
@@ -27,11 +28,18 @@ module.exports = {
       findOne({ name: questName })
       .then(function (data) {
         sender = data;
+        xpToAdd = data.time;
         userUpdate({ username: inputUser }, { $push: { completedQuests: data } });
       })
+        .then(function (data) {
+          console.log('User complete Quests changes made', data);
+        })
       .then(function (data) {
-        console.log('User completed quests confirmation', data);
+        userUpdate({ username: inputUser }, { $inc: { xp: xpToAdd } });
       })
+        .then(function (data) {
+          console.log('XP modification made', data);
+        })
       .then(function (data) {
         res.send(sender);
       })
