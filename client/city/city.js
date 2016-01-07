@@ -1,8 +1,9 @@
 angular.module('cityQuest.city', [])
 
-.controller('cityCtrl', function($scope, $location, $window, QuestStorage, Auth){
+.controller('cityCtrl', function ($scope, $location, $window, QuestStorage, Auth, InputConversion){
   $scope.city = "";
   $scope.gPlace;
+  $scope.user = QuestStorage.getUserProfile('user');
 
   $scope.citySelect = function(){
     QuestStorage.saveCity($scope.city.split(',').splice(0,2).join());
@@ -15,7 +16,24 @@ angular.module('cityQuest.city', [])
     }
   }
 
+  var fetchProfile = function() {
+    QuestStorage.fetchProfile($scope.user)
+    .then(function(res) {
+      res.completedQuests.forEach(function(completedQuest){
+        completedQuest.time = InputConversion.minutesToHours(completedQuest.time);
+        completedQuest.rating = InputConversion.ratingAverage(completedQuest.rating);
+      });
+      res.createdQuests.forEach(function(createdQuest) {
+        createdQuest.rating = InputConversion.ratingAverage(createdQuest.rating);
+      });
+
+      QuestStorage.setUserProfile(res);
+      console.log('user after signin: ', $scope.user);
+    })
+  };
+
   sessionCheck();
+  fetchProfile();
 })
 //Google Places Autocomplete
 .directive('googleplaces', function() {

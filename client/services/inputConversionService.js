@@ -17,7 +17,7 @@ angular.module('cityQuest.inputConversionService', [])
     if(remainder===0) return hours + " hrs"
     if(hours===0) return remainder + " min"
     if(remainder < 10){
-      remainder += '0' 
+      remainder += '0'
     }
     return hours + ":" + remainder
   };
