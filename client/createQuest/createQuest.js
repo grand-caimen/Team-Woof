@@ -17,8 +17,10 @@ angular.module('cityQuest.createQuest', [])
    tags:    [],
    steps:   [],
    cost:     0,
-   time:     0
+   time:     0,
+   creator: $window.localStorage.user.username
   };
+
   $scope.quest.city = QuestStorage.getCity();
 
   $scope.currentStep = {
@@ -52,6 +54,7 @@ angular.module('cityQuest.createQuest', [])
     }
 
     $scope.quest.cost = $scope.quest.cost.toFixed(2);
+    console.log('$scope.user : ', $scope.quest)
     QuestStorage.saveNewQuestAndGoToQuestList($scope.quest);
   };
 
