@@ -5,6 +5,8 @@ angular.module('cityQuest.profile', [])
   $scope.showNoQuestsFoundMsg = false;
   $scope.currCity = InputConversion.capitalizeFirstLetter($window.localStorage.getItem('city'));
 
+  $scope.userProfile = QuestStorage.getUserProfile('user');
+
   $scope.signout = function() {
     Auth.signout();
   };
@@ -16,16 +18,15 @@ angular.module('cityQuest.profile', [])
   };
 
   $scope.getProfile = function() {
-    QuestStorage.getProfile($rootScope.user)
+    QuestStorage.getProfile($scope.userProfile)
     .then(function(res) {
       res.completedQuests.forEach(function(completedQuest){
         completedQuest.time = InputConversion.minutesToHours(completedQuest.time);
         completedQuest.rating = InputConversion.ratingAverage(completedQuest.rating);
       });
 
-      $rootScope.user = res;
-
-      console.log('user after clicking profile:', $rootScope.user);
+      QuestStorage.setUserProfile(res);
+      console.log('user after clicking profile:', $scope.userProfile);
 
       // $rootScope.user.completedQuests = [{
       //   image: null,
@@ -35,7 +36,6 @@ angular.module('cityQuest.profile', [])
     })
   };
 
-  console.log('rootScope user: ', $rootScope.user);
   $scope.getProfile();
   sessionCheck();
 });

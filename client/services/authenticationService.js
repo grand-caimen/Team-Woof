@@ -10,7 +10,7 @@ angular.module('cityQuest.authenticationService', [])
     })
     .then(function (resp) {
       console.log('resp: ', resp);
-      $window.localStorage.setItem('sessiontoken', resp.data.token); 
+      $window.localStorage.setItem('sessiontoken', resp.data.token);
       $location.path('/');
     });
   };
@@ -23,13 +23,13 @@ angular.module('cityQuest.authenticationService', [])
     })
     .then(function (resp) {
       console.log('resp.data.token: ', resp.data.token);
-      $window.localStorage.setItem('sessiontoken', resp.data.token); 
+      $window.localStorage.setItem('sessiontoken', resp.data.token);
       $location.path('/')
     });
   };
 
   auth.isAuth = function () {
-    return !!$window.localStorage.getItem('sessiontoken'); 
+    return !!$window.localStorage.getItem('sessiontoken');
   };
 
   auth.signout = function () {

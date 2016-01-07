@@ -124,6 +124,10 @@ input {
   padding-top:1em;
 }
 
+.completedQuests {
+  margin-top: 150px;
+  overflow-y: hidden;
+}
 
 
 .quest-image {

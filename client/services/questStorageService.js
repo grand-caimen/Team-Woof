@@ -1,6 +1,6 @@
 angular.module('cityQuest.questStorageService', [])
 
-.factory('QuestStorage', function($http, $rootScope, $location, $window){
+.factory('QuestStorage', function ($http, $rootScope, $location, $window){
   var questStorage = {};
   questStorage.saveCity = function(cityStr){
     $window.localStorage.setItem('city', cityStr);
@@ -82,6 +82,15 @@ angular.module('cityQuest.questStorageService', [])
       return fetchedProfile;
     });
   };
+
+  questStorage.setUserProfile = function(user) {
+    $window.localStorage.setItem('user', JSON.stringify(user));
+  }
+
+  questStorage.getUserProfile = function(user) {
+    var user = $window.localStorage.getItem('user');
+    return JSON.parse(user);
+  }
 
   return questStorage;
 });
