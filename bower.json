@@ -23,6 +23,7 @@
     "angular-google-maps": "~2.2.1",
     "angular-filter": "~0.5.8",
     "angular-bootstrap": "~0.14.3",
-    "angularLocalStorage": "ngStorage#~0.3.2"
+    "angularLocalStorage": "ngStorage#~0.3.2",
+    "angular-local-storage": "~0.2.3"
   }
 }

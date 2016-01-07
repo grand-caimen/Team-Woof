@@ -16,7 +16,8 @@ var cityQuestApp = angular.module('cityQuestApp',[
                                  'ngTagsInput',
                                  'uiGmapgoogle-maps',
                                  'angular.filter',
-                                 'ui.bootstrap'
+                                 'ui.bootstrap',
+                                 'LocalStorageModule'
                                  ]);
 
 cityQuestApp.config(['$routeProvider',
@@ -27,6 +28,9 @@ cityQuestApp.config(function(uiGmapGoogleMapApiProvider) {
         v: '3.20',
         libraries: 'places,weather,geometry,visualization'
     });
+});
+cityQuestApp.config(function (localStorageServiceProvider) {
+  localStorageServiceProvider.setStorageType('sessionStorage')
 });
 
 function routeDefinition($routeProvider){
