@@ -17,6 +17,7 @@ var signin = userModels.signin;
 var returnUser = userModels.returnUser;
 var addReview = userModels.addReview;
 var authUser = userModels.checkAuth;
+var userAddQuest = userModels.userAddQuest;
 
 
 
@@ -43,6 +44,7 @@ app.post('/api/quests*', function(req, res){
 					console.log('help');
 					console.log(err);
 				}
+				userAddQuest(req.body);
 				res.send(result);
 			});
 		}
