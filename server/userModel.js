@@ -6,19 +6,20 @@ var jwt = require('jwt-simple');
 module.exports = {
 
   addReview: function (req, res, next) {
-    var user = req.body.username;
-    var review = req.body.review;
-    var rating = req.body.rating;
+    var inputUser = req.body.user;
+    var inputReview = req.body.review;
+    var inputRating = req.body.rating;
     var questName = req.body.questName;
     console.log('recieved this object', req.body);
-
-    //modify DB with the quest ID 
     console.log('About to run DB thing');
     var update = Q.nbind(Quest.update, Quest)
-    console.log('user', user);
-    update({ name: questName }, { cost: 20 }).then(function (data) {
-      console.log(data);
-    })
+    update({ name: questName }, { $push: { reviews: { "review": inputReview, "username": inputUser } } }).then(function (data) {
+      console.log('Review changes made confirmation', data);
+    });
+    console.log('just a test',inputRating);
+    update({ name: questName }, { $push: { rating: inputRating } }).then(function (data) {
+      console.log('Rating chagnes made confirmation', data);
+    });
   },
  
   returnUser: function(req, res, next){
