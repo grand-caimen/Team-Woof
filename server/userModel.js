@@ -10,15 +10,31 @@ module.exports = {
     var inputReview = req.body.review;
     var inputRating = req.body.rating;
     var questName = req.body.questName;
-    console.log('recieved this object', req.body);
-    console.log('About to run DB thing');
-    var update = Q.nbind(Quest.update, Quest)
-    update({ name: questName }, { $push: { reviews: { "review": inputReview, "username": inputUser } } }).then(function (data) {
-      console.log('Review changes made confirmation', data);
-    });
-    console.log('just a test',inputRating);
-    update({ name: questName }, { $push: { rating: inputRating } }).then(function (data) {
-      console.log('Rating chagnes made confirmation', data);
+    var userUpdate = Q.nbind(User.update, User);
+    var update = Q.nbind(Quest.update, Quest);
+    var findOne = Q.nbind(Quest.findOne, Quest);
+    var sender;
+    update({ name: questName }, { $push: { reviews: { "review": inputReview, "username": inputUser } } })
+      .then(function (data) {
+        console.log('Review changes made confirmation', data);
+      })
+      .then(function (data) {
+        update({ name: questName }, { $push: { rating: inputRating } }).then(function (data) {
+          console.log('Rating chagnes made confirmation', data);
+        });
+      })
+    .then(function (data) {
+      findOne({ name: questName })
+      .then(function (data) {
+        sender = data;
+        userUpdate({ username: inputUser }, { $push: { completedQuests: data } });
+      })
+      .then(function (data) {
+        console.log('User completed quests confirmation', data);
+      })
+      .then(function (data) {
+        res.send(sender);
+      })
     });
   },
  
