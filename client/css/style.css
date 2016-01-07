@@ -566,3 +566,8 @@ tags-input .tags .tag-item {
 .review-tagline {
   color: #a3bd29;
 }
+
+.profile-list {
+  padding-left: 5px;
+  padding-right: 5px;
+}
