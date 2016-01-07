@@ -18,7 +18,7 @@ angular.module('cityQuest.createQuest', [])
    steps:   [],
    cost:     0,
    time:     0,
-   creator: $window.localStorage.user.username
+   creator: undefined
   };
 
   $scope.quest.city = QuestStorage.getCity();
@@ -43,6 +43,7 @@ angular.module('cityQuest.createQuest', [])
   };
 
   $scope.questCreate = function(){
+    $scope.quest.creator = JSON.parse($window.localStorage.getItem('user')).username;
     if(FormValidation.isRequiredQuestFieldMissing($scope.quest)) return;
     if($scope.stepCount === 0){
       alert("Add a quest task first.");
@@ -54,7 +55,7 @@ angular.module('cityQuest.createQuest', [])
     }
 
     $scope.quest.cost = $scope.quest.cost.toFixed(2);
-    console.log('$scope.user : ', $scope.quest)
+    console.log('$scope.quest : ', $scope.quest)
     QuestStorage.saveNewQuestAndGoToQuestList($scope.quest);
   };
 

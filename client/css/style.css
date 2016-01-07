@@ -8,7 +8,7 @@ body {
   background-size: cover;
 }
 
-.completedQuests-container {
+/*.completedQuests-container {
   display: block;
   text-align: center;
   padding: 15px;
@@ -38,7 +38,7 @@ body {
   font-size: 50px;
   margin-bottom: 15px;
   margin-top: 15px;
-}
+}*/
 
 .row.createdQuests {
   overflow: scroll;
@@ -567,6 +567,9 @@ tags-input .tags .tag-item {
   color: #a3bd29;
 }
 
+.xp {
+  color: #a3bd29;
+}
 .profile-list {
   padding-left: 5px;
   padding-right: 5px;
