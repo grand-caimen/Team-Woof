@@ -1,6 +1,6 @@
 angular.module('cityQuest.auth', [])
 
-.controller('authController', function ($scope, $location, $window, Auth, $rootScope, QuestStorage) {
+.controller('authController', function ($scope, $location, $window, Auth, QuestStorage) {
   $scope.user = {};
 
   $scope.signin = function () {

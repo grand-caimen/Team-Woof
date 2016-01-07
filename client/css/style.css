@@ -8,6 +8,30 @@ body {
   background-size: cover;
 }
 
+.completedQuests-container {
+  display: block;
+  text-align: center;
+  padding: 15px;
+  background-color: rgba(80,80,80,0.3);
+  border-radius: 10px;
+  width: 25%;
+  margin-left: 38%;
+}
+
+.completedQuests-container-header {
+  display: block;
+  text-align: center;
+  padding: 15px;
+  background-color: rgba(80,80,80,0.3);
+  border-radius: 10px;
+  width: relative;
+}
+
+.row.completedQuests {
+  overflow: scroll;
+  height: 300px;
+}
+
 .complete {
   padding-left: 5px;
   background-color: #FF3300;
@@ -26,6 +50,10 @@ body {
 
 .user {
   text-align: center;
+}
+
+.user-nav {
+
 }
 
 a:hover {

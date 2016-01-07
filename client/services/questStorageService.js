@@ -68,7 +68,7 @@ angular.module('cityQuest.questStorageService', [])
     });
   };
 
-  questStorage.getProfile = function(user) {
+  questStorage.fetchProfile = function(user) {
     console.log('user: ', user);
     return $http({
         method: 'POST',

@@ -12,6 +12,9 @@
       </button>
     </div>
     <nav class="navbar-collapse" ng-class="{collapse: isCollapsed}">
+    <ul class="nav navbar-nav navbar-left dropdown">
+      <li><a class="active fade-in-three-quarter-sec user-nav" style="color:#B3D221;" ng-show='user'>Welcome, thouest {{ user.username }}...</a></li>
+      </ul>
       <ul class="nav navbar-nav navbar-right dropdown">
         <li><a class="active fade-in-three-quarter-sec" style="color:#B3D221;"> {{ currCity }} </a></li>
         <li><a class="active fade-in-three-quarter-sec" href="/#/">Select City</a></li>
@@ -24,15 +27,19 @@
   </div>
 </div>
 <div class="col-md-12 logo-blank"></div>
-    <div class="col-md-12 logo-blank"></div>
-    <div class="col-md-6 col-md-offset-3 user"><h3>Welcome, thouest {{ userProfile.username }}...<h3></div>
+<!--     <div class="col-md-12 logo-blank"></div>
+ -->    <div class="col-md-6 col-md-offset-3 completedQuests-container-header"><h3>{{ user.username }}'s Quest Profile<h3></div>
     <div class="col-md-10 col-md-offset-1 questContainer">
+    <div class="completedQuests-container">
+    <div class="profile-xp user">Thou Experience: {{ user.xp }}</div>
+<!--     <div class="col-md-12 logo-blank "></div>
+ -->
+     <h4>Created Quests: {{ user.createdQuests.length }}</h4>
+     <h4>Completed Quests: {{ user.completedQuests.length }}</h4>
+      </div>
+      <div class="row completedQuests">
 
-    <div class="profile-xp user">Your Experience: {{ user.xp }}</div>
-    <div class="col-md-12 logo-blank"></div>
-
-      <div class="row completedQuests" style='overflow:scroll; height:300px;'>
-        <div class='col-md-6 questList input-front fade-in-three-quarter-sec' ng-repeat="completedQuest in user.completedQuests | searchField: 'tags' | filter:search"> A Completed Quest:
+        <div class='col-md-6 questList input-front fade-in-three-quarter-sec' ng-repeat="completedQuest in user.completedQuests | searchField: 'tags' | filter:search">
           <div class="col-md-12 questItem">
             <div class="col-md-1 quest-image-container">
               <img class="quest-image " ng-src="{{ completedQuest.image }}">
