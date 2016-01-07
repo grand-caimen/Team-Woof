@@ -4,7 +4,7 @@ angular.module('cityQuest.review', [])
 .controller('ReviewCtrl', function ($scope, $rootScope, $uibModal, $log, Review) {
   $scope.items = ['item1', 'item2', 'item3', 'fuckyou'];
   $rootScope.newReview = {
-    questName: sessionStorage.questName,
+    // questName: sessionStorage.questName,
     user: sessionStorage.username,
     rating: undefined,
     review: undefined,
@@ -52,8 +52,9 @@ angular.module('cityQuest.review', [])
   };
 
   $scope.addReview = function () {
-    console.log('newReview: ', $rootScope.newReview)
     $uibModalInstance.close($scope.selected.item);
+    $rootScope.newReview.questName = sessionStorage.questName;
+    console.log('newReview: ', $rootScope.newReview)
     return $http({
       method: 'POST',
       url: '/api/reviews',

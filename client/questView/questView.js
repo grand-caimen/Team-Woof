@@ -27,6 +27,7 @@ angular.module('cityQuest.questView', [])
 
   var fetch = function(cb){
     QuestStorage.getSingleQuest($scope.questId).then(function(quest){
+      console.log('quest: ', quest)
       $scope.quest = quest;
       $rootScope.questName = $scope.quest.name;
       sessionStorage.setItem('questName', $scope.quest.name);
@@ -49,7 +50,7 @@ angular.module('cityQuest.questView', [])
         $scope.markers.push(newMarker);
       });
       
-    });
+    })
   };
 
   $scope.signout = function() {
