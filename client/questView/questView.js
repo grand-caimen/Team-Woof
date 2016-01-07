@@ -1,6 +1,6 @@
 angular.module('cityQuest.questView', [])
 
-.controller('questViewCtrl', function ($scope, $rootScope, $routeParams, $window, QuestStorage, uiGmapGoogleMapApi, Auth, InputConversion, localStorageService){
+.controller('questViewCtrl', function ($scope, $rootScope, $location, $routeParams, $window, QuestStorage, uiGmapGoogleMapApi, Auth, InputConversion, localStorageService){
 
   $scope.questId = $routeParams.questId;
   // $rootScope.questName = $routeParams.questId;
