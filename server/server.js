@@ -15,6 +15,7 @@ var User = models.User;
 var signup = userModels.signup;
 var signin = userModels.signin;
 var returnUser = userModels.returnUser;
+var addReview = userModels.addReview;
 var authUser = userModels.checkAuth;
 
 
@@ -73,11 +74,11 @@ app.post('/api/geocode*', function(req, res){
 
 app.post('/api/users/profile', function (req, res) {
  console.log('User profile requested for', req.body.username);
- returnUser(req, res);
+ returnUser(req, res, next);
 });
 
 app.post('/api/reviews', function (req, res) {
-  addReview(req, res, next);
+  addReview(req, res);
   res.send(req.body);
 });
 

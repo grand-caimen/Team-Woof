@@ -1,6 +1,7 @@
 var User = require('./models.js').User;
+var Quest = require('./models.js').Quest;
 var Q    = require('q');
-var jwt  = require('jwt-simple');
+var jwt = require('jwt-simple');
 
 module.exports = {
 
@@ -8,12 +9,16 @@ module.exports = {
     var user = req.body.username;
     var review = req.body.review;
     var rating = req.body.rating;
-    var questId = req.body.questId;
+    var questName = req.body.questName;
+    console.log('recieved this object', req.body);
 
     //modify DB with the quest ID 
-
-
-
+    console.log('About to run DB thing');
+    var update = Q.nbind(Quest.update, Quest)
+    console.log('user', user);
+    update({ name: questName }, { cost: 20 }).then(function (data) {
+      console.log(data);
+    })
   },
  
   returnUser: function(req, res, next){
