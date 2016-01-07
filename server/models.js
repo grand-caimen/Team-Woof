@@ -5,6 +5,7 @@ var Q        = require('q');
 
 var Schema = mongoose.Schema;
 var questSchema = new Schema({
+  creator:String,
 	name: String,
 	description: String,
 	tags: [], 
