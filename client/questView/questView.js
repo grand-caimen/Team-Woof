@@ -1,7 +1,9 @@
 angular.module('cityQuest.questView', [])
 
-.controller('questViewCtrl', function($scope, $routeParams, $window, QuestStorage, uiGmapGoogleMapApi, Auth, InputConversion){
+.controller('questViewCtrl', function ($scope, $rootScope, $routeParams, $window, QuestStorage, uiGmapGoogleMapApi, Auth, InputConversion){
+  
   $scope.questId = $routeParams.questId;
+  // $rootScope.questName = $routeParams.questId;
   $scope.myloc = QuestStorage.getCoords();
   $scope.markers = [];
   $scope.currCity = InputConversion.capitalizeFirstLetter($window.localStorage.getItem('city'));
@@ -26,6 +28,9 @@ angular.module('cityQuest.questView', [])
   var fetch = function(cb){
     QuestStorage.getSingleQuest($scope.questId).then(function(quest){
       $scope.quest = quest;
+      $rootScope.questName = $scope.quest.name;
+      sessionStorage.setItem('questName', $scope.quest.name);
+      console.log(sessionStorage)
       $scope.quest.time = InputConversion.minutesToHours($scope.quest.time);
       $scope.quest.rating = InputConversion.ratingAverage($scope.quest.rating);
       $scope.quest.steps.forEach(function(step){
@@ -43,6 +48,7 @@ angular.module('cityQuest.questView', [])
         };
         $scope.markers.push(newMarker);
       });
+      
     });
   };
 
