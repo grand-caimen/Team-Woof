@@ -31,7 +31,7 @@ module.exports = {
     var findOne = Q.nbind(Quest.findOne, Quest);
     var sender;
     var xpToAdd = 0;
-    update({ name: questName }, { $push: { reviews: { "review": inputReview, "username": inputUser } } })
+    update({ name: questName }, { $push: { reviews: { "review": inputReview, "username": inputUser, "rating": inputRating } } })
       .then(function (data) {
         console.log('Review changes made confirmation', data);
       })

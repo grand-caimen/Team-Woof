@@ -582,3 +582,11 @@ tags-input .tags .tag-item {
   padding-left: 5px;
   padding-right: 5px;
 }
+
+.bannertitle {
+    padding-left:20px;
+}
+
+.bannername {
+    padding-left:10px;
+}
