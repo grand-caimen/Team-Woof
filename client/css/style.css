@@ -445,7 +445,7 @@ tags-input .tags .tag-item {
 }
 
 .quest-view-descript {
-  margin-left: 20px;
+  /*margin-left: 20px;*/
   margin-top: 6px;
   color: #A3BD29;
 }
@@ -560,11 +560,19 @@ tags-input .tags .tag-item {
 }
 
 .review_h2 {
-    text-decoration: underline;
+    text-indent: 12px;
 }
 
 .review-tagline {
   color: #a3bd29;
+}
+
+.review-text {
+  margin-top: 0px;
+}
+
+.review-user {
+ margin-bottom: 5px;
 }
 
 .xp {
