@@ -26,7 +26,7 @@
 <!-- <div class="container logo-blank">
   <div class="row col-md-10 col-md-offset-1">
     <h1>{{ user.username }}</h1>
-    
+
   </div>
 </div> -->
 <div id='container'>
@@ -37,7 +37,7 @@
         <div class="col-md-12 questItem">
           <div class="col-md-7">
             <h1>{{ user.username }}</h1>
-            <h4>XP: 69</h4>
+            <h4>XP: {{ user.xp }}</h4>
           </div>
           <div class='row'>
             <div class="col-md-6">
@@ -52,6 +52,7 @@
 
                     <p class="quest-descript">{{ completedQuest.description }}</p>
                     <span ng-repeat='tag in completedQuest.tags'><span class="quest-view-tags">{{tag.text}}</span></span>
+                    <span><h4>{{user.username}}'s Reviews:</h4><p class="profile-review">{{ completedQuest.userReview }}</p></span>
                   </div>
                   <div class="col-md-1 tabs hidden-xs hidden-sm">
                     <div class="col-md-12 tab">
@@ -163,7 +164,7 @@
       </div>
     </div>
   </div>
-          
+
 
 
 
