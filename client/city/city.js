@@ -22,6 +22,13 @@ angular.module('cityQuest.city', [])
       res.completedQuests.forEach(function(completedQuest){
         completedQuest.time = InputConversion.minutesToHours(completedQuest.time);
         completedQuest.rating = InputConversion.ratingAverage(completedQuest.rating);
+        if (completedQuest.reviews !== undefined) {
+          completedQuest.reviews.forEach(function(review) {
+            if (review.username === res.username) {
+              completedQuest.userReview = review.review;
+            }
+          });
+        }
       });
       res.createdQuests.forEach(function(createdQuest) {
         createdQuest.rating = InputConversion.ratingAverage(createdQuest.rating);

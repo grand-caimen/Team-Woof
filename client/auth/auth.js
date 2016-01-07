@@ -21,10 +21,14 @@ angular.module('cityQuest.auth', [])
   };
 
   $scope.signup = function () {
-    $rootScope.user = $scope.user;
+    console.log('user: ', $scope.user );
     Auth.signup($scope.user)
-      .then(function (token) {
-        $location.path('/');
+      .then(function () {
+        QuestStorage.setUserProfile($scope.user);
+        if(Auth.isAuth()){
+          sessionStorage.setItem('username', $scope.user.username);
+          $location.path('/');
+        }
       })
       .catch(function (error) {
         $scope.err = error.data.message;
