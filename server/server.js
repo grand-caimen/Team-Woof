@@ -79,7 +79,6 @@ app.post('/api/users/profile', function (req, res) {
 
 app.post('/api/reviews', function (req, res) {
   addReview(req, res);
-  res.send(req.body);
 });
 
 
