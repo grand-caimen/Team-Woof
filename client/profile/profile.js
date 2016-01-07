@@ -16,5 +16,30 @@ angular.module('cityQuest.profile', [])
     }
   };
 
+  var fetchProfile = function() {
+    console.log('LOOK HERE: ', $scope.user);
+    QuestStorage.fetchProfile($scope.user)
+    .then(function(res) {
+      res.completedQuests.forEach(function(completedQuest){
+        completedQuest.time = InputConversion.minutesToHours(completedQuest.time);
+        completedQuest.rating = InputConversion.ratingAverage(completedQuest.rating);
+        if (completedQuest.reviews !== undefined) {
+          completedQuest.reviews.forEach(function(review) {
+            if (review.username === res.username) {
+              completedQuest.userReview = review.review;
+            }
+          });
+        }
+      });
+      res.createdQuests.forEach(function(createdQuest) {
+        createdQuest.rating = InputConversion.ratingAverage(createdQuest.rating);
+      });
+
+      QuestStorage.setUserProfile(res);
+      console.log('user after signin: ', $scope.user);
+    })
+  };
+
   sessionCheck();
+  fetchProfile();
 });
