@@ -1,6 +1,6 @@
 angular.module('cityQuest.authenticationService', [])
 
-.factory('Auth', function ($http, $location, $window) {
+.factory('Auth', function ($http, $location, localStorageService, $window) {
   var auth = {};
   auth.signin = function (user) {
     return $http({
@@ -11,6 +11,7 @@ angular.module('cityQuest.authenticationService', [])
     .then(function (resp) {
       console.log('resp: ', resp);
       $window.localStorage.setItem('sessiontoken', resp.data.token);
+      localStorageService.set(resp.data.username);
       $location.path('/');
     });
   };
@@ -34,6 +35,7 @@ angular.module('cityQuest.authenticationService', [])
 
   auth.signout = function () {
     $window.localStorage.removeItem('sessiontoken');
+    localStorageService.clearAll();
     $location.path('/signin');
   };
 

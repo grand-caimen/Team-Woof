@@ -4,6 +4,7 @@ angular.module('cityQuest.createQuest', [])
                                         $location,
                                         $window,
                                         QuestStorage,
+                                        localStorageService,
                                         uiGmapGoogleMapApi,
                                         Auth,
                                         InputConversion,
@@ -11,6 +12,7 @@ angular.module('cityQuest.createQuest', [])
   $scope.currCity = InputConversion.capitalizeFirstLetter($window.localStorage.getItem('city'));
   $scope.userLocation = QuestStorage.getCoords();
 
+  $scope.user = localStorageService.get('user');
   $scope.quest = {
    city:  null,
    name:  null,

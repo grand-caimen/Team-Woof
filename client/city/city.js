@@ -1,9 +1,9 @@
 angular.module('cityQuest.city', [])
 
-.controller('cityCtrl', function ($scope, $location, $window, QuestStorage, Auth, InputConversion){
+.controller('cityCtrl', function ($scope, $location, $window, QuestStorage, Auth, InputConversion, localStorageService){
   $scope.city = "";
   $scope.gPlace;
-  $scope.user = QuestStorage.getUserProfile('user');
+  $scope.user = localStorageService.get('user');
 
   $scope.citySelect = function(){
     QuestStorage.saveCity($scope.city.split(',').splice(0,2).join());
@@ -32,10 +32,11 @@ angular.module('cityQuest.city', [])
       });
       res.createdQuests.forEach(function(createdQuest) {
         createdQuest.rating = InputConversion.ratingAverage(createdQuest.rating);
+        createdQuest.time = InputConversion.minutesToHours(createdQuest.time);
       });
 
-      QuestStorage.setUserProfile(res);
-      console.log('user after signin: ', $scope.user);
+      localStorageService.set('user', res);
+      console.log('user after signin: HERE? ', $scope.user);
     })
   };
 

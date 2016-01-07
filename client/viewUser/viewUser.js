@@ -1,21 +1,10 @@
-angular.module('cityQuest.profile', [])
+angular.module('cityQuest.viewUser', [])
 
-.controller('profileCtrl', function ($scope, $window, QuestStorage, localStorageService, Auth, InputConversion, $location){
+.controller('ViewUserCtrl', function ($scope, $rootScope, $window, QuestStorage, Auth, InputConversion, $location){
   $scope.quests = null;
   $scope.showNoQuestsFoundMsg = false;
   $scope.currCity = InputConversion.capitalizeFirstLetter($window.localStorage.getItem('city'));
   $scope.user = QuestStorage.getUserProfile('user');
-  $scope.Math = window.Math;
-
-  // var user = localStorageService.get('user');
-
-  // $scope.userData = user;
-
-  // $scope.$watch('user', function() {
-  //   localStorageService.set('user', $scope.userData)
-  // }, true);
-
-  $scope.user = localStorageService.get('user');
 
   $scope.signout = function() {
     Auth.signout();
@@ -27,11 +16,11 @@ angular.module('cityQuest.profile', [])
     }
   };
 
-  var fetchProfile = function() {
-    console.log('LOOK HERE: ', $scope.user);
-    QuestStorage.fetchProfile($scope.user)
+  var fetchProfile = function(user) {
+    user = {username: user};
+    console.log('LOOK HERE: ', user);
+    QuestStorage.fetchProfile(user)
     .then(function(res) {
-      console.log('hopefully updated here..: ', res);
       res.completedQuests.forEach(function(completedQuest){
         completedQuest.time = InputConversion.minutesToHours(completedQuest.time);
         completedQuest.rating = InputConversion.ratingAverage(completedQuest.rating);
@@ -45,15 +34,12 @@ angular.module('cityQuest.profile', [])
       });
       res.createdQuests.forEach(function(createdQuest) {
         createdQuest.rating = InputConversion.ratingAverage(createdQuest.rating);
-        createdQuest.time = InputConversion.minutesToHours(createdQuest.time);
       });
 
-      localStorageService.set('user', res);
-      $scope.user = localStorageService.get('user');
-      console.log('user after clicking profile:', $scope.user);
+      QuestStorage.setUserProfile(res);
     })
   };
 
   sessionCheck();
-  fetchProfile();
+  fetchProfile($rootScope.viewUser);
 });

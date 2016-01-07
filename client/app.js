@@ -12,11 +12,12 @@ var cityQuestApp = angular.module('cityQuestApp',[
                                  'cityQuest.createQuest',
                                  'cityQuest.auth',
                                  'cityQuest.review',
-                                 // 'cityQuest.reviewService',
+                                 'cityQuest.viewUser',
                                  'ngTagsInput',
                                  'uiGmapgoogle-maps',
                                  'angular.filter',
-                                 'ui.bootstrap'
+                                 'ui.bootstrap',
+                                 'LocalStorageModule'
                                  ]);
 
 cityQuestApp.config(['$routeProvider',
@@ -27,6 +28,9 @@ cityQuestApp.config(function(uiGmapGoogleMapApiProvider) {
         v: '3.20',
         libraries: 'places,weather,geometry,visualization'
     });
+});
+cityQuestApp.config(function (localStorageServiceProvider) {
+  localStorageServiceProvider.setStorageType('sessionStorage')
 });
 
 function routeDefinition($routeProvider){
@@ -58,6 +62,10 @@ function routeDefinition($routeProvider){
   .when('/profile', {
     templateUrl: 'client/profile/profile.html',
     controller: 'profileCtrl'
+  })
+  .when('/viewUser', {
+    templateUrl: 'client/viewUser/viewUser.html',
+    controller: 'ViewUserCtrl'
   })
   .otherwise({
     redirectTo: '/'
