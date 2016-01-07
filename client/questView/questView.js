@@ -1,6 +1,6 @@
 angular.module('cityQuest.questView', [])
 
-.controller('questViewCtrl', function ($scope, $rootScope, $routeParams, $window, QuestStorage, uiGmapGoogleMapApi, Auth, InputConversion){
+.controller('questViewCtrl', function ($scope, $rootScope, $routeParams, $window, QuestStorage, uiGmapGoogleMapApi, Auth, InputConversion, $location){
   
   $scope.questId = $routeParams.questId;
   // $rootScope.questName = $routeParams.questId;
@@ -52,6 +52,12 @@ angular.module('cityQuest.questView', [])
       
     })
   };
+
+  $scope.viewUser = function (user) {
+    console.log('user: ', user)
+    $rootScope.viewUser = user;
+    $location.path('/viewUser')
+  }
 
   $scope.signout = function() {
     Auth.signout();
