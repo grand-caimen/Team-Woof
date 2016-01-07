@@ -23,6 +23,9 @@ angular.module('cityQuest.city', [])
         completedQuest.time = InputConversion.minutesToHours(completedQuest.time);
         completedQuest.rating = InputConversion.ratingAverage(completedQuest.rating);
       });
+      res.createdQuests.forEach(function(createdQuest) {
+        createdQuest.rating = InputConversion.ratingAverage(createdQuest.rating);
+      });
 
       QuestStorage.setUserProfile(res);
       console.log('user after signin: ', $scope.user);

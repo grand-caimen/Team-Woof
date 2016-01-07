@@ -25,11 +25,31 @@ body {
   background-color: rgba(80,80,80,0.3);
   border-radius: 10px;
   width: relative;
+  font-size: 50px;
+}
+
+.completedQuests-container-main {
+  display: inline-block;
+  text-align: center;
+  padding: 15px;
+  background-color: rgba(80,80,80,0.3);
+  border-radius: 10px;
+  width: relative;
+  font-size: 50px;
+  margin-bottom: 15px;
+  margin-top: 15px;
+}
+
+.row.createdQuests {
+  overflow: scroll;
+   /* height: 200px;*/
+
 }
 
 .row.completedQuests {
   overflow: scroll;
-  height: 300px;
+  height: 200px;
+  margin-top: 0px;
 }
 
 .complete {

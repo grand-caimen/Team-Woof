@@ -28,14 +28,95 @@
 </div>
 <div class="col-md-12 logo-blank"></div>
 <!--     <div class="col-md-12 logo-blank"></div>
- -->    <div class="col-md-6 col-md-offset-3 completedQuests-container-header"><h3>{{ user.username }}'s Quest Profile<h3></div>
+ -->    <div class="col-md-6 col-md-offset-3 completedQuests-container-header"><h3>{{ user.username }}'s Profile<h3></div>
     <div class="col-md-10 col-md-offset-1 questContainer">
     <div class="completedQuests-container">
-    <div class="profile-xp user">Thou Experience: {{ user.xp }}</div>
+    <h3 class="profile-xp user">Thou Experience: {{ user.xp }}</h3>
 <!--     <div class="col-md-12 logo-blank "></div>
  -->
      <h4>Created Quests: {{ user.createdQuests.length }}</h4>
      <h4>Completed Quests: {{ user.completedQuests.length }}</h4>
+      </div>
+         <div class="completedQuests-container-main">
+    <h5 class="profile-xp user">Created Quests:</h5>
+      </div>
+        <div class="row createdQuests">
+        <div class='col-md-6 questList input-front fade-in-three-quarter-sec' ng-repeat="createdQuest in user.createdQuests | searchField: 'tags' | filter:search">
+          <div class="col-md-12 questItem">
+            <div class="col-md-1 quest-image-container">
+              <img class="quest-image " ng-src="{{ created.image }}">
+            </div>
+            <div class="col-md-5 no-padding-right quest-text">
+              <a href="/#/questView/{{createdQuest._id}}"><h2 class="quest-title">{{ createdQuest.name }}</h2></a>
+
+              <p class="quest-descript">{{ createdQuest.description }}</p>
+              <span ng-repeat='tag in createdQuest.tags'><span class="quest-view-tags">{{tag.text}}</span></span>
+            </div>
+            <div class="col-md-2 tabs hidden-xs hidden-sm">
+              <div class="col-md-12 tab">
+                <div class="row">
+                  <div class="col-md-3 tab-image-container">
+                    <img class="tab-image" src="client/img/icons/cost.png">
+                  </div>
+
+                  <div class="col-md-2 split-line"></div>
+
+                  <div class="col-md-2 tab-image-container">
+                    <p class="tab-text">{{ createdQuest.cost }}</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-12 tab">
+                <div class="row">
+                  <div class="col-md-3 tab-image-container">
+                    <img class="tab-image" src="client/img/icons/time.png">
+                  </div>
+
+                  <div class="col-md-2 split-line"></div>
+
+                  <div class="col-md-2 tab-image-container">
+                    <p class="tab-text">{{ createdQuest.time }}</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-12 tab">
+                  <div class="row">
+                      <div class="col-md-3 tab-image-container">
+                          <img class="tab-image" src="client/img/icons/star.png">
+                      </div>
+
+                      <div class="col-md-2 split-line"></div>
+
+                      <div class="col-md-2 tab-image-container">
+                          <p class="tab-text">{{ createdQuest.rating }}</p>
+                      </div>
+                  </div>
+              </div>
+
+              <!-- complete button/completed -->
+
+              <!-- <div class="col-md-4 tab">
+                  <div class="row">
+                      <div class="col-md-2 tab-image-container">
+                          <img class="tab-image" src="client/img/icons/checkmark.png">
+                      </div>
+
+                      <div class="col-md-2 split-line"></div>
+
+                      <div class="col-md-2 tab-image-container">
+                          <p class="tab-text complete">Complete</p>
+                      </div>
+                  </div>
+              </div> -->
+
+            </div>
+<!--             <div class="clean"></div>
+ -->          </div>
+        </div>
+      </div>
+      <div class="completedQuests-container-main">
+    <h5 class="profile-xp user">Completed Quests:</h5>
       </div>
       <div class="row completedQuests">
 
