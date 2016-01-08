@@ -35,6 +35,7 @@
       <input class='col-md-4 col-md-offset-4 search' type='search' ng-model='search' placeholder='Search' results='0' ng-show="!showNoQuestsFoundMsg">
     <div class="col-md-10 col-md-offset-1 questContainer">
       <div ng-show="showNoQuestsFoundMsg" class="col-md-4 col-md-offset-4 no-quests">Found nay quests, please createth one...</div>
+      <div ng-show="showNoCityFoundMsg" class="col-md-4 col-md-offset-4 no-quests">Found nay city, please select a city...</div>
       <div class="row">
         <div class='col-md-6 questList input-front fade-in-three-quarter-sec' ng-repeat="quest in quests | searchField: 'tags' | filter:search">
           <div class="col-md-12 questItem">

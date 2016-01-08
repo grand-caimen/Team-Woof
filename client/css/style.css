@@ -40,6 +40,10 @@ body {
   margin-top: 15px;
 }*/
 
+.city {
+  text-align: center;
+}
+
 .row.createdQuests {
   overflow: scroll;
    /* height: 200px;*/
@@ -554,8 +558,8 @@ tags-input .tags .tag-item {
 .glyphicon.ng-scope.glyphicon-star {
   font-size: 2em;
   color: #FFCC00;
-}    
-  
+}
+
 .glyphicon.ng-scope.glyphicon-star-empty {
     font-size: 2em;
 }

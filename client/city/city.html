@@ -27,11 +27,13 @@
   <div class="input-blank col-md-4 col-md-offset-4">
     <form ng-submit='citySelect()'>
       <div class="input-group">
+      <div ng-show="showErr" class='message-error shadow'>{{err}}</div>
         <input ng-model="city" type="text" class="form-control input-front fade-in-1-and-three-quarter-sec" placeholder="Searcheth a city, village, or kingdom..." googleplaces>
         <span class="input-group-btn">
           <button href='' class="btn btn-default input-submit fade-in-1-and-three-quarter-sec" type="submit">Go!</button>
         </span>
       </div>
+      <div ng-show="showNoCityFoundMsg" class="message-error shadow city">Found nay city, please select a city...</div>
     </form>
   </div>
 </div>
