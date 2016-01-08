@@ -40,7 +40,8 @@ var userSchema = new Schema({
 	experience: Number,
 	createdQuests: [],
 	completedQuests: [],
-	xp: Number
+	xp: Number,
+  URL: String
 });
 
 

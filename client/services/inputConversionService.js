@@ -52,5 +52,9 @@ angular.module('cityQuest.inputConversionService', [])
     return average.toFixed(2);
   };
 
+  inputConversion.rankConversion = function (xp) {
+    var ranks = { 1: 'Peon', 2: 'Serf', 3: 'Commoner', 4: 'Peasent', 5: 'Laborer', 6: 'Burgess', 7: 'Small Holder', 8: 'Apprentice', 9: 'Journeyman', 10: 'Craftsman', 11: 'Peddler', 12: 'Merchant' };
+  }
+
   return inputConversion;
 });
