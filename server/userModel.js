@@ -5,6 +5,18 @@ var jwt = require('jwt-simple');
 
 module.exports = {
 
+  userAddProfilePic: function (reqbody) {
+    console.log('userAddQuest has been called with ', reqbody);
+    var username = reqbody.username
+    var URL = reqbody.URL;
+    var userUpdate = Q.nbind(User.update, User);
+    userUpdate({ username: username }, { URL: URL })
+    .then(function (data) {
+      console.log(data);
+    })
+
+  },
+
   userAddQuest: function(reqbody){
     console.log('userAddQuest has been called with ', reqbody);
     var creator = reqbody.creator
@@ -123,7 +135,8 @@ module.exports = {
           newUser = {
             username: username,
             password: password,
-            xp: 0
+            xp: 0,
+            URL:'http://cdn.mysitemyway.com/etc-mysitemyway/icons/legacy-previews/icons/glossy-black-3d-buttons-icons-symbols-shapes/018563-glossy-black-3d-button-icon-symbols-shapes-tile.png'
           };
           return create(newUser);
         }

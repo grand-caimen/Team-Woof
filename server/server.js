@@ -80,6 +80,11 @@ app.post('/api/users/profile', function (req, res) {
  returnUser(req, res);
 });
 
+app.post('/api/users/profilepic', function (req, res) {
+  console.log('User profile pic requested for', req.body.username);
+  returnUser(req, res);
+});
+
 app.post('/api/reviews', function (req, res) {
   addReview(req, res);
 });
