@@ -14,10 +14,9 @@ angular.module('cityQuest.profile', [])
   //   localStorageService.set('user', $scope.userData)
   // }, true);
   $scope.urlBar = false;
-  $scope.showUrl = function () {
+
+  $scope.toggle = function () {
     $scope.urlBar = !$scope.urlBar;
-    console.log($scope.urlBar)
-    return $scope.urlBar;
   }
 
   $scope.user = localStorageService.get('user');
