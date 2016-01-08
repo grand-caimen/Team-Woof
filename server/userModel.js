@@ -8,6 +8,7 @@ module.exports = {
   userAddQuest: function(reqbody){
     console.log('userAddQuest has been called with ', reqbody);
     var creator = reqbody.creator
+    var createXP = reqbody.time;
     var userUpdate = Q.nbind(User.update, User);
     var findOne = Q.nbind(Quest.findOne, Quest);
     findOne({ name: reqbody.name })
@@ -16,6 +17,12 @@ module.exports = {
     })
     .then(function(data){
       console.log('Added quest to user created quests ', data);
+    })
+    .then(function (data) {
+      userUpdate({ username: creator }, { $inc: { xp: createXP } });
+    })
+    .then(function (data) {
+      console.log('Exp for creating quest added');
     })
 
 
