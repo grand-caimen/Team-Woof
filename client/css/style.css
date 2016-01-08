@@ -624,3 +624,7 @@ tags-input .tags .tag-item {
     border-color:#B3D221;
    background-color: rgba(179,210,33,0.3);
 }
+
+.content {
+  opacity: 0.9;
+}
