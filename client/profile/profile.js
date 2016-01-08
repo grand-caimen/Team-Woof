@@ -16,6 +16,7 @@ angular.module('cityQuest.profile', [])
   // }, true);
 
   $scope.user = localStorageService.get('user');
+  $scope.rank = InputConversion.rankConversion(Math.floor($scope.user.xp/100));
 
   $scope.signout = function() {
     Auth.signout();
