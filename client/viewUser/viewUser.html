@@ -10,7 +10,7 @@
     </div>
     <nav class="navbar-collapse" ng-class="{collapse: isCollapsed}">
     <ul class="nav navbar-nav navbar-left dropdown">
-      <li><a class="active fade-in-three-quarter-sec user-nav" style="color:#B3D221;" ng-show='user'>Welcome {{ user.username }}</a></li>
+      <li><a class="active fade-in-three-quarter-sec user-nav" style="color:#B3D221;" ng-show='user'>Welcome {{ ogUser.username }}</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right dropdown">
         <li><a class="active fade-in-three-quarter-sec" href="/#/">Select City</a></li>
@@ -35,12 +35,16 @@
       <div class='col-md-12 fade-in-three-quarter-sec'>
         <div class="col-md-12 questItem">
           <div class="col-md-7">
-            <h1>{{ user.username }}</h1>
-            <h4 class="xp">XP: {{ user.xp }}</h4>
-          </div>
+            <h1 class="bannername">{{ user.username }}</h1>
+              <div class="col-md-10">
+                  <h4 class="xp">Level: {{ Math.floor(user.xp/100) || 0 }}</h4>
+                  <h4 class="xp">XP: {{ user.xp }}</h4>
+                  <uib-progressbar class="progress-striped active" value="user.xp%100" type="success">{{type}} </uib-progressbar>
+              </div>
+              </div>
           <div class='row'>
             <div class="col-md-6">
-              <h2>Completed Quests: {{ user.completedQuests.length }}</h2>
+              <h2 class='bannertitle'>Completed Quests: {{ user.completedQuests.length }}</h2>
               <div class='col-md-12 questList profile-list input-front fade-in-three-quarter-sec' ng-repeat="completedQuest in user.completedQuests | searchField: 'tags' | filter:search">
                 <div class="col-md-12 questItem">
                   <div class="col-md-1 quest-image-container">
@@ -100,7 +104,7 @@
               </div>
             </div>
             <div class="col-md-6">
-              <h2>Created Quests: {{ user.createdQuests.length }}</h2>
+              <h2 class='bannertitle'>Created Quests: {{ user.createdQuests.length }}</h2>
               <div class='col-md-12 questList profile-list input-front fade-in-three-quarter-sec' ng-repeat="createdQuest in user.createdQuests | searchField: 'tags' | filter:search">
                 <div class="col-md-12 questItem">
                   <div class="col-md-1 quest-image-container">

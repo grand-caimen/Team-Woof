@@ -1,10 +1,12 @@
 angular.module('cityQuest.viewUser', [])
 
-.controller('ViewUserCtrl', function ($scope, $rootScope, $window, QuestStorage, Auth, InputConversion, $location){
+.controller('ViewUserCtrl', function ($scope, $rootScope, $window, QuestStorage, Auth, InputConversion, $location, localStorageService){
   $scope.quests = null;
   $scope.showNoQuestsFoundMsg = false;
   $scope.currCity = InputConversion.capitalizeFirstLetter($window.localStorage.getItem('city'));
-  $scope.user = QuestStorage.getUserProfile('user');
+  $scope.user = localStorageService.get('viewUser');
+  $scope.ogUser = localStorageService.get('user');
+  $scope.Math = window.Math;
 
   $scope.signout = function() {
     Auth.signout();
@@ -17,9 +19,9 @@ angular.module('cityQuest.viewUser', [])
   };
 
   var fetchProfile = function(user) {
-    user = {username: user};
-    console.log('LOOK HERE: ', user);
-    QuestStorage.fetchProfile(user)
+
+    console.log('LOOK HERE: ', $scope.user);
+    QuestStorage.fetchProfile($scope.user)
     .then(function(res) {
       res.completedQuests.forEach(function(completedQuest){
         completedQuest.time = InputConversion.minutesToHours(completedQuest.time);
@@ -36,10 +38,11 @@ angular.module('cityQuest.viewUser', [])
         createdQuest.rating = InputConversion.ratingAverage(createdQuest.rating);
       });
 
-      QuestStorage.setUserProfile(res);
+      localStorageService.set('viewUser', res);
+      $scope.user = localStorageService.get('viewUser');
     })
   };
 
   sessionCheck();
-  fetchProfile($rootScope.viewUser);
+  fetchProfile();
 });
