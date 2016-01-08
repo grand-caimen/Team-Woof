@@ -13,6 +13,7 @@ module.exports = {
     userUpdate({ username: username }, { URL: URL })
     .then(function (data) {
       console.log(data);
+      res.send(URL);
     })
 
   },
