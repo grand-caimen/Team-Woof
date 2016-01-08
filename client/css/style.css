@@ -40,10 +40,6 @@ body {
   margin-top: 15px;
 }*/
 
-.city {
-  text-align: center;
-}
-
 .row.createdQuests {
   overflow: scroll;
    /* height: 200px;*/
@@ -586,10 +582,6 @@ tags-input .tags .tag-item {
 .review-user {
  margin-bottom: 5px;
  margin-left: 10px;
-}
-
-.city {
-  opacity: .85;
 }
 
 .xp {
