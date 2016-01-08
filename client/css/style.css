@@ -456,6 +456,10 @@ tags-input .tags .tag-item {
 .quest-view-steps {
   margin: 0 -15px 17px 0;
 }
+.steps {
+  padding-left: 30px;
+  padding-right: 30px;
+}
 
 .quest-view-step-tab {
   margin:5px;
@@ -563,7 +567,7 @@ tags-input .tags .tag-item {
 }
 
 .review_h2 {
-    text-indent: 12px;
+  margin-top: 30px;
 }
 
 .review-tagline {
