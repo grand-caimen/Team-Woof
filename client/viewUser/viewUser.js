@@ -7,7 +7,6 @@ angular.module('cityQuest.viewUser', [])
   $scope.user = localStorageService.get('viewUser');
   $scope.ogUser = localStorageService.get('user');
   $scope.Math = window.Math;
-  $scope.rank = InputConversion.rankConversion(Math.floor($scope.user.xp / 100));
 
   $scope.signout = function() {
     Auth.signout();
@@ -24,6 +23,7 @@ angular.module('cityQuest.viewUser', [])
     console.log('LOOK HERE: ', $scope.user);
     QuestStorage.fetchProfile($scope.user)
     .then(function(res) {
+       $scope.rank = InputConversion.rankConversion(Math.floor($scope.user.xp / 100));
       res.completedQuests.forEach(function(completedQuest){
         completedQuest.time = InputConversion.minutesToHours(completedQuest.time);
         completedQuest.rating = InputConversion.ratingAverage(completedQuest.rating);
