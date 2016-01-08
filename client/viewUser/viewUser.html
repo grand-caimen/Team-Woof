@@ -47,7 +47,7 @@
               <h1 class="bannername">{{ user.username }}</h1>
               <div class="col-md-12">
                   <h4 class="xp">Level: {{ Math.floor(user.xp/100) || 0 }}</h4>
-                  <h4 class="xp">Rank: {{ rank}}</h4>
+                  <h4 class="xp">Rank: {{ user.rank}}</h4>
                   <h4 class="xp">XP: {{ user.xp }}</h4>
                   <uib-progressbar class="progress-striped active" value="user.xp%100" type="success">{{type}} </uib-progressbar>
               </div>
