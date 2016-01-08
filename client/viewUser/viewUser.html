@@ -44,7 +44,7 @@
               </div>
           <div class='row'>
             <div class="col-md-6">
-              <h2>Completed Quests: {{ user.completedQuests.length }}</h2>
+              <h2 class="bannertitle">Completed Quests: {{ user.completedQuests.length }}</h2>
               <div class='col-md-12 questList profile-list input-front fade-in-three-quarter-sec' ng-repeat="completedQuest in user.completedQuests | searchField: 'tags' | filter:search">
                 <div class="col-md-12 questItem">
                   <div class="col-md-1 quest-image-container">
@@ -104,7 +104,7 @@
               </div>
             </div>
             <div class="col-md-6">
-              <h2>Created Quests: {{ user.createdQuests.length }}</h2>
+              <h2 class="bannertitle">Created Quests: {{ user.createdQuests.length }}</h2>
               <div class='col-md-12 questList profile-list input-front fade-in-three-quarter-sec' ng-repeat="createdQuest in user.createdQuests | searchField: 'tags' | filter:search">
                 <div class="col-md-12 questItem">
                   <div class="col-md-1 quest-image-container">
