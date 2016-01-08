@@ -609,3 +609,7 @@ tags-input .tags .tag-item {
   height: 100%;
   width: 100%;
 }
+
+.overlay-h4 {
+  padding-top: 60px;
+}

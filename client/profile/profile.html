@@ -28,6 +28,10 @@
 
   </div>
 </div> -->
+         <!--    <div class="thumb">
+                <div class="overlay"></div>
+                <img src="image.gif" />
+            </div> -->
 <div id='container'>
     <div class="col-md-12 logo-blank"></div>
     <div class="col-md-12 logo-blank"></div>
@@ -35,7 +39,17 @@
       <div class='col-md-12 fade-in-three-quarter-sec'>
         <div class="col-md-12 questItem">
           <div class="row">
-            <div class="col-md-2" style="padding-right: 0px;">
+            <style type="text/css">
+              .thumb {position:relative;}
+              .thumb:hover .overlay {opacity:0.8; cursor: pointer;}
+              .overlay {position:absolute;top:0;left:10;width:200px;height:180px;background:#595959;opacity:0; color: white;}
+            </style>
+            <div class="col-md-2 thumb" style="padding-right: 0px;">
+              <div class='overlay' ng-click='toggle()'>
+                <div>
+                  <h4 class="overlay overlay-h4" style='text-align: center;'>CHANGE PROFILE IMAGE</h4>
+                </div>
+              </div>
               <a href="" ng-click='toggle()'><img  class='profile-img' ng-src='{{ user.URL }}'></a>
             </div>
             <div class="col-md-4">
