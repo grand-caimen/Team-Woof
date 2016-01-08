@@ -7,6 +7,7 @@ angular.module('cityQuest.viewUser', [])
   $scope.user = localStorageService.get('viewUser');
   $scope.ogUser = localStorageService.get('user');
   $scope.Math = window.Math;
+  $scope.rank = InputConversion.rankConversion(Math.floor($scope.user.xp / 100));
 
   $scope.signout = function() {
     Auth.signout();

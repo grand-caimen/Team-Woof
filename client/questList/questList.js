@@ -34,6 +34,7 @@ angular.module('cityQuest.questList', [])
     if(!Auth.isAuth()){
       $location.path('/signin')
     }
+    QuestStorage.getCity();
   };
 
   sessionCheck();

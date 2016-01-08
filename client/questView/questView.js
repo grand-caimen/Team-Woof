@@ -25,6 +25,8 @@ angular.module('cityQuest.questView', [])
     }
   });
 
+  $scope.user = localStorageService.get('user');
+
   var fetch = function(cb){
     QuestStorage.getSingleQuest($scope.questId).then(function(quest){
       console.log('quest: ', quest)

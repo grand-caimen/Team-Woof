@@ -35,6 +35,7 @@ angular.module('cityQuest.authenticationService', [])
 
   auth.signout = function () {
     $window.localStorage.removeItem('sessiontoken');
+    localStorage.clear();
     localStorageService.clearAll();
     $location.path('/signin');
   };
