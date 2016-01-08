@@ -10,13 +10,6 @@ angular.module('cityQuest.review', [])
     review: undefined,
   }
 
-  $scope.addReview = function () {
-    // $uibModalInstance.close($scope.selected.item);
-    console.log('running $scope.addReview()');
-    console.log('new review: ', $scope.review)
-    // Reviews.addReview(newReview)
-  }
-
   $scope.animationsEnabled = true;
 
   $scope.open = function (size) {
