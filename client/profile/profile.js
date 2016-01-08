@@ -19,6 +19,11 @@ angular.module('cityQuest.profile', [])
     $scope.urlBar = !$scope.urlBar;
   }
 
+  $scope.loadImage = function () {
+    $scope.user.URL = $scope.imageUrl;
+    $scope.urlBar = false;
+  }
+
   $scope.user = localStorageService.get('user');
   $scope.rank = InputConversion.rankConversion(Math.floor($scope.user.xp/100));
 
