@@ -237,6 +237,8 @@ input {
 }
 
 .sign-in-up-button-text {
+  border: none;
+  background-color: #a3bd29;
   font-size: 2em;
   font-family: 'Julee', cursive;
 }
@@ -426,7 +428,7 @@ tags-input .tags .tag-item {
 }
 
 .angular-google-map-container {
- height: 400px;
+ height: 265px;
 }
 
 .quest-view-image {
@@ -587,6 +589,9 @@ tags-input .tags .tag-item {
     padding-left:20px;
 }
 
+/*.quest-img-cont {
+  padding-left: 0px;
+}*/
 .bannername {
     padding-left:10px;
 }

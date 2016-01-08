@@ -32,96 +32,116 @@
       <div class='col-md-12 fade-in-three-quarter-sec'>
         <div class="col-md-12 questItem">
           <div class="col-md-12">
-            <img class="quest-view-image" ng-src="{{quest.image}}">
-          </div>
-          <div class="col-md-7">
-            <h1 class="quest-view-title">{{ quest.name }}</h1>
-            <h4 class="quest-view-descript">{{ quest.description }}</h4>
-          </div>
-          <div class="col-md-5" style="margin-top:15px;">
-            <div class="row">
-              <div class="col-md-4 tab">
-                <div class="row">
-                  <div class="col-md-2 tab-image-container">
-                    <img class="tab-image" src="client/img/icons/cost.png">
-                  </div>
-
-                  <div class="col-md-2 split-line"></div>
-
-                  <div class="col-md-2 tab-image-container">
-                    <p class="tab-text">{{ quest.cost }}</p>
-                  </div>
-                </div>
+            <div class='row'>
+              <div class='col-md-6 quest-img-cont'>
+                <img class="quest-view-image" ng-src="{{quest.image}}">
               </div>
-              <div class="col-md-1" style="padding:0;"></div>
+              <div class="col-md-6">
+                <h1 class="quest-view-title">{{ quest.name }}</h1>
+                <h4 class="quest-view-descript">{{ quest.description }}</h4>
+              </div>
 
-              <div class="col-md-4 tab">
-                  <div class="row">
+              <div class="col-md-6" style="margin-top:0px; padding-right: 15px;">
+                <div class="row" style='margin-left: 0px;'>
+                  <div class="col-md-4 tab">
+                    <div class="row">
                       <div class="col-md-2 tab-image-container">
-                          <img class="tab-image" src="client/img/icons/star.png">
+                        <img class="tab-image" src="client/img/icons/cost.png">
                       </div>
 
                       <div class="col-md-2 split-line"></div>
 
                       <div class="col-md-2 tab-image-container">
-                          <p class="tab-text">{{ quest.rating }}</p>
+                        <p class="tab-text">{{ quest.cost }}</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-1" style="padding:0;"></div>
+
+                  <div class="col-md-4 tab">
+                      <div class="row">
+                          <div class="col-md-2 tab-image-container">
+                              <img class="tab-image" src="client/img/icons/star.png">
+                          </div>
+
+                          <div class="col-md-2 split-line"></div>
+
+                          <div class="col-md-2 tab-image-container">
+                              <p class="tab-text">{{ quest.rating }}</p>
+                          </div>
                       </div>
                   </div>
-              </div>
 
-              <div class="col-md-1" style="padding:0;"></div>
+                  <div class="col-md-1" style="padding:0;"></div>
 
-              <div class="col-md-4 tab">
-                <div class="row">
-                  <div class="col-md-2 tab-image-container">
-                    <img class="tab-image" src="client/img/icons/time.png">
+                  <div class="col-md-4 tab">
+                    <div class="row">
+                      <div class="col-md-2 tab-image-container">
+                        <img class="tab-image" src="client/img/icons/time.png">
+                      </div>
+
+                      <div class="col-md-2 split-line"></div>
+
+                      <div class="col-md-2 tab-image-container">
+                        <p class="tab-text">{{ quest.time }}</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-1" style="padding:0;"></div>
+
+                  <div class="col-md-4 tab" ng-controller='ReviewCtrl'>
+                    <script type="text/ng-template" id="myModalContent.html">
+                        <div class="modal-header review-header">
+                            <h1 class="modal-title quest-view-title">Thou hast completed thy quest!</h1>
+                            <h4 class="review-tagline">Review the quest to gain XP.</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div ng-controller="RatingCtrl">
+                              <h3>Rating</h3>
+                              <uib-rating ng-model="newReview.rating" max="max" readonly="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null" aria-labelledby="default-rating"></uib-rating>
+                            </div>
+                            <div>
+                              <h3>Review</h1>
+                              <textarea class='form-control' ng-model='newReview.review'></textarea>
+                            </div>
+                        </div>
+                        <div class="modal-footer" >
+                            <button class="btn btn-primary review-btn" type="button" ng-click="addReview()">Submit</button>
+                            <button class="btn btn-warning review-btn" type="button" ng-click="cancel()">Cancel</button>
+                        </div>
+                    </script>
+                    <div class="row complete" ng-click="open()">
+                      <div class="col-md-2 tab-image-container">
+                          <img class="tab-image" src="client/img/icons/checkmark.png">
+                      </div>
+
+                      <div class="col-md-2 split-line"></div>
+
+                      <div class="col-md-2 tab-image-container">
+                          <p class="tab-text complete">Complete</p>
+                      </div>
+                    </div>
                   </div>
 
-                  <div class="col-md-2 split-line"></div>
 
-                  <div class="col-md-2 tab-image-container">
-                    <p class="tab-text">{{ quest.time }}</p>
-                  </div>
-                </div>
               </div>
-              <div class="col-md-1" style="padding:0;"></div>
 
-              <div class="col-md-4 tab" ng-controller='ReviewCtrl'>
-                <script type="text/ng-template" id="myModalContent.html">
-                    <div class="modal-header review-header">
-                        <h1 class="modal-title quest-view-title">Thou hast completed thy quest!</h1>
-                        <h4 class="review-tagline">Review the quest to gain XP.</h4>
-                    </div>
-                    <div class="modal-body">
-                        <div ng-controller="RatingCtrl">
-                          <h3>Rating</h3>
-                          <uib-rating ng-model="newReview.rating" max="max" readonly="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null" aria-labelledby="default-rating"></uib-rating>
-                        </div>
-                        <div>
-                          <h3>Review</h1>
-                          <textarea class='form-control' ng-model='newReview.review'></textarea>
-                        </div>
-                    </div>
-                    <div class="modal-footer" >
-                        <button class="btn btn-primary review-btn" type="button" ng-click="addReview()">Submit</button>
-                        <button class="btn btn-warning review-btn" type="button" ng-click="cancel()">Cancel</button>
-                    </div>
-                </script>
-                <div class="row complete" ng-click="open()">
-                    <div class="col-md-2 tab-image-container">
-                        <img class="tab-image" src="client/img/icons/checkmark.png">
-                    </div>
-
-                    <div class="col-md-2 split-line"></div>
-
-                    <div class="col-md-2 tab-image-container">
-                        <p class="tab-text complete">Complete</p>
-                    </div>
-                </div>
+              <div class="col-md-12 maps" style='margin-top: 15px; padding-left: 0px; padding-right: 0px'>
+                <ui-gmap-google-map center="map.center" zoom="map.zoom" events="map.events">
+                  <ui-gmap-marker
+                      ng-repeat="marker in markers"
+                      coords="marker.coords"
+                      idKey="marker.id"
+                      options="marker.options"
+                      >
+                  </ui-gmap-marker>
+                </ui-gmap-google-map>
               </div>
 
             </div>
           </div>
+        </div>
+        <div class="row">
           <div class="col-md-6">
             <h2 class="steps">Steps</h2>
             <div class="row quest-view-steps" ng-repeat='step in quest.steps'>
@@ -134,21 +154,10 @@
             <span ng-repeat='tag in quest.tags'><span class="quest-view-tags">{{tag.text}}</span></span>
 
             <div class="clean"></div>
-
           </div>
-          <div class="col-md-6 maps">
-           <ui-gmap-google-map center="map.center" zoom="map.zoom" events="map.events">
-              <ui-gmap-marker
-                  ng-repeat="marker in markers"
-                  coords="marker.coords"
-                  idKey="marker.id"
-                  options="marker.options"
-                  >
-              </ui-gmap-marker>
-            </ui-gmap-google-map>
-          <div class="col-md-6 maps">
+          <div class='col-md-6'>  
             <h2 class="review_h2">Reviews:</h2>
-            <div class="col-md-12 questView-review" ng-repeat='review in quest.reviews'>
+            <div class="questView-review" ng-repeat='review in quest.reviews'>
               <div class="row">
                 <div class="col-md-4">
                   <a href="" ng-click='viewUser(quest.reviews[$index].username)'><h4 class='review-user'>{{ review.username }}</h4></a>
@@ -156,15 +165,15 @@
               </div>
               <h5 class='review-text'>{{review.review}}</h5>
             </div>
-            <div class="clean"></div>
           </div>
+          <div class="clean"></div>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<div class='col-md-6 questList input-front fade-in-three-quarter-sec' ng-repeat="quest in quests | searchField: 'tags' | filter:search">
+<!-- <div class='col-md-6 questList input-front fade-in-three-quarter-sec' ng-repeat="quest in quests | searchField: 'tags' | filter:search">
           <div class="col-md-12 questItem">
             <div class="col-md-1 quest-image-container">
               <img class="quest-image " ng-src="{{quest.image}}">
@@ -220,3 +229,4 @@
             <div class="clean"></div>
           </div>
         </div>
+ -->
