@@ -29,7 +29,7 @@
     <div class="col-md-12 logo-blank"></div>
     <div class="col-md-12 logo-blank"></div>
     <div class="col-md-6 col-md-offset-3 fade-in-1-and-three-quarter-sec"><img class="logo" src="client/img/logo.png"></div>
-    <div class="col-md-10 col-md-offset-1 questContainer">
+    <div class="col-md-10 col-md-offset-1 questContainer city">
     <form ng-submit='questCreate()'>
       <div class="form-group">
         <div class="col-md-3"><img class="make-quest-mountains hidden-sm" src="client/img/hill1.svg"></div>
@@ -99,7 +99,7 @@
                 </div>
             </div>
 
-            <div class="col-md-6 map-container">
+            <div class="col-md-6 map-container map">
               <ui-gmap-google-map center="map.center" zoom="map.zoom" events="map.events">
                 <ui-gmap-marker
                     ng-repeat="marker in markers"
