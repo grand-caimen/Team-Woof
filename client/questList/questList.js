@@ -3,12 +3,19 @@ angular.module('cityQuest.questList', [])
 .controller('questListCtrl', function ($scope, $window, QuestStorage, Auth, localStorageService, InputConversion, $location){
   $scope.quests = null;
   $scope.showNoQuestsFoundMsg = false;
+  $scope.showNoCityFoundMsg = false;
   $scope.currCity = InputConversion.capitalizeFirstLetter($window.localStorage.getItem('city'));
 
   $scope.user = localStorageService.get('user');
 
   $scope.signout = function() {
     Auth.signout();
+  };
+
+  var getCity = function() {
+    if (QuestStorage.getCity() === 'no city') {
+      $scope.showNoCityFoundMsg = true;
+    }
   };
 
   var getAllQuests = function(){
@@ -34,9 +41,12 @@ angular.module('cityQuest.questList', [])
     if(!Auth.isAuth()){
       $location.path('/signin')
     }
-    QuestStorage.getCity();
   };
 
-  sessionCheck();
-  getAllQuests();
+  getCity();
+
+  if (!$scope.showNoCityFoundMsg) {
+    sessionCheck();
+    getAllQuests();
+  }
 });

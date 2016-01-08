@@ -24,6 +24,7 @@ angular.module('cityQuest.questStorageService', [])
       return cityName;
     }
     else{
+      $rootScope.cityStatus = false;
       $location.path('/');
     }
   };

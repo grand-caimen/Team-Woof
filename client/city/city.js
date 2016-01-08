@@ -1,9 +1,11 @@
 angular.module('cityQuest.city', [])
 
-.controller('cityCtrl', function ($scope, $location, $window, QuestStorage, Auth, InputConversion, localStorageService){
+.controller('cityCtrl', function ($scope, $location, $window, $rootScope, QuestStorage, Auth, InputConversion, localStorageService){
   $scope.city = "";
   $scope.gPlace;
   $scope.user = localStorageService.get('user');
+  $scope.showNoCityFoundMsg = false;
+
 
   $scope.signOut = function() {
     Auth.signOut();
@@ -48,8 +50,12 @@ angular.module('cityQuest.city', [])
     })
   };
 
-  sessionCheck();
-  fetchProfile();
+  if ($rootScope.cityStatus !== undefined && $rootScope.cityStatus === false) {
+    $scope.showNoCityFoundMsg = true;
+  } else {
+    sessionCheck();
+    fetchProfile();
+  }
 })
 //Google Places Autocomplete
 .directive('googleplaces', function() {

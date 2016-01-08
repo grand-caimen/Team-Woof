@@ -35,12 +35,12 @@
       <div class='col-md-12 fade-in-three-quarter-sec'>
         <div class="col-md-12 questItem">
           <div class="row">
-            <div class="col-md-2">
-              <a href="#" on-click='showUrl()'><img class='profile-img' ng-src='{{ user.URL }}'></a>
+            <div class="col-md-2" style="padding-right: 0px;">
+              <a href="" ng-click='toggle()'><img  class='profile-img' ng-src='{{ user.URL }}'></a>
             </div>
             <div class="col-md-4">
               <h1 class="bannername">{{ user.username }}</h1>
-              <div class="col-md-10">
+              <div class="col-md-12">
                   <h4 class="xp">Level: {{ Math.floor(user.xp/100) || 0 }}</h4>
                   <h4 class="xp">Rank: {{ rank}}</h4>
                   <h4 class="xp">XP: {{ user.xp }}</h4>
@@ -48,9 +48,9 @@
               </div>
             </div>
             <div class="col-md-4">
-              <form ng-submit='loadImage()'>
+              <form ng-submit='loadImage()' ng-show='urlBar'>
                 <div class="input-group">
-                  <input ng-model="user.URL" type="url" class="form-control input-front fade-in-1-and-three-quarter-sec" placeholder="Add image URL" >
+                  <input ng-model='imageUrl' type="url" class="form-control input-front fade-in-1-and-three-quarter-sec" placeholder="Add image URL" >
                   <span class="input-group-btn">
                     <button href='' class="btn btn-default input-submit fade-in-1-and-three-quarter-sec" type="submit">Load Image</button>
                   </span>
