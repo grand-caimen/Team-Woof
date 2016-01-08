@@ -237,6 +237,8 @@ input {
 }
 
 .sign-in-up-button-text {
+  border: none;
+  background-color: #a3bd29;
   font-size: 2em;
   font-family: 'Julee', cursive;
 }
