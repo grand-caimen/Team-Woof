@@ -6,6 +6,7 @@ angular.module('cityQuest.viewUser', [])
   $scope.currCity = InputConversion.capitalizeFirstLetter($window.localStorage.getItem('city'));
   $scope.user = localStorageService.get('viewUser');
   $scope.ogUser = localStorageService.get('user');
+  $scope.Math = window.Math;
 
   $scope.signout = function() {
     Auth.signout();
