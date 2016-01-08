@@ -18,6 +18,7 @@ var returnUser = userModels.returnUser;
 var addReview = userModels.addReview;
 var authUser = userModels.checkAuth;
 var userAddQuest = userModels.userAddQuest;
+var userAddProfilePic = userModels.userAddProfilePic;
 
 
 
@@ -82,7 +83,7 @@ app.post('/api/users/profile', function (req, res) {
 
 app.post('/api/users/profilepic', function (req, res) {
   console.log('User profile pic requested for', req.body.username);
-  returnUser(req, res);
+  userAddProfilePic(req.body);
 });
 
 app.post('/api/reviews', function (req, res) {
