@@ -580,10 +580,12 @@ tags-input .tags .tag-item {
 
 .review-text {
   margin-top: 0px;
+  margin-left:10px;
 }
 
 .review-user {
  margin-bottom: 5px;
+ margin-left: 10px;
 }
 
 .xp {
@@ -613,4 +615,12 @@ tags-input .tags .tag-item {
 
 .overlay-h4 {
   padding-top: 60px;
+}
+
+.reviewstyling {
+    border-style:hidden;
+    margin-bottom:10px;
+    margin-right:10px;
+    border-color:#B3D221;
+   background-color: rgba(179,210,33,0.3);
 }
