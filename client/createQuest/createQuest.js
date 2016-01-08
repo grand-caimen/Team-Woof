@@ -45,7 +45,7 @@ angular.module('cityQuest.createQuest', [])
   };
 
   $scope.questCreate = function(){
-    $scope.quest.creator = JSON.parse($window.localStorage.getItem('user')).username;
+    $scope.quest.creator = localStorageService.get('user').username;
     if(FormValidation.isRequiredQuestFieldMissing($scope.quest)) return;
     if($scope.stepCount === 0){
       alert("Add a quest task first.");
