@@ -56,5 +56,7 @@ angular.module('cityQuest.profile', [])
   };
 
   sessionCheck();
-  fetchProfile();
-});
+  setTimeout(function() {
+    fetchProfile();
+  })
+}, 3000);
