@@ -12,6 +12,10 @@ angular.module('cityQuest.review', [])
 
   $scope.animationsEnabled = true;
 
+  $scope.signOut = function() {
+    Auth.signOut();
+  }
+
   $scope.open = function (size) {
 
     var modalInstance = $uibModal.open({

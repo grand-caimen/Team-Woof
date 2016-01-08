@@ -11,7 +11,7 @@
     <nav class="navbar-collapse" ng-class="{collapse: isCollapsed}">
         <nav class="navbar-collapse" ng-class="{collapse: isCollapsed}">
     <ul class="nav navbar-nav navbar-left dropdown">
-      <li><a class="active fade-in-three-quarter-sec user-nav" style="color:#B3D221;" ng-show='user'>Welcome, to {{ currCity }} thouest {{ user.username }}...</a></li>
+      <li><a class="active fade-in-three-quarter-sec user-nav" style="color:#B3D221;" ng-show='user'>Hey, {{ user.username }} welcome to {{ currCity }}</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right dropdown">
         <!-- <li><a class="active fade-in-three-quarter-sec" style="color:#B3D221;"> {{ currCity }} </a></li> -->
@@ -142,8 +142,8 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-md-6">
-            <h2 class="steps">Steps</h2>
+          <div class="col-md-6 steps">
+            <h2 class="review_h2">Steps:</h2>
             <div class="row quest-view-steps" ng-repeat='step in quest.steps'>
               <step-view-directive/>
             </div>
@@ -155,7 +155,7 @@
 
             <div class="clean"></div>
           </div>
-          <div class='col-md-6'>  
+          <div class='col-md-6'>
             <h2 class="review_h2">Reviews:</h2>
             <div class="questView-review" ng-repeat='review in quest.reviews'>
               <div class="row">
