@@ -21,7 +21,15 @@ angular.module('cityQuest.profile', [])
 
   $scope.loadImage = function () {
     $scope.user.URL = $scope.imageUrl;
+    var imageObj = {
+      username: $scope.user.username,
+      URL: $scope.user.URL
+    }
+    console.log('Image URL: ', imageObj)
     $scope.urlBar = false;
+    QuestStorage.addImageUrl(imageObj);
+
+
   }
 
   $scope.user = localStorageService.get('user');

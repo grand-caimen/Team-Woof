@@ -84,6 +84,21 @@ angular.module('cityQuest.questStorageService', [])
     });
   };
 
+  questStorage.addImageUrl = function(url) {
+    console.log('New Image URL ', url)
+    return $http({
+      method: 'POST',
+      url: '/api/users/profilepic',
+      data: url
+    })
+    .then(function(res){
+      console.log('res: ', res);
+      console.log('res.data: ', res.data);
+      var fetchedProfile = res.data;
+      return fetchedProfile;
+    });
+  }
+
   questStorage.setUserProfile = function(user) {
     $window.localStorage.setItem('user', JSON.stringify(user));
   }
