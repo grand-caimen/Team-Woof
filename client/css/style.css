@@ -588,9 +588,27 @@ tags-input .tags .tag-item {
  margin-left: 10px;
 }
 
+.city {
+  opacity: .85;
+}
+
 .xp {
+  color: #3676AA;
+}
+
+.level {
   color: #a3bd29;
 }
+
+.rank {
+  color: #a3bd29;
+}
+
+.xpp {
+  color: #a3bd29;
+  padding-left: 18px;
+}
+
 .profile-list {
   padding-left: 5px;
   padding-right: 5px;
