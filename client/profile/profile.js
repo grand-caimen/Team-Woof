@@ -4,7 +4,6 @@ angular.module('cityQuest.profile', [])
   $scope.quests = null;
   $scope.showNoQuestsFoundMsg = false;
   $scope.currCity = InputConversion.capitalizeFirstLetter($window.localStorage.getItem('city'));
-  $scope.user = QuestStorage.getUserProfile('user');
   $scope.Math = window.Math;
 
   // var user = localStorageService.get('user');
@@ -56,5 +55,7 @@ angular.module('cityQuest.profile', [])
   };
 
   sessionCheck();
-  fetchProfile();
-});
+  setTimeout(function() {
+    fetchProfile();
+  })
+}, 3000);
