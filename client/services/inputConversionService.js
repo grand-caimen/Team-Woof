@@ -4,11 +4,15 @@ angular.module('cityQuest.inputConversionService', [])
   var inputConversion = {};
 
   inputConversion.capitalizeFirstLetter = function(str) {
-    var words = str.split(' ');
-    words.forEach(function(val, i, coll){
-      coll[i] = val.charAt(0).toUpperCase() + val.slice(1);
-    });
-    return words.join(' ');
+    if (str !== undefined && str !== null && str.length > 1) {
+      var words = str.split(' ');
+      words.forEach(function(val, i, coll){
+        coll[i] = val.charAt(0).toUpperCase() + val.slice(1);
+      });
+      return words.join(' ');
+    } else {
+      return '';
+    }
   };
 
   inputConversion.minutesToHours = function(minutes){

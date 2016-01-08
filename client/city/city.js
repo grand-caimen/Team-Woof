@@ -5,9 +5,17 @@ angular.module('cityQuest.city', [])
   $scope.gPlace;
   $scope.user = localStorageService.get('user');
 
+  $scope.signOut = function() {
+    Auth.signOut();
+  }
+
   $scope.citySelect = function(){
-    QuestStorage.saveCity($scope.city.split(',').splice(0,2).join());
-    $location.path('/questList');
+    if ($scope.city !== undefined && $scope.city.length > 1) {
+      QuestStorage.saveCity($scope.city.split(',').splice(0,2).join());
+      $location.path('/questList');
+    } else {
+      QuestStorage.saveCity($scope.city);
+    }
   };
 
   var sessionCheck = function(){
