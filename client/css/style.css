@@ -600,3 +600,8 @@ tags-input .tags .tag-item {
 .bannername {
     padding-left:10px;
 }
+
+.profile-img {
+  height: 100%;
+  width: 100%;
+}
