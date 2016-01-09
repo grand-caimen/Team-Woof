@@ -35,19 +35,22 @@
 <div id='container'>
     <div class="col-md-12 logo-blank"></div>
     <div class="col-md-12 logo-blank"></div>
-    <div class="col-md-10 col-md-offset-1">
+    <div class="col-md-10 col-md-offset-1 content">
       <div class='col-md-12 fade-in-three-quarter-sec'>
         <div class="col-md-12 questItem">
           <div class="row">
             <style type="text/css">
               .thumb {position:relative;}
               .thumb:hover .overlay {opacity:0.8; cursor: pointer;}
-              .overlay {position:absolute;top:0;left:10;width:200px;height:180px;background:#595959;opacity:0; color: white;}
+              .overlay {position:absolute;top:15;left:10;width:177px;height:180px;background:#595959;opacity:0; color: white;}
             </style>
-            <div class="col-md-2 thumb" style="padding-right: 0px;">
-              <div class='overlay' ng-click='toggle()'>
+            <div class="col-md-2 thumb" style="padding-right: 0px;padding-left: 30px;padding-top: 15px;">
+              <div class='overlay' ng-click='toggle()' style="
+                                                              padding-top: 15px;
+                                                              height: 180px;
+                                                              width: 162px;">
                 <div>
-                  <h4 class="overlay overlay-h4" style='text-align: center;'>CHANGE PROFILE IMAGE</h4>
+                  <h4 class="overlay overlay-h4" style="text-align: center; height: 110px;width: 160px;margin-top: 0px;">CHANGE PROFILE IMAGE</h4>
                 </div>
               </div>
               <a href="" ng-click='toggle()'><img  class='profile-img' ng-src='{{ user.URL }}'></a>
@@ -55,9 +58,9 @@
             <div class="col-md-4">
               <h1 class="bannername">{{ user.username }}</h1>
               <div class="col-md-12">
-                  <h4 class="xp">Level: {{ Math.floor(user.xp/100) || 0 }}</h4>
-                  <h4 class="xp">Rank: {{ rank}}</h4>
-                  <h4 class="xp">XP: {{ user.xp }}</h4>
+                  <h4 class="xp">Level: <span class='level'>{{ Math.floor(user.xp/100) || 0 }}</span></h4>
+                  <h4 class="xp">Rank: <span class='rank'>{{rank}}</span></h4>
+                  <h4 class="xp">XP: <span class='xpp'>{{ user.xp }}</span></h4>
                   <uib-progressbar class="progress-striped active" value="user.xp%100" type="success">{{type}} </uib-progressbar>
               </div>
             </div>

@@ -37,4 +37,8 @@ angular.module('cityQuest.auth', [])
       });
   };
 
+  $window.localStorage.removeItem('sessiontoken');
+  localStorage.clear();
+  localStorageService.clearAll();
+
 });
