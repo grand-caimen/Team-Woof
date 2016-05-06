@@ -629,10 +629,12 @@ tags-input .tags .tag-item {
 
 .reviewstyling {
     border-style:hidden;
+    border-radius: 5px;
     margin-bottom:10px;
     margin-right:10px;
     border-color:#B3D221;
    background-color: rgba(179,210,33,0.3);
+   padding-right: 15px;
 }
 
 .content {

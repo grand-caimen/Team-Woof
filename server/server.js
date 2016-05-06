@@ -34,15 +34,12 @@ app.get('/', function(req, res){
 
 app.post('/api/quests*', function(req, res){
 	Quest.find(req.body).then(function(quests){
-		if(quests.length > 0){
+		if (quests.length > 0) {
 			res.send('An identical quest already exists');
-		}
-		else {
-		  console.log(req.body);
+		} else {
 			var newQuest = new Quest(req.body);
 			newQuest.save(function(err, result){
-				if(err){
-					console.log('help');
+				if (err){
 					console.log(err);
 				}
 				userAddQuest(req.body);
@@ -58,12 +55,10 @@ app.post('/api/users/signup', function(req, res){
 
 app.post('/api/users/signin', function(req, res){
 	signin(req, res, res.send);
-
 });
 
 
 app.get('/api/quests*', function(req, res){
-	console.log(req.query);
 	Quest.find(req.query).then(function(quests){
 		res.send(quests);
 	});
@@ -77,21 +72,16 @@ app.post('/api/geocode*', function(req, res){
 })
 
 app.post('/api/users/profile', function (req, res) {
- console.log('User profile requested for', req.body.username);
  returnUser(req, res);
 });
 
 app.post('/api/users/profilepic', function (req, res) {
-  console.log('User profile pic requested for', req.body.username);
   userAddProfilePic(req.body);
 });
 
 app.post('/api/reviews', function (req, res) {
   addReview(req, res);
 });
-
-
-
 
 // Wildcard Files
 app.get('/*', function(req, res){

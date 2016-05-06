@@ -4,7 +4,6 @@ angular.module('cityQuest.auth', [])
   $scope.user = {};
 
   $scope.signin = function () {
-    console.log('user: ', $scope.user );
     Auth.signin($scope.user)
       .then(function () {
         localStorageService.set('user', $scope.user);
@@ -21,7 +20,7 @@ angular.module('cityQuest.auth', [])
   };
 
   $scope.signup = function () {
-    console.log('user: ', $scope.user );
+    console.log($scope.user)
     Auth.signup($scope.user)
       .then(function () {
         localStorageService.set('user', $scope.user);

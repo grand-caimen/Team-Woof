@@ -2,7 +2,6 @@ var mongoose = require('mongoose');
 var bcrypt   = require('bcrypt-nodejs');
 var Q        = require('q');
 
-
 var Schema = mongoose.Schema;
 var questSchema = new Schema({
   creator:String,
