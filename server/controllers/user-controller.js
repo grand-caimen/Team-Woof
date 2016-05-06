@@ -1,11 +1,11 @@
-var User = require('./models.js').User;
-var Quest = require('./models.js').Quest;
-var Q    = require('q');
+var User = require('./../models/user.js');
+var Quest = require('./../models/quest.js');
 var jwt = require('jwt-simple');
+var Q = require('q');
 
 module.exports = {
 
-  userAddProfilePic: function (reqbody) {
+  addProfilePic: function (reqbody) {
     console.log('userAddQuest has been called with ', reqbody);
     var username = reqbody.username
     var URL = reqbody.URL;
@@ -15,10 +15,9 @@ module.exports = {
       console.log(data);
       res.send(URL);
     })
-
   },
 
-  userAddQuest: function(reqbody){
+  addQuest: function(reqbody){
     console.log('userAddQuest has been called with ', reqbody);
     var creator = reqbody.creator
     var createXP = reqbody.time;
@@ -37,8 +36,6 @@ module.exports = {
     .then(function (data) {
       console.log('Exp for creating quest added');
     })
-
-
   },
 
   addReview: function (req, res, next) {
@@ -118,6 +115,7 @@ module.exports = {
   },
 
   signup: function (req, res, next) {
+    console.log('signin')
     var username  = req.body.username,
         password  = req.body.password,
         create,

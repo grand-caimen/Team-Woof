@@ -1,52 +1,29 @@
 var mongoose = require('mongoose');
-var bcrypt   = require('bcrypt-nodejs');
-var Q        = require('q');
-
 var Schema = mongoose.Schema;
-var questSchema = new Schema({
-  creator:String,
-	name: String,
-	description: String,
-	tags: [],
-	time: Number,
-	id: Number,
-	city: String,
-	address: String,
-	cost: Number,
-	image: String,
-	rating: [Number],
-	reviews: [],
-	steps: [{
-		location: Schema.Types.Mixed,
-		description: String,
-		time: Number,
-    	cost: Number,
-    	number: Number
-	  }]
-});
+var bcrypt = require('bcrypt-nodejs');
+var Q = require('q');
 
 var userSchema = new Schema({
-	username: {
-		type: String,
-		required: true,
-		unique: true
-	},
-
-	password: {
-		type: String,
-		required: true
-	},
-	experience: Number,
-	createdQuests: [],
-	completedQuests: [],
-	xp: Number,
+  username: {
+    type: String,
+    required: true,
+    unique: true
+  },
+  password: {
+    type: String,
+    required: true
+  },
+  experience: Number,
+  createdQuests: [],
+  completedQuests: [],
+  xp: Number,
   URL: String
 });
-
 
 userSchema.methods.comparePasswords = function (candidatePassword) {
   var defer = Q.defer();
   var savedPassword = this.password;
+
   bcrypt.compare(candidatePassword, savedPassword, function (err, isMatch) {
     if (err) {
       defer.reject(err);
@@ -54,6 +31,7 @@ userSchema.methods.comparePasswords = function (candidatePassword) {
       defer.resolve(isMatch);
     }
   });
+
   return defer.promise;
 };
 
@@ -85,10 +63,6 @@ userSchema.pre('save', function (next) {
   });
 });
 
+module.exports = mongoose.model('User', userSchema);
 
-
-var Quest = mongoose.model('Quest', questSchema);
-var User = mongoose.model('User', userSchema);
-
-module.exports.Quest = Quest;
-module.exports.User = User;
+// module.exports.User = User;
