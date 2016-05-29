@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/grand-caimen/Team-Woof.png?label=ready&title=Ready)](https://waffle.io/grand-caimen/Team-Woof)
 # City Quest #
   > **Looking for a new adventure while on vacation or even in your hometown?**  
   > Use the City Quest app to search for "quests" that align with your interests.  
